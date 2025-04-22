@@ -31,13 +31,36 @@
                 Text="EW Design" />
 
             <StackPanel Grid.Row="1">
-                <TextBlock
-                    Margin="20,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontSize="22"
+                <RadioButton
+                    Height="50"
+                    Content="Recent"
+                    FontSize="14"
                     Foreground="White"
-                    Text="Demo Text" />
+                    Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton
+                    Height="50"
+                    Content="New"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton
+                    Height="50"
+                    Content="Open"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton
+                    Height="50"
+                    Content="Settings"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton
+                    Height="50"
+                    Content="About"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MenuButtonTheme}" />
             </StackPanel>
         </Grid>
     </Border>

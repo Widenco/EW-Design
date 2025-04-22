@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\App.xaml
-21777532564
+31633500271
 
-71800234080
+9-469105502
 13-1310406943
-MainWindow.xaml;View\BuilderView.xaml;
+MainWindow.xaml;UITheme\MenuButtonTheme.xaml;View\BuilderView.xaml;
 
-True
+False
 
