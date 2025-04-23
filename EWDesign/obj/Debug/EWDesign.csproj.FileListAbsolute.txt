@@ -17,3 +17,8 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.exe
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.pdb
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\UITheme\MenuButtonTheme.baml
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\App.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\NewView.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\RecentView.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\NewView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\RecentView.baml

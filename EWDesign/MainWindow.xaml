@@ -5,12 +5,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EWDesign"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:EWDesign.ViewModel"
     Title="MainWindow"
     Width="920"
     Height="600"
     Background="Transparent"
     ResizeMode="NoResize"
     mc:Ignorable="d">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Border Background="#121A21">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -33,16 +39,19 @@
             <StackPanel Grid.Row="1">
                 <RadioButton
                     Height="50"
-                    Content="Recent"
-                    FontSize="14"
-                    Foreground="White"
-                    Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton
-                    Height="50"
                     Content="New"
                     FontSize="14"
                     Foreground="White"
-                    Style="{StaticResource MenuButtonTheme}" />
+                    Style="{StaticResource MenuButtonTheme}"
+                    IsChecked="True"
+                    Command="{Binding NewRC}"/>
+                <RadioButton
+                    Height="50"
+                    Content="Recent"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MenuButtonTheme}"
+                    Command="{Binding RecentRC}"/>
                 <RadioButton
                     Height="50"
                     Content="Open"
@@ -62,6 +71,11 @@
                     Foreground="White"
                     Style="{StaticResource MenuButtonTheme}" />
             </StackPanel>
+
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
         </Grid>
     </Border>
 </Window>
