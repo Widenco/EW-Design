@@ -1,78 +1,86 @@
-﻿<UserControl x:Class="EWDesign.View.BuilderView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EWDesign.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="920"
-             Background="Transparent">
-    <Border Background="#121A21"
-            CornerRadius="10">
+﻿<Window
+    x:Class="EWDesign.View.BuilderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EWDesign.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BuilderView"
+    Width="920"
+    Height="600"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Border Background="#121A21" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition/>
+                <RowDefinition Height="75" />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Components"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="20,0,0,0" 
-                       />
-            
-            <TextBlock Grid.Column="1"
-                       Text="Start Building Your WebPage"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Foreground="White"
-                       FontSize="30"/>
+            <TextBlock
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="White"
+                Text="Components" />
 
-            <TextBlock Grid.Column="2"
-                       Text="No Component Selected"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Foreground="White"
-                       FontSize="16"
-                       Margin="0,0,10,0"/>
+            <TextBlock
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Foreground="White"
+                Text="Start Building Your WebPage" />
+
+            <TextBlock
+                Grid.Column="2"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Foreground="White"
+                Text="No Component Selected" />
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
-                    <TextBlock Text="NavBar"
-                Foreground="White"
-                FontSize="20"
-                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Body"
-Foreground="White"
-FontSize="20"
-HorizontalAlignment="Center"
-                Margin="0,15,0,0"/>
-                    <TextBlock Text="SideBar"
-Foreground="White"
-FontSize="20"
-HorizontalAlignment="Center"
-                Margin="0,15,0,0"/>
-                    <TextBlock Text="Footer"
-Foreground="White"
-FontSize="20"
-HorizontalAlignment="Center"
-                Margin="0,15,0,0"/>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="White"
+                        Text="NavBar" />
+                    <TextBlock
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="White"
+                        Text="Body" />
+                    <TextBlock
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="White"
+                        Text="SideBar" />
+                    <TextBlock
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="White"
+                        Text="Footer" />
                 </StackPanel>
             </ScrollViewer>
 
-            <StackPanel Grid.Column="1" Grid.Row="1"
-                        AllowDrop="True">
-                
-            </StackPanel>
-            
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                AllowDrop="True" />
+
         </Grid>
 
     </Border>
-</UserControl>
+</Window>

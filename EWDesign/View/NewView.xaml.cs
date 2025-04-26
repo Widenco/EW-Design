@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EWDesign.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace EWDesign.View
         public NewView()
         {
             InitializeComponent();
+            var viewModel = new NewViewModel();
+
+            viewModel.OpenBuilder += OnOpenBuilder;
+
+            DataContext = viewModel;
+        }
+
+        private void OnOpenBuilder()
+        {
+            var main = Application.Current.MainWindow;
+            main.Hide();
+
+            var BuilderWindow = new BuilderView();
+            BuilderWindow.ShowDialog();
+
+            main.Show();
         }
     }
 }

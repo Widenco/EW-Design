@@ -38,7 +38,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="Transparent" Command="{Binding Command}" ToolTip="{Binding ToolTip}" Margin="30,0,0,0">
+                        <Button Background="Transparent" BorderThickness="0" Command="{Binding Command}" ToolTip="{Binding ToolTip}" Margin="30,0,0,0">
                             <Image Source="{Binding IconPath}" Width="150" Height="100" Stretch="Uniform"/>
                         </Button>
                     </DataTemplate>

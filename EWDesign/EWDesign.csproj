@@ -58,6 +58,7 @@
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Model\IconModel.cs" />
+    <Compile Include="ViewModel\BuilderViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewViewModel.cs" />
     <Compile Include="ViewModel\RecentViewModel.cs" />

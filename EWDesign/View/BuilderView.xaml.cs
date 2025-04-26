@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EWDesign.View
@@ -18,7 +17,7 @@ namespace EWDesign.View
     /// <summary>
     /// Interaction logic for BuilderView.xaml
     /// </summary>
-    public partial class BuilderView : UserControl
+    public partial class BuilderView : Window
     {
         public BuilderView()
         {

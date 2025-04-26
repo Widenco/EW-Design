@@ -33,7 +33,7 @@ namespace EWDesign.ViewModel
             RecentVM = new RecentViewModel();
             NewVM = new NewViewModel();
 
-            CurrentView = RecentVM;
+            CurrentView = NewVM;
 
             RecentRC = new RelayCommand(o => 
             {
