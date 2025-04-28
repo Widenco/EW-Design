@@ -11,6 +11,7 @@
     Height="600"
     Background="Transparent"
     ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <Window.DataContext>

@@ -5,11 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EWDesign.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:EWDesign.ViewModel"
     Title="BuilderView"
     Width="920"
     Height="600"
     Background="Transparent"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModel:BuilderViewModel/>
+    </Window.DataContext>
     <Border Background="#121A21" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -48,37 +54,30 @@
                 Text="No Component Selected" />
 
             <ScrollViewer Grid.Row="1">
-                <StackPanel>
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        Foreground="White"
-                        Text="NavBar" />
-                    <TextBlock
-                        Margin="0,15,0,0"
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        Foreground="White"
-                        Text="Body" />
-                    <TextBlock
-                        Margin="0,15,0,0"
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        Foreground="White"
-                        Text="SideBar" />
-                    <TextBlock
-                        Margin="0,15,0,0"
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        Foreground="White"
-                        Text="Footer" />
-                </StackPanel>
+                <ListBox ItemsSource="{Binding Components}"
+                         SelectedItem="{Binding SelectedComponent}"
+                         PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown"
+                         Background="#121A21"
+                         Foreground="White"
+                         FontSize="24"
+                         Margin="0,15,0,0"
+                         HorizontalAlignment="Center"
+                         BorderThickness="0"/>
             </ScrollViewer>
 
-            <StackPanel
+            <Border
                 Grid.Row="1"
                 Grid.Column="1"
-                AllowDrop="True" />
+                Margin="10"
+                BorderBrush="#243647"
+                BorderThickness="1"
+                >
+                <StackPanel AllowDrop="True"
+                            Name="DropArea"
+                            Drop="DropArea_Drop"
+                            Background="Transparent"/>
+            </Border>
+
 
         </Grid>
 
