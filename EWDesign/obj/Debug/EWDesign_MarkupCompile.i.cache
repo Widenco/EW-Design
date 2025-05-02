@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\App.xaml
-5-343741452
+6-1486857947
 
-16-1100921029
+19-1435688488
 13-1310406943
-MainWindow.xaml;UITheme\MenuButtonTheme.xaml;View\BuilderView.xaml;View\NewView.xaml;View\RecentView.xaml;
+Components\Views\NavBarView.xaml;MainWindow.xaml;UITheme\MenuButtonTheme.xaml;View\BuilderView.xaml;View\NewView.xaml;View\RecentView.xaml;
 
-True
+False
 

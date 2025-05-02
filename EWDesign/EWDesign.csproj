@@ -55,8 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\Models\NavBarComponent.cs" />
+    <Compile Include="Components\Views\NavBarView.xaml.cs">
+      <DependentUpon>NavBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Model\ComponentModel.cs" />
     <Compile Include="Model\IconModel.cs" />
     <Compile Include="ViewModel\BuilderViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -71,6 +76,10 @@
     <Compile Include="View\RecentView.xaml.cs">
       <DependentUpon>RecentView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\Views\NavBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EWDesign.Components.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,20 +40,20 @@ namespace EWDesign.View
             {
                 string componentType = (string)e.Data.GetData(DataFormats.StringFormat);
 
-                UIElement newElement = null;
+                UserControl newElement = null;
                 switch (componentType)
                 {
                     case "NavBar":
-                        newElement = new TextBlock { Text = "NavBar", Foreground = Brushes.White, FontSize = 24 };
+                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                     case "Body":
-                        newElement = new TextBlock { Text = "Body", Foreground = Brushes.White, FontSize = 24 };
+                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                     case "SideBar":
-                        newElement = new TextBlock { Text = "SideBar", Foreground = Brushes.White, FontSize = 24 };
+                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                     case "Footer":
-                        newElement = new TextBlock { Text = "Footer", Foreground = Brushes.White, FontSize = 24 };
+                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                 }
 
