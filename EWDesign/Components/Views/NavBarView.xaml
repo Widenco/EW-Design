@@ -6,11 +6,44 @@
              xmlns:local="clr-namespace:EWDesign.Components.Views"
              xmlns:model="clr-namespace:EWDesign.Components.Models"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="75" d:DesignWidth="800">
     <UserControl.DataContext>
         <model:NavBarComponent/>
     </UserControl.DataContext>
     <Border Background="{Binding BackgroundColor}" Padding="10">
-        <TextBlock Text="{Binding Title}" Foreground="White" FontSize="35"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Title}" 
+                       FontSize="24"
+                       VerticalAlignment="Center"
+                       Foreground="#2a2e35"
+                       Margin="24,0"
+                       FontWeight="Bold"
+                       Cursor="Hand"/>
+
+            <ItemsControl Grid.Column="1"
+                          ItemsSource="{Binding NavbarElements}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,24,0"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   Margin="16,0"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Foreground="#3A3F47"
+                                   Cursor="Hand"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Border>
 </UserControl>
