@@ -21,7 +21,7 @@ namespace EWDesign.Components.Models
 
         public NavBarComponent() 
         { 
-            Type = "NavBar";
+            Type = "NavBar"; 
             NavbarElements = new ObservableCollection<string>
             {
                 "Inicio",

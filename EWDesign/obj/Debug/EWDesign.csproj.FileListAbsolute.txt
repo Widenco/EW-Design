@@ -24,3 +24,5 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\NewView.
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\RecentView.baml
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\NavBarView.g.cs
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\NavBarView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\BodyView.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\BodyView.baml

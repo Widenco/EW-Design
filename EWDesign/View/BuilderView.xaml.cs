@@ -47,7 +47,7 @@ namespace EWDesign.View
                         newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                     case "Body":
-                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
+                        newElement = new Components.Views.BodyView(new Components.Models.BodyComponent());
                         break;
                     case "SideBar":
                         newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
