@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace EWDesign.View
         public BuilderView()
         {
             InitializeComponent();
+            this.DataContext = new BuilderViewModel();
         }
         private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -61,6 +63,7 @@ namespace EWDesign.View
                 {
                     var panel = sender as StackPanel;
                     panel.Children.Add(newElement);
+                    
                 }
             }
         }

@@ -15,9 +15,9 @@
     mc:Ignorable="d">
 
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:MainViewModel />
     </Window.DataContext>
-    
+
     <Border Background="#121A21">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -40,19 +40,19 @@
             <StackPanel Grid.Row="1">
                 <RadioButton
                     Height="50"
+                    Command="{Binding NewRC}"
                     Content="New"
                     FontSize="14"
                     Foreground="White"
-                    Style="{StaticResource MenuButtonTheme}"
                     IsChecked="True"
-                    Command="{Binding NewRC}"/>
+                    Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton
                     Height="50"
+                    Command="{Binding RecentRC}"
                     Content="Recent"
                     FontSize="14"
                     Foreground="White"
-                    Style="{StaticResource MenuButtonTheme}"
-                    Command="{Binding RecentRC}"/>
+                    Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton
                     Height="50"
                     Content="Open"
@@ -73,10 +73,11 @@
                     Style="{StaticResource MenuButtonTheme}" />
             </StackPanel>
 
-            <ContentControl Grid.Column="1"
-                            Grid.Row="1"
-                            Margin="10"
-                            Content="{Binding CurrentView}"/>
+            <ContentControl
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="10"
+                Content="{Binding CurrentView}" />
         </Grid>
     </Border>
 </Window>

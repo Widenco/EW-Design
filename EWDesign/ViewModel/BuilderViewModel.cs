@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EWDesign.Components.Models;
+using EWDesign.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace EWDesign.ViewModel
     class BuilderViewModel: ObservableObject
     {
         public ObservableCollection<string> Components { get; set; }
-        public String SelectedComponent { get; set; }
+        public NavBarComponent SelectedComponent { get; set; }
         public ObservableCollection<UserControl> DroppedComponents { get; set; }
 
         public BuilderViewModel()

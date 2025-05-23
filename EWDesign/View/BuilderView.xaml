@@ -21,7 +21,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
@@ -44,15 +43,6 @@
                 Foreground="White"
                 Text="Start Building Your WebPage" />
 
-            <TextBlock
-                Grid.Column="2"
-                Margin="0,0,10,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Foreground="White"
-                Text="No Component Selected" />
-
             <ScrollViewer Grid.Row="1">
                 <ListBox
                     Margin="0,15,0,0"
@@ -62,8 +52,7 @@
                     FontSize="24"
                     Foreground="White"
                     ItemsSource="{Binding Components}"
-                    PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown"
-                    SelectedItem="{Binding SelectedComponent}" />
+                    PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown" />
             </ScrollViewer>
 
             <Border
@@ -73,7 +62,7 @@
                 BorderBrush="#243647"
                 BorderThickness="1">
 
-                <ScrollViewer>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel
                         Name="DropArea"
                         AllowDrop="True"

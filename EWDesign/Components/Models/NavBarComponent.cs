@@ -12,8 +12,25 @@ namespace EWDesign.Components.Models
 {
     public class NavBarComponent : ComponentModel
     {
-        public string Title { get; set; } = "Mi Producto";
-        public string BackgroundColor { get; set; } = "#f5f7fa";
+        private string _title = "Mi Producto";
+        public string Title 
+        { 
+            get => _title; 
+            set => SetProperty(ref _title, value); 
+        }
+        private string _backgroundColor = "#f5f7fa";
+        public string BackgroundColor 
+        { 
+            get => _backgroundColor; 
+            set => SetProperty(ref _backgroundColor, value);
+        }
+
+        private bool _isEditing;
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set => SetProperty(ref _isEditing, value);
+        }
 
         public ObservableCollection<string> NavbarElements { get; set; }
 
@@ -34,6 +51,11 @@ namespace EWDesign.Components.Models
         public override UserControl GetView()
         {
             return new NavBarView(this);
+        }
+
+        public void Prueba()
+        {
+            Console.WriteLine("Click");
         }
 
     }

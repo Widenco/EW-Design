@@ -63,6 +63,8 @@
     <Compile Include="Components\Views\NavBarView.xaml.cs">
       <DependentUpon>NavBarView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\BoolToVisibilityConverter.cs" />
+    <Compile Include="Core\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Model\ComponentModel.cs" />
