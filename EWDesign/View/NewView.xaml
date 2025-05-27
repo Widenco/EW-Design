@@ -12,14 +12,14 @@
     mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <viewModel:NewViewModel/>
+        <viewModel:NewViewModel />
     </UserControl.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
-            <RowDefinition Height="150"/>
-            <RowDefinition/>
+            <RowDefinition Height="150" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBlock
@@ -28,7 +28,11 @@
             Foreground="White"
             Text="NEW" />
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10" Grid.Row="1">
+        <StackPanel
+            Grid.Row="1"
+            Margin="10"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
             <ItemsControl ItemsSource="{Binding Icons}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -38,8 +42,17 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="Transparent" BorderThickness="0" Command="{Binding Command}" ToolTip="{Binding ToolTip}" Margin="30,0,0,0">
-                            <Image Source="{Binding IconPath}" Width="150" Height="100" Stretch="Uniform"/>
+                        <Button
+                            Margin="30,0,0,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Command="{Binding Command}"
+                            ToolTip="{Binding ToolTip}">
+                            <Image
+                                Width="150"
+                                Height="100"
+                                Source="{Binding IconPath}"
+                                Stretch="Uniform" />
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

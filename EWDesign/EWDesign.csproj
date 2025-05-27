@@ -57,11 +57,15 @@
     </ApplicationDefinition>
     <Compile Include="Components\Models\BodyComponent.cs" />
     <Compile Include="Components\Models\NavBarComponent.cs" />
+    <Compile Include="Components\Models\TextComponent.cs" />
     <Compile Include="Components\Views\BodyView.xaml.cs">
       <DependentUpon>BodyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Views\NavBarView.xaml.cs">
       <DependentUpon>NavBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Views\TextView.xaml.cs">
+      <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
     <Compile Include="Core\InverseBoolToVisibilityConverter.cs" />
@@ -87,6 +91,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Views\NavBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\TextView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Core Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

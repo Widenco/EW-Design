@@ -26,3 +26,6 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Vi
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\NavBarView.baml
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\BodyView.g.cs
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\BodyView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Core\Core Resources\Converters.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\TextView.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\TextView.baml

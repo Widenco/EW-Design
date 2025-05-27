@@ -53,11 +53,6 @@ namespace EWDesign.Components.Models
             return new NavBarView(this);
         }
 
-        public void Prueba()
-        {
-            Console.WriteLine("Click");
-        }
-
     }
 }
 
