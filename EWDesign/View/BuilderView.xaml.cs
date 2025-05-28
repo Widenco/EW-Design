@@ -62,7 +62,43 @@ namespace EWDesign.View
                 if (newElement != null)
                 {
                     var panel = sender as StackPanel;
-                    panel.Children.Add(newElement);
+                    bool canAdd = false;
+
+                    if(panel.Children.Count == 0)
+                    {
+                        canAdd = true;
+                    } else
+                    {
+
+                        if (panel.Children[0] is NavBarView)
+                        {
+                            foreach (var component in panel.Children)
+                            {
+                                if (newElement.GetType() == component.GetType())
+                                {
+                                    canAdd = false;
+                                    break;
+                                }
+                                else
+                                {
+                                    canAdd = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                         if(newElement is NavBarView)
+                            {
+                                canAdd = false;
+                            }   
+                        }
+
+                    }
+
+                    if (canAdd)
+                    {
+                        panel.Children.Add(newElement);
+                    }
                     
                 }
             }
