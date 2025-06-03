@@ -21,30 +21,45 @@ namespace EWDesign.Components.Views
     /// </summary>
     public partial class TextView : UserControl
     {
-        public TextComponent Model { get; }
-        public TextView(TextComponent model)
+        public static readonly DependencyProperty ModelProperty =
+        DependencyProperty.Register("Model", typeof(TextComponent), typeof(TextView),
+            new PropertyMetadata(null, OnModelChanged));
+
+        public TextComponent Model
+        {
+            get => (TextComponent)GetValue(ModelProperty);
+            set => SetValue(ModelProperty, value);
+        }
+        public TextView()
         {
             InitializeComponent();
-            Model = model;
-            this.DataContext = model;
+        }
+
+        private static void OnModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (TextView)d;
+            control.DataContext = e.NewValue;
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Model.IsEditing = false;
+            if(Model != null)
+                Model.IsEditing = false;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Escape)
             {
-                Model.IsEditing = false;
+                if(Model != null)
+                    Model.IsEditing = false;
             }
         }
 
         private void TextBlock_Click(object sender, MouseButtonEventArgs e)
         {
-            Model.IsEditing = true;
+            if(Model != null)
+                Model.IsEditing = true;
         }
     }
 }

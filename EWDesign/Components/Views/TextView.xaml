@@ -15,7 +15,7 @@
 
     <Grid>
         <TextBlock
-            Margin="24,0"
+            Margin="{Binding Margin}"
             VerticalAlignment="Center"
             Cursor="Hand"
             FontSize="24"

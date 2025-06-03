@@ -12,7 +12,5 @@ namespace EWDesign.Model
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Type { get; set; }
-        public abstract UserControl GetView();
-
     }
 }

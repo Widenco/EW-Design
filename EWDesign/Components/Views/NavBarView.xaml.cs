@@ -32,25 +32,7 @@ namespace EWDesign.Components.Views
             InitializeComponent();
             Model = model;
             this.DataContext = model;
-
-        }
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Model.IsEditing = false;
-        }
-
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Escape)
-            {
-                Model.IsEditing = false;
-            }
-        }
-
-        private void TextBlock_Click(object sender, MouseButtonEventArgs e)
-        {
-            Model.IsEditing = true;
+             
         }
     }
 }

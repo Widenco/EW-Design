@@ -26,6 +26,20 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _foreground, value);
         }
 
+        private string _fontSize = "24";
+
+        public string FontSize
+        {
+            get => _fontSize;
+            set => SetProperty(ref _fontSize, value);
+        }
+
+        private string[] _margin = { "24", "0", "0", "0" };
+        public string[] Margin
+        {
+            get => _margin;
+            set => SetProperty(ref _margin, value);
+        }
         private bool _isEditing;
         public bool IsEditing
         {
@@ -33,9 +47,5 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _isEditing, value);
         }
 
-        public override UserControl GetView()
-        {
-            return new TextView(this);
-        }
     }
 }

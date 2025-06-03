@@ -22,31 +22,18 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Margin="24,0"
-                VerticalAlignment="Center"
-                Cursor="Hand"
-                FontSize="24"
-                FontWeight="Bold"
-                Foreground="#2a2e35"
-                MouseLeftButtonDown="TextBlock_Click"
-                Text="{Binding Title}"
-                Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+            <StackPanel
+                x:Name="TitleDropArea"
+                AllowDrop="True"
+                Background="Transparent"
+                VerticalAlignment="Center">
 
-            <TextBox
-                Margin="24,0"
-                VerticalAlignment="Center"
-                Cursor="Hand"
-                FontSize="24"
-                FontWeight="Bold"
-                Foreground="#2a2e35"
-                KeyDown="TextBox_KeyDown"
-                LostFocus="TextBox_LostFocus"
-                Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <components:TextView Model="{Binding TextModel}"/>
+
+            </StackPanel>
 
 
-            <ItemsControl Grid.Column="1" ItemsSource="{Binding NavbarElements}">
+                <ItemsControl Grid.Column="1" ItemsSource="{Binding NavbarElements}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel
@@ -57,14 +44,9 @@
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Margin="16,0"
-                            VerticalAlignment="Center"
-                            Cursor="Hand"
-                            FontSize="16"
-                            Foreground="#3A3F47"
-                            Text="{Binding}" />
+                    <DataTemplate DataType="{x:Type model:TextComponent}">
+                        <components:TextView Model="{Binding}"
+                                             />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

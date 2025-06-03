@@ -37,9 +37,5 @@ namespace EWDesign.Components.Models
             };
         }
 
-        public override UserControl GetView()
-        {
-            return new BodyView(this);
-        }
     }
 }

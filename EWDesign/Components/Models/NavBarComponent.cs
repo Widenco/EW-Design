@@ -12,45 +12,29 @@ namespace EWDesign.Components.Models
 {
     public class NavBarComponent : ComponentModel
     {
-        private string _title = "Mi Producto";
-        public string Title 
-        { 
-            get => _title; 
-            set => SetProperty(ref _title, value); 
-        }
+        public TextComponent TextModel { get; set; }
+
         private string _backgroundColor = "#f5f7fa";
         public string BackgroundColor 
         { 
             get => _backgroundColor; 
             set => SetProperty(ref _backgroundColor, value);
         }
-
-        private bool _isEditing;
-        public bool IsEditing
-        {
-            get => _isEditing;
-            set => SetProperty(ref _isEditing, value);
-        }
-
-        public ObservableCollection<string> NavbarElements { get; set; }
+        public ObservableCollection<TextComponent> NavbarElements { get; set; }
 
         public string NavBarElementsColor { get; set; } = "#3a3f47";
 
         public NavBarComponent() 
         { 
             Type = "NavBar"; 
-            NavbarElements = new ObservableCollection<string>
+            NavbarElements = new ObservableCollection<TextComponent>
             {
-                "Inicio",
-                "Características",
-                "Precios",
-                "Contacto"
+                new TextComponent{ Text = "Inicio" },
+                new TextComponent { Text = "Características" },
+                new TextComponent{ Text = "Precios" },
+                new TextComponent { Text = "Contacto" }
             };
-        }
-
-        public override UserControl GetView()
-        {
-            return new NavBarView(this);
+            TextModel = new TextComponent();
         }
 
     }

@@ -29,10 +29,26 @@ namespace EWDesign.View
         private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var listBox = sender as ListBox;
-            var selectedItem = listBox.SelectedItem;
-            if(selectedItem != null)
+
+            // Obtener el ítem bajo el cursor
+            var hit = VisualTreeHelper.HitTest(listBox, e.GetPosition(listBox));
+            if (hit?.VisualHit is DependencyObject element)
             {
-                DragDrop.DoDragDrop(listBox, selectedItem, DragDropEffects.Copy);
+                // Buscar el ListBoxItem padre
+                while (element != null && !(element is ListBoxItem))
+                    element = VisualTreeHelper.GetParent(element);
+
+                if (element != null)
+                {
+                    var listBoxItem = (ListBoxItem)element;
+                    listBoxItem.IsSelected = true;  // Forzar la selección
+                    listBox.SelectedItem = listBoxItem.DataContext;
+
+                    // Iniciar el DragDrop inmediatamente
+                    DragDrop.DoDragDrop(listBox, listBox.SelectedItem, DragDropEffects.Copy);
+
+                    e.Handled = true;  // Opcional: prevenir procesamiento adicional
+                }
             }
         }
 
@@ -58,47 +74,71 @@ namespace EWDesign.View
                         newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                 }
-
-                if (newElement != null)
-                {
-                    var panel = sender as StackPanel;
-                    bool canAdd = false;
-
-                    if(panel.Children.Count == 0)
+                    if (newElement != null)
                     {
-                        canAdd = true;
-                    } else
-                    {
+                        var panel = sender as StackPanel;
 
-                        if (panel.Children[0] is NavBarView)
+                        // Verificar duplicados
+                        bool alreadyExists = panel.Children
+                            .OfType<StackPanel>()
+                            .Select(sp => sp.Children.OfType<UserControl>().FirstOrDefault())
+                            .Any(uc => uc?.GetType() == newElement.GetType());
+
+                        if (alreadyExists)
                         {
-                            foreach (var component in panel.Children)
+                            MessageBox.Show($"Ya has agregado un componente '{componentType}'.", "Componente duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
+                        var container = new StackPanel
+                        {
+                            Margin = new Thickness(5),
+                            Background = Brushes.Transparent
+                        };
+
+                        container.PreviewMouseLeftButtonDown += (s, args) =>
+                        {
+                            if (args.ClickCount == 2)
                             {
-                                if (newElement.GetType() == component.GetType())
-                                {
-                                    canAdd = false;
-                                    break;
-                                }
-                                else
-                                {
-                                    canAdd = true;
-                                }
+                                panel.Children.Remove(container);
+                                args.Handled = true;
                             }
+                        };
+
+                        container.Children.Add(newElement);
+
+                        // Lógica de inserción corregida
+                        if (newElement is NavBarView)
+                        {
+                            panel.Children.Insert(0, container);
                         }
                         else
                         {
-                         if(newElement is NavBarView)
+                            // Buscar la posición del NavBar si existe
+                            int navbarIndex = -1;
+                            for (int i = 0; i < panel.Children.Count; i++)
                             {
-                                canAdd = false;
-                            }   
+                                if (panel.Children[i] is StackPanel childContainer)
+                                {
+                                    var childUC = childContainer.Children.OfType<UserControl>().FirstOrDefault();
+                                    if (childUC is NavBarView)
+                                    {
+                                        navbarIndex = i;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // Insertar después del NavBar o al final si no existe
+                            if (navbarIndex != -1)
+                            {
+                                panel.Children.Insert(navbarIndex + 1, container);
+                            }
+                            else
+                            {
+                                panel.Children.Add(container);
+                            }
                         }
-
-                    }
-
-                    if (canAdd)
-                    {
-                        panel.Children.Add(newElement);
-                    }
                     
                 }
             }
