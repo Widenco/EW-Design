@@ -12,29 +12,27 @@ namespace EWDesign.Components.Models
 {
     public class NavBarComponent : ComponentModel
     {
-        public TextComponent TextModel { get; set; }
-
         private string _backgroundColor = "#f5f7fa";
         public string BackgroundColor 
         { 
             get => _backgroundColor; 
             set => SetProperty(ref _backgroundColor, value);
         }
-        public ObservableCollection<TextComponent> NavbarElements { get; set; }
+        public ObservableCollection<string> NavbarElementsText { get; set; }
 
         public string NavBarElementsColor { get; set; } = "#3a3f47";
 
         public NavBarComponent() 
         { 
             Type = "NavBar"; 
-            NavbarElements = new ObservableCollection<TextComponent>
+            NavbarElementsText = new ObservableCollection<string>
             {
-                new TextComponent{ Text = "Inicio" },
-                new TextComponent { Text = "Características" },
-                new TextComponent{ Text = "Precios" },
-                new TextComponent { Text = "Contacto" }
+                "Inicio",
+                "Características",
+                "Precios",
+                "Contacto"
             };
-            TextModel = new TextComponent();
+            
         }
 
     }

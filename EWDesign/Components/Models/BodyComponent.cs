@@ -24,16 +24,17 @@ namespace EWDesign.Components.Models
             {
                 "Impulsa tu productividad con MiProducto",
                 "Una solución simple, poderosa y accesible para optimizar tu flujo de trabajo.",
-                "Comienza ahora"
+                "Comienza ahora",
             };
             FeatureSectionText = new ObservableCollection<string>
             {
-                "Fácil de usar",
-                "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+                "Fácil de usar", 
+                "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.", 
                 "Altamente personalizable",
-                "Adapta la herramienta a tus necesidades sin complicaciones.",
-                "Soporte dedicado",
-                "Te acompañamos en cada paso con asistencia rápida y confiable."
+                "Adapta la herramienta a tus necesidades sin complicaciones.", 
+                "Soporte dedicado", 
+                "Te acompañamos en cada paso con asistencia rápida y confiable.", 
+
             };
         }
 

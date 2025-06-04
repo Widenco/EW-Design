@@ -33,25 +33,11 @@
 
             <!--  Hero Section  -->
             <StackPanel
+                x:Name="HeroSectionDropArea"
                 Width="800"
                 Margin="0,0,0,96"
                 HorizontalAlignment="Center">
-                <TextBlock
-                    Margin="0,0,0,24"
-                    FontSize="48"
-                    FontWeight="Bold"
-                    Foreground="White"
-                    Text="{Binding HeroSectionText[0]}"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap" />
 
-                <TextBlock
-                    Margin="0,0,0,40"
-                    FontSize="20"
-                    Foreground="#DADADA"
-                    Text="{Binding HeroSectionText[1]}"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap" />
 
                 <Button
                     Width="200"
@@ -104,7 +90,7 @@
                     Background="{Binding FeatureBackgroundColor}"
                     CornerRadius="16"
                     Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel>
+                    <StackPanel x:Name="Feature1DropArea">
                         <TextBlock
                             Margin="0,0,0,12"
                             FontSize="22"
@@ -127,7 +113,7 @@
                     Background="{Binding FeatureBackgroundColor}"
                     CornerRadius="16"
                     Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel>
+                    <StackPanel x:Name="Feature2DropArea">
                         <TextBlock
                             Margin="0,0,0,12"
                             FontSize="22"
@@ -150,7 +136,7 @@
                     Background="{Binding FeatureBackgroundColor}"
                     CornerRadius="16"
                     Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel>
+                    <StackPanel x:Name="Feature3DropArea">
                         <TextBlock
                             Margin="0,0,0,12"
                             FontSize="22"

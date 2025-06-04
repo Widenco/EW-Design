@@ -6,13 +6,15 @@ using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.TextFormatting;
 
 namespace EWDesign.Components.Models
 {
     public class TextComponent : ComponentModel
     {
-        private string _text = "Mi Producto";
+        private string _text = "Sample Text";
         public string Text 
         { 
             get => _text; 
@@ -34,12 +36,27 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _fontSize, value);
         }
 
-        private string[] _margin = { "24", "0", "0", "0" };
-        public string[] Margin
+        private Thickness _margin = new Thickness(20,0,0,0);
+        public Thickness Margin
         {
             get => _margin;
             set => SetProperty(ref _margin, value);
         }
+
+        private TextWrapping _textWrap = TextWrapping.Wrap;
+        public TextWrapping TextWrap
+        {
+            get => _textWrap;
+            set => SetProperty(ref _textWrap, value);
+        }
+
+        private TextAlignment _textAlignment = TextAlignment.Left;
+        public TextAlignment TextAlignment
+        {
+            get => _textAlignment;
+            set => SetProperty(ref _textAlignment, value);
+        }
+
         private bool _isEditing;
         public bool IsEditing
         {

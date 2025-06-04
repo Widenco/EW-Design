@@ -24,32 +24,19 @@
 
             <StackPanel
                 x:Name="TitleDropArea"
+                VerticalAlignment="Center"
+                AllowDrop="True"
+                Background="Transparent" />
+
+            <StackPanel
+                x:Name="MenuItemsDropArea"
+                Grid.Column="1"
+                Margin="0,0,24,0"
+                HorizontalAlignment="Right"
                 AllowDrop="True"
                 Background="Transparent"
-                VerticalAlignment="Center">
+                Orientation="Horizontal" />
 
-                <components:TextView Model="{Binding TextModel}"/>
-
-            </StackPanel>
-
-
-                <ItemsControl Grid.Column="1" ItemsSource="{Binding NavbarElements}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel
-                            Margin="0,0,24,0"
-                            HorizontalAlignment="Right"
-                            Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type model:TextComponent}">
-                        <components:TextView Model="{Binding}"
-                                             />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
         </Grid>
     </Border>
 </UserControl>
