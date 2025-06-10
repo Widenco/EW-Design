@@ -56,10 +56,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Components\Models\BodyComponent.cs" />
+    <Compile Include="Components\Models\ButtonComponent.cs" />
+    <Compile Include="Components\Models\CardComponent.cs" />
     <Compile Include="Components\Models\NavBarComponent.cs" />
     <Compile Include="Components\Models\TextComponent.cs" />
     <Compile Include="Components\Views\BodyView.xaml.cs">
       <DependentUpon>BodyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Views\ButtonView.xaml.cs">
+      <DependentUpon>ButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Views\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Views\NavBarView.xaml.cs">
       <DependentUpon>NavBarView.xaml</DependentUpon>
@@ -87,6 +95,14 @@
       <DependentUpon>RecentView.xaml</DependentUpon>
     </Compile>
     <Page Include="Components\Views\BodyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\ButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\CardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

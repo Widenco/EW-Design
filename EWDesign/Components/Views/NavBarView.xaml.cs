@@ -46,7 +46,7 @@ namespace EWDesign.Components.Views
             foreach (var item in Model.NavbarElementsText)
             {
                 var menuItem = new TextView(new TextComponent { Text = item, Margin = new Thickness(16, 0, 0, 0),
-                FontSize = "16", ForeGround = "#3A3F47"});
+                FontSize = 16, ForeGround = "#3A3F47"});
                 MenuItemsDropArea.Children.Add(menuItem);
             }
         }

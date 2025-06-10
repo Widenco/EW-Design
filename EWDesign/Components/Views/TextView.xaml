@@ -23,14 +23,14 @@
             Foreground="{Binding ForeGround}"
             MouseLeftButtonDown="TextBlock_Click"
             Text="{Binding Text}"
-            TextWrapping="{Binding TextWrap}"
             TextAlignment="{Binding TextAlignment}"
+            TextWrapping="{Binding TextWrap}"
             Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
 
         <TextBox
-            Background="Transparent"
             Margin="{Binding Margin}"
             VerticalAlignment="Center"
+            Background="Transparent"
             Cursor="Hand"
             FontSize="{Binding FontSize}"
             FontWeight="Bold"
@@ -38,8 +38,8 @@
             KeyDown="TextBox_KeyDown"
             LostFocus="TextBox_LostFocus"
             Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextWrapping="{Binding TextWrap}"
             TextAlignment="{Binding TextAlignment}"
+            TextWrapping="{Binding TextWrap}"
             Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
 
     </Grid>

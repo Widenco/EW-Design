@@ -28,12 +28,19 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _foreground, value);
         }
 
-        private string _fontSize = "24";
+        private double _fontSize = 24;
 
-        public string FontSize
+        public double FontSize
         {
             get => _fontSize;
             set => SetProperty(ref _fontSize, value);
+        }
+
+        private FontWeight _fontWeight = FontWeights.Black;
+        public FontWeight FontWeight
+        {
+            get => _fontWeight;
+            set => SetProperty(ref _fontWeight, value);
         }
 
         private Thickness _margin = new Thickness(20,0,0,0);
@@ -62,6 +69,11 @@ namespace EWDesign.Components.Models
         {
             get => _isEditing;
             set => SetProperty(ref _isEditing, value);
+        }
+
+        public TextComponent()
+        {
+            Type = "Text";
         }
 
     }

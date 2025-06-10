@@ -15,7 +15,6 @@ namespace EWDesign.Components.Models
         public ObservableCollection<string> HeroSectionText { get; set; }
         public ObservableCollection<string> FeatureSectionText { get; set; }
         public string BodyBackgroundColor { get; set; } = "#1E1E2F";
-        public string FeatureBackgroundColor { get; set; } = "#2A2A40";
 
         public BodyComponent()
         {
@@ -24,7 +23,7 @@ namespace EWDesign.Components.Models
             {
                 "Impulsa tu productividad con MiProducto",
                 "Una solución simple, poderosa y accesible para optimizar tu flujo de trabajo.",
-                "Comienza ahora",
+                "Comienza ahora"
             };
             FeatureSectionText = new ObservableCollection<string>
             {
@@ -33,8 +32,7 @@ namespace EWDesign.Components.Models
                 "Altamente personalizable",
                 "Adapta la herramienta a tus necesidades sin complicaciones.", 
                 "Soporte dedicado", 
-                "Te acompañamos en cada paso con asistencia rápida y confiable.", 
-
+                "Te acompañamos en cada paso con asistencia rápida y confiable."
             };
         }
 
