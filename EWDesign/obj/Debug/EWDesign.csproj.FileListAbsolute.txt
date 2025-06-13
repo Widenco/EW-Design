@@ -33,3 +33,5 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Vi
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\ButtonView.baml
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\CardView.g.cs
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\CardView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\ComponentEditorDialog.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\View\ComponentEditorDialog.baml

@@ -15,6 +15,12 @@
     <UserControl.DataContext>
         <model:NavBarComponent />
     </UserControl.DataContext>
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Edit" Click="Edit_Click"/>
+            <MenuItem Header="Remove" Click="Remove_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
     <Border Padding="10" Background="{Binding BackgroundColor}">
         <Grid>
             <Grid.ColumnDefinitions>

@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.Core;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace EWDesign.Components.Models
     public class NavBarComponent : ComponentModel
     {
         private string _backgroundColor = "#f5f7fa";
+
+        [EditableProperty("Background Color")]
         public string BackgroundColor 
         { 
             get => _backgroundColor; 

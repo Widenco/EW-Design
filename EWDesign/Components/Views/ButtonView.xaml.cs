@@ -1,4 +1,7 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Interfaces;
+using EWDesign.Model;
+using EWDesign.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,21 +22,41 @@ namespace EWDesign.Components.Views
     /// <summary>
     /// Interaction logic for ButtonView.xaml
     /// </summary>
-    public partial class ButtonView : UserControl
+    public partial class ButtonView : UserControl, IComponentView
     {
-        public ButtonComponent Model { get; }
+        public ButtonComponent ButtonModel { get; }
+        public ComponentModel Model => ButtonModel;
+
+        public event EventHandler ComponentRemoveEvent;
         public ButtonView(ButtonComponent model)
         {
             InitializeComponent();
-            Model = model;
+            ButtonModel = model;
             this.DataContext = model;
             InitComponents();
         }
 
         public void InitComponents()
         {
-            var Text = new TextView(Model.TextContent);
+            var Text = new TextView(ButtonModel.TextContent);
             ButtonText.Children.Add(Text);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenComponentEditor(this.Model);
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            ComponentRemoveEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OpenComponentEditor(ComponentModel model)
+        {
+            var dialog = new ComponentEditorDialog(model);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
     }
 }

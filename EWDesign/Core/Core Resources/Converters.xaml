@@ -4,4 +4,5 @@
     xmlns:core="clr-namespace:EWDesign.Core">
     <core:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     <core:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+    <core:ColorToHexConverter x:Key="ColorToHexConverter" />
 </ResourceDictionary>

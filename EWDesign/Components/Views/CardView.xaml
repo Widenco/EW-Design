@@ -1,34 +1,41 @@
-﻿<UserControl x:Class="EWDesign.Components.Views.CardView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EWDesign.Components.Views"
-             xmlns:model="clr-namespace:EWDesign.Components.Models"
-             mc:Ignorable="d" 
-             d:DesignHeight="{Binding Height}" d:DesignWidth="{Binding Width}">
+﻿<UserControl
+    x:Class="EWDesign.Components.Views.CardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EWDesign.Components.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:EWDesign.Components.Models"
+    d:DesignHeight="{Binding Height}"
+    d:DesignWidth="{Binding Width}"
+    mc:Ignorable="d">
     <UserControl.DataContext>
-        <model:CardComponent/>
+        <model:CardComponent />
     </UserControl.DataContext>
     <UserControl.Resources>
         <DropShadowEffect
-        x:Key="ShadowEffect"
-        BlurRadius="10"
-        Opacity="0.2"
-        ShadowDepth="2"
-        Color="Black" />
+            x:Key="ShadowEffect"
+            BlurRadius="10"
+            Opacity="0.2"
+            ShadowDepth="2"
+            Color="Black" />
     </UserControl.Resources>
 
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Click="Edit_Click" Header="Edit" />
+            <MenuItem Click="Remove_Click" Header="Remove" />
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
     <Border
-    Width="{Binding Width}"
-    Height="{Binding Height}"
-    Margin="12"
-    Padding="32"
-    Background="{Binding Background}"
-    CornerRadius="16"
-    Effect="{DynamicResource ShadowEffect}">
-        <StackPanel x:Name="Card">
-         
-        </StackPanel>
+        Width="{Binding Width}"
+        Height="{Binding Height}"
+        Margin="12"
+        Padding="32"
+        Background="{Binding Background}"
+        CornerRadius="16"
+        Effect="{DynamicResource ShadowEffect}">
+        <StackPanel x:Name="Card" />
     </Border>
 </UserControl>

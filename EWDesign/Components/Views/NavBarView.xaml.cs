@@ -1,4 +1,7 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Interfaces;
+using EWDesign.Model;
+using EWDesign.View;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,31 +27,66 @@ namespace EWDesign.Components.Views
     /// <summary>
     /// Interaction logic for NavBarView.xaml
     /// </summary>
-    public partial class NavBarView : UserControl
+    public partial class NavBarView : UserControl, IComponentView
     {
-        public NavBarComponent Model { get; }
+        public NavBarComponent NavBarModel { get; }
+
+        public ComponentModel Model => NavBarModel;
+
+        public event EventHandler ComponentRemoveEvent;
 
         public NavBarView(NavBarComponent model)
         {
             InitializeComponent();
-            Model = model;
+            NavBarModel = model;
             this.DataContext = model;
             InitTemplateComponents();
              
         }
-        
+
         //Inicializando y añadiendo componentes del NavBar por codigo
         public void InitTemplateComponents()
         {
             var TitleText = new TextView( new TextComponent { Text = "Mi Producto" });
+            TitleText.ComponentRemoveEvent += (s, e) => RemoveComponent(TitleText);
             TitleDropArea.Children.Add(TitleText);
 
-            foreach (var item in Model.NavbarElementsText)
+            foreach (var item in NavBarModel.NavbarElementsText)
             {
                 var menuItem = new TextView(new TextComponent { Text = item, Margin = new Thickness(16, 0, 0, 0),
                 FontSize = 16, ForeGround = "#3A3F47"});
+                menuItem.ComponentRemoveEvent += (s, e) => RemoveComponent(menuItem);
                 MenuItemsDropArea.Children.Add(menuItem);
             }
+        }
+
+        private void RemoveComponent(IComponentView componentView)
+        {
+            //Comprobando cual de los dos paneles solicita remover el componente
+            if (TitleDropArea.Children.Contains((UserControl)componentView))
+            {
+                TitleDropArea.Children.Remove((UserControl)componentView);
+            }else
+            {
+                MenuItemsDropArea.Children.Remove((UserControl)componentView);
+            }
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenComponentEditor(this.Model);
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            ComponentRemoveEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OpenComponentEditor(ComponentModel model)
+        {
+            var dialog = new ComponentEditorDialog(model);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
     }
 }

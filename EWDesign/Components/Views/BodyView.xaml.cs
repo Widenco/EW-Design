@@ -1,4 +1,7 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Interfaces;
+using EWDesign.Model;
+using EWDesign.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,13 +23,18 @@ namespace EWDesign.Components.Views
     /// <summary>
     /// Interaction logic for BodyView.xaml
     /// </summary>
-    public partial class BodyView : UserControl
+    public partial class BodyView : UserControl, IComponentView
     {
-        public BodyComponent Model { get; } 
+        public BodyComponent BodyModel { get; }
+
+        public ComponentModel Model => BodyModel;
+
+        public event EventHandler ComponentRemoveEvent;
+
         public BodyView(BodyComponent model)
         {
             InitializeComponent();
-            Model = model;
+            BodyModel = model;
             DataContext = model;
             InitTemplateComponents();
         }
@@ -34,12 +42,12 @@ namespace EWDesign.Components.Views
         //Inicializando y añadiendo componentes a la plantilla por codigo
         public void InitTemplateComponents()
         {
-            var HeroSectionItems = new ObservableCollection<UserControl>
+            var HeroSectionItems = new ObservableCollection<IComponentView>
             {
 
                 new TextView(new TextComponent
                 {
-                    Text = Model.HeroSectionText[0],
+                    Text = BodyModel.HeroSectionText[0],
                     Margin = new Thickness(0, 0, 0, 24),
                     FontSize = 48,
                     ForeGround = "White",
@@ -49,7 +57,7 @@ namespace EWDesign.Components.Views
 
                 new TextView(new TextComponent
                 {
-                    Text = Model.HeroSectionText[1],
+                    Text = BodyModel.HeroSectionText[1],
                     Margin = new Thickness(0, 0, 0, 40),
                     FontSize = 20,
                     ForeGround = "#DADADA",
@@ -57,26 +65,56 @@ namespace EWDesign.Components.Views
                     TextAlignment = TextAlignment.Center
                 }),
 
-                new ButtonView(new ButtonComponent(Model.HeroSectionText[2]))
+                new ButtonView(new ButtonComponent(BodyModel.HeroSectionText[2]))
             };
 
-            var FeatureSectionItems = new ObservableCollection<UIElement>
+            var FeatureSectionItems = new ObservableCollection<IComponentView>
             {
-                new CardView(new CardComponent(Model.FeatureSectionText[0], Model.FeatureSectionText[1])),
-                new CardView(new CardComponent(Model.FeatureSectionText[2], Model.FeatureSectionText[3])),
-                new CardView(new CardComponent(Model.FeatureSectionText[4], Model.FeatureSectionText[5]))
+                new CardView(new CardComponent(BodyModel.FeatureSectionText[0], BodyModel.FeatureSectionText[1])),
+                new CardView(new CardComponent(BodyModel.FeatureSectionText[2], BodyModel.FeatureSectionText[3])),
+                new CardView(new CardComponent(BodyModel.FeatureSectionText[4], BodyModel.FeatureSectionText[5]))
             };
 
             foreach (var item in HeroSectionItems)
             {
-                HeroSectionDropArea.Children.Add(item);
+                item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
+                HeroSectionDropArea.Children.Add((UIElement)item);
             }
 
             foreach (var item in FeatureSectionItems)
             {
-                FeatureSectionDropArea.Children.Add(item);
+                item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
+                FeatureSectionDropArea.Children.Add((UIElement)item);
             }
 
+        }
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenComponentEditor(this.Model);
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            ComponentRemoveEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RemoveComponent(IComponentView componentView)
+        {
+            if (HeroSectionDropArea.Children.Contains((UserControl)componentView))
+            {
+                HeroSectionDropArea.Children.Remove((UserControl)componentView);
+            }
+            else
+            {
+                FeatureSectionDropArea.Children.Remove((UserControl)componentView);
+            }
+        }
+
+        private void OpenComponentEditor(ComponentModel model)
+        {
+            var dialog = new ComponentEditorDialog(model);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.Core;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace EWDesign.Components.Models
     {
         public ObservableCollection<string> HeroSectionText { get; set; }
         public ObservableCollection<string> FeatureSectionText { get; set; }
+
+        [EditableProperty("Background Color")]
         public string BodyBackgroundColor { get; set; } = "#1E1E2F";
 
         public BodyComponent()

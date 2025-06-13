@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.Core;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace EWDesign.Components.Models
         }
 
         private double _width = 200;
+
+        [EditableProperty("Button Width")]
         public double Width
         {
             get => _width;
@@ -28,20 +31,25 @@ namespace EWDesign.Components.Models
         }
 
         private double _heigth = 40;
+
+        [EditableProperty("Button Height")]
         public double Height
         {
             get => _heigth;
             set => SetProperty(ref _heigth, value);
         }
 
-        private TextAlignment _horizontalAlignment = TextAlignment.Center;
-        public TextAlignment HorizontalAlignment
+        private HorizontalAlignment _horizontalAlignment = System.Windows.HorizontalAlignment.Center;
+
+        public HorizontalAlignment HorizontalAlignment
         {
             get => _horizontalAlignment;
             set => SetProperty(ref _horizontalAlignment, value);
         }
 
         private string _background = "#6C63FF";
+
+        [EditableProperty("Button Background Color")]
         public string Background
         {
             get => _background;
@@ -49,6 +57,8 @@ namespace EWDesign.Components.Models
         }
 
         private double _fontSize = 18;
+
+        [EditableProperty("Text Font Size")]
         public double FontSize
         {
             get => _fontSize;
@@ -56,6 +66,8 @@ namespace EWDesign.Components.Models
         }
 
         private FontWeight _fontWeigh = FontWeights.SemiBold;
+
+        [EditableProperty("Text Font Weight")]
         public FontWeight FontWeight
         {
             get => _fontWeigh;
@@ -63,6 +75,8 @@ namespace EWDesign.Components.Models
         }
 
         private string _foreground = "White";
+
+        [EditableProperty("Text Color")]
         public string Foreground
         {
             get => _foreground;
@@ -78,7 +92,7 @@ namespace EWDesign.Components.Models
                 FontSize = _fontSize,
                 FontWeight = _fontWeigh,
                 ForeGround = _foreground,
-                TextAlignment = HorizontalAlignment
+                TextAlignment = TextAlignment.Center
             };
         }
 
@@ -92,7 +106,7 @@ namespace EWDesign.Components.Models
                 FontSize = _fontSize,
                 FontWeight = _fontWeigh,
                 ForeGround = _foreground,
-                TextAlignment = HorizontalAlignment
+                TextAlignment = TextAlignment.Center
             };
         }
     }

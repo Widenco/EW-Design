@@ -1,4 +1,5 @@
-﻿using EWDesign.Model;
+﻿using EWDesign.Core;
+using EWDesign.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace EWDesign.Components.Models
         }
 
         private string _background = "#2A2A40";
+
+        [EditableProperty("Card Background")]
         public string Background
         {
             get => _background;
@@ -32,6 +35,8 @@ namespace EWDesign.Components.Models
         }
 
         private double _width = 300;
+
+        [EditableProperty("Card Width")]
         public double Width
         {
             get => _width;
@@ -39,6 +44,8 @@ namespace EWDesign.Components.Models
         }
 
         private double _height = 170;
+
+        [EditableProperty("Card Height")]
         public double Height
         {
             get => _height;

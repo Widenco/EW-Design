@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.Interfaces;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -58,14 +59,16 @@ namespace EWDesign.View
             {
                 string componentType = (string)e.Data.GetData(DataFormats.StringFormat);
 
-                UserControl newElement = null;
+                IComponentView newElement = null;
                 switch (componentType)
                 {
                     case "NavBar":
                         newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
                     case "Body":
                         newElement = new Components.Views.BodyView(new Components.Models.BodyComponent());
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
                     case "SideBar":
                         newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
@@ -78,11 +81,9 @@ namespace EWDesign.View
                     {
                         var panel = sender as StackPanel;
 
-                        // Verificar duplicados
-                        bool alreadyExists = panel.Children
-                            .OfType<StackPanel>()
-                            .Select(sp => sp.Children.OfType<UserControl>().FirstOrDefault())
-                            .Any(uc => uc?.GetType() == newElement.GetType());
+                    // Verificar duplicados
+                    bool alreadyExists = panel.Children
+                        .OfType<IComponentView>().Any(c => c.GetType() == newElement.GetType());
 
                         if (alreadyExists)
                         {
@@ -90,27 +91,10 @@ namespace EWDesign.View
                             return;
                         }
 
-                        var container = new StackPanel
-                        {
-                            Margin = new Thickness(5),
-                            Background = Brushes.Transparent
-                        };
-
-                        container.PreviewMouseLeftButtonDown += (s, args) =>
-                        {
-                            if (args.ClickCount == 2)
-                            {
-                                panel.Children.Remove(container);
-                                args.Handled = true;
-                            }
-                        };
-
-                        container.Children.Add(newElement);
-
                         // Lógica de inserción corregida
                         if (newElement is NavBarView)
                         {
-                            panel.Children.Insert(0, container);
+                            panel.Children.Insert(0, (UserControl)newElement);
                         }
                         else
                         {
@@ -132,15 +116,23 @@ namespace EWDesign.View
                             // Insertar después del NavBar o al final si no existe
                             if (navbarIndex != -1)
                             {
-                                panel.Children.Insert(navbarIndex + 1, container);
+                                panel.Children.Insert(navbarIndex + 1, (UserControl)newElement);
                             }
                             else
                             {
-                                panel.Children.Add(container);
+                                panel.Children.Add((UserControl)newElement);
                             }
                         }
                     
                 }
+            }
+        }
+
+        private void RemoveComponent(IComponentView componentView)
+        {
+            if (DropArea.Children.Contains((UserControl)componentView))
+            {
+                DropArea.Children.Remove((UserControl)componentView);
             }
         }
     }

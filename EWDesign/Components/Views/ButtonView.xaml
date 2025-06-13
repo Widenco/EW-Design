@@ -14,6 +14,13 @@
         <model:ButtonComponent />
     </UserControl.DataContext>
 
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Click="Edit_Click" Header="Edit" />
+            <MenuItem Click="Remove_Click" Header="Remove" />
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
     <Border
         Width="{Binding Width}"
         Height="{Binding Height}"

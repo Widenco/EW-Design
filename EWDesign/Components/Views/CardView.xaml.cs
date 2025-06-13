@@ -1,4 +1,7 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Interfaces;
+using EWDesign.Model;
+using EWDesign.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,13 +23,18 @@ namespace EWDesign.Components.Views
     /// <summary>
     /// Interaction logic for CardView.xaml
     /// </summary>
-    public partial class CardView : UserControl
+    public partial class CardView : UserControl, IComponentView
     {
-        public CardComponent Model { get; }
+        public CardComponent CardModel { get; }
+
+        public ComponentModel Model => CardModel;
+
+        public event EventHandler ComponentRemoveEvent;
+
         public CardView(CardComponent model)
         {
             InitializeComponent();
-            Model = model;
+            CardModel = model;
             this.DataContext = model;
             InitComponents();
         }
@@ -35,14 +43,31 @@ namespace EWDesign.Components.Views
         {
             var CardComponents = new ObservableCollection<TextView>
             {
-                new TextView(Model.Title),
-                new TextView(Model.Body)
+                new TextView(CardModel.Title),
+                new TextView(CardModel.Body)
             };
 
             foreach (var item in CardComponents)
             {
                 Card.Children.Add(item);
             }
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenComponentEditor(this.Model);
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            ComponentRemoveEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OpenComponentEditor(ComponentModel model)
+        {
+            var dialog = new ComponentEditorDialog(model);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
     }
 }

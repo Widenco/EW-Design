@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Views;
+using EWDesign.Core;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace EWDesign.Components.Models
     public class TextComponent : ComponentModel
     {
         private string _text = "Sample Text";
+
+        [EditableProperty("Text")]
         public string Text 
         { 
             get => _text; 
@@ -22,6 +25,8 @@ namespace EWDesign.Components.Models
         }
 
         private string _foreground = "#2a2e35";
+
+        [EditableProperty("Text Color")]
         public string ForeGround
         {
             get => _foreground;
@@ -30,6 +35,7 @@ namespace EWDesign.Components.Models
 
         private double _fontSize = 24;
 
+        [EditableProperty("Font Size")]
         public double FontSize
         {
             get => _fontSize;
@@ -37,6 +43,8 @@ namespace EWDesign.Components.Models
         }
 
         private FontWeight _fontWeight = FontWeights.Black;
+
+        [EditableProperty("Font Weight")]
         public FontWeight FontWeight
         {
             get => _fontWeight;
@@ -58,6 +66,8 @@ namespace EWDesign.Components.Models
         }
 
         private TextAlignment _textAlignment = TextAlignment.Left;
+
+        [EditableProperty("Text Alignment")]
         public TextAlignment TextAlignment
         {
             get => _textAlignment;
