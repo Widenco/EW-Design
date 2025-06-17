@@ -92,7 +92,8 @@ namespace EWDesign.Components.Models
                 FontSize = _fontSize,
                 FontWeight = _fontWeigh,
                 ForeGround = _foreground,
-                TextAlignment = TextAlignment.Center
+                TextAlignment = TextAlignment.Center,
+                DelegateContextMenu = true
             };
         }
 
@@ -106,7 +107,8 @@ namespace EWDesign.Components.Models
                 FontSize = _fontSize,
                 FontWeight = _fontWeigh,
                 ForeGround = _foreground,
-                TextAlignment = TextAlignment.Center
+                TextAlignment = TextAlignment.Center,
+                DelegateContextMenu = true
             };
         }
     }

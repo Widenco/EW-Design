@@ -12,5 +12,7 @@ namespace EWDesign.Model
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Type { get; set; }
+
+        public virtual bool DelegateContextMenu { get; set; } = false;
     }
 }

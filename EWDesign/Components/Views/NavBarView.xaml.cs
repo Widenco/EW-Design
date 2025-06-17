@@ -47,14 +47,14 @@ namespace EWDesign.Components.Views
         //Inicializando y añadiendo componentes del NavBar por codigo
         public void InitTemplateComponents()
         {
-            var TitleText = new TextView( new TextComponent { Text = "Mi Producto" });
+            var TitleText = new TextView( new TextComponent { Text = "Mi Producto", DelegateContextMenu = false});
             TitleText.ComponentRemoveEvent += (s, e) => RemoveComponent(TitleText);
             TitleDropArea.Children.Add(TitleText);
 
             foreach (var item in NavBarModel.NavbarElementsText)
             {
                 var menuItem = new TextView(new TextComponent { Text = item, Margin = new Thickness(16, 0, 0, 0),
-                FontSize = 16, ForeGround = "#3A3F47"});
+                FontSize = 16, ForeGround = "#3A3F47", DelegateContextMenu = false});
                 menuItem.ComponentRemoveEvent += (s, e) => RemoveComponent(menuItem);
                 MenuItemsDropArea.Children.Add(menuItem);
             }

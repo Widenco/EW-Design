@@ -15,6 +15,7 @@ namespace EWDesign.Components.Models
 {
     public class TextComponent : ComponentModel
     {
+
         private string _text = "Sample Text";
 
         [EditableProperty("Text")]
@@ -84,6 +85,12 @@ namespace EWDesign.Components.Models
         public TextComponent()
         {
             Type = "Text";
+        }
+
+        public TextComponent(bool c)
+        {
+            Type = "Text";
+            DelegateContextMenu = c;
         }
 
     }

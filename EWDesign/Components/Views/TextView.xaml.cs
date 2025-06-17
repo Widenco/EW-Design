@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
@@ -71,6 +72,12 @@ namespace EWDesign.Components.Views
             var dialog = new ComponentEditorDialog(model);
             dialog.Owner = Window.GetWindow(this);
             dialog.ShowDialog();
+        }
+
+        private void UserControl_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            ContextMenuHelper.ShowParentContextMenu(this, Model);
         }
     }
 }

@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
     <Compile Include="Core\ColorToHexConverter.cs" />
+    <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />
     <Compile Include="Core\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
