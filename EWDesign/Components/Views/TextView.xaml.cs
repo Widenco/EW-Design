@@ -3,6 +3,7 @@ using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
+using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,6 +79,16 @@ namespace EWDesign.Components.Views
         {
             e.Handled = true;
             ContextMenuHelper.ShowParentContextMenu(this, Model);
+        }
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!TextModel.DelegateContextMenu)
+            {
+                BuilderViewModel.Instance.SelectedComponent = this.Model;
+            }
+
+            e.Handled = true;
         }
     }
 }

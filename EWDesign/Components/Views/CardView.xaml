@@ -8,6 +8,7 @@
     xmlns:model="clr-namespace:EWDesign.Components.Models"
     d:DesignHeight="{Binding Height}"
     d:DesignWidth="{Binding Width}"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
     <UserControl.DataContext>
         <model:CardComponent />
@@ -35,7 +36,8 @@
         Padding="32"
         Background="{Binding Background}"
         CornerRadius="16"
-        Effect="{DynamicResource ShadowEffect}">
+        Effect="{DynamicResource ShadowEffect}"
+        Style="{StaticResource SelectedComponent}">
         <StackPanel x:Name="Card" />
     </Border>
 </UserControl>

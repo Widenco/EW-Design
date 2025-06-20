@@ -2,6 +2,7 @@
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
+using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,5 +59,12 @@ namespace EWDesign.Components.Views
             dialog.Owner = Window.GetWindow(this);
             dialog.ShowDialog();
         }
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BuilderViewModel.Instance.SelectedComponent = this.Model;
+            e.Handled = true;
+        }
+
     }
 }

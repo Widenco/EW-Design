@@ -1,5 +1,6 @@
 ﻿using EWDesign.Components.Views;
 using EWDesign.Interfaces;
+using EWDesign.Model;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,14 @@ namespace EWDesign.View
     /// </summary>
     public partial class BuilderView : Window
     {
+
+        public BuilderViewModel Model { get; }
         public BuilderView()
         {
+            Model = new BuilderViewModel();
             InitializeComponent();
-            this.DataContext = new BuilderViewModel();
+            this.DataContext = Model;
+            
         }
         private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -95,6 +100,8 @@ namespace EWDesign.View
                         if (newElement is NavBarView)
                         {
                             panel.Children.Insert(0, (UserControl)newElement);
+                            Model.DroppedComponents.Insert(0, newElement);
+                            
                         }
                         else
                         {
@@ -117,10 +124,12 @@ namespace EWDesign.View
                             if (navbarIndex != -1)
                             {
                                 panel.Children.Insert(navbarIndex + 1, (UserControl)newElement);
+                                Model.DroppedComponents.Insert(navbarIndex + 1, newElement);
                             }
                             else
                             {
                                 panel.Children.Add((UserControl)newElement);
+                                Model.DroppedComponents.Add(newElement);
                             }
                         }
                     
@@ -133,6 +142,7 @@ namespace EWDesign.View
             if (DropArea.Children.Contains((UserControl)componentView))
             {
                 DropArea.Children.Remove((UserControl)componentView);
+                Model.DroppedComponents.Remove(componentView);
             }
         }
     }

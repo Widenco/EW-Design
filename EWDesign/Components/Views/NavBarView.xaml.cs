@@ -88,5 +88,11 @@ namespace EWDesign.Components.Views
             dialog.Owner = Window.GetWindow(this);
             dialog.ShowDialog();
         }
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BuilderViewModel.Instance.SelectedComponent = null;
+            e.Handled = true;
+        }
     }
 }

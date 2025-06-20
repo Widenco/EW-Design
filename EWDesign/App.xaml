@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UITheme/MenuButtonTheme.xaml" />
                 <ResourceDictionary Source="/Core/Core Resources/Converters.xaml" />
+                <ResourceDictionary Source="/Core/Core Resources/SelectedComponent.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:RecentViewModel}">

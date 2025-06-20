@@ -12,7 +12,18 @@ namespace EWDesign.Model
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Type { get; set; }
-
         public virtual bool DelegateContextMenu { get; set; } = false;
+
+        private bool _isSelected = false;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set => SetProperty(ref _isSelected, value);
+        }
+
+        public virtual void SetSelected(bool s)
+        {
+            IsSelected = s;
+        }
     }
 }

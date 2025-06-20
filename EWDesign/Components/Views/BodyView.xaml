@@ -9,6 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="{Binding BodyBackgroundColor}"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
 
     <UserControl.DataContext>
@@ -26,11 +27,11 @@
 
     <UserControl.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="Edit" Click="Edit_Click"/>
-            <MenuItem Header="Remove" Click="Remove_Click"/>
+            <MenuItem Click="Edit_Click" Header="Edit" />
+            <MenuItem Click="Remove_Click" Header="Remove" />
         </ContextMenu>
     </UserControl.ContextMenu>
-    
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel
             MaxWidth="1200"

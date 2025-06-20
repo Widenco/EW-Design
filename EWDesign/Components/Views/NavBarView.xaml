@@ -10,6 +10,7 @@
     xmlns:model="clr-namespace:EWDesign.Components.Models"
     d:DesignHeight="75"
     d:DesignWidth="800"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
 
     <UserControl.DataContext>
@@ -17,8 +18,8 @@
     </UserControl.DataContext>
     <UserControl.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="Edit" Click="Edit_Click"/>
-            <MenuItem Header="Remove" Click="Remove_Click"/>
+            <MenuItem Click="Edit_Click" Header="Edit" />
+            <MenuItem Click="Remove_Click" Header="Remove" />
         </ContextMenu>
     </UserControl.ContextMenu>
     <Border Padding="10" Background="{Binding BackgroundColor}">

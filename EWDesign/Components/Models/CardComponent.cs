@@ -55,14 +55,15 @@ namespace EWDesign.Components.Models
         public CardComponent()
         {
             Type = "Card";
-            _title = new TextComponent 
+            _title = new TextComponent
             {
                 Text = "Sample Title",
                 TextWrap = TextWrapping.NoWrap,
-                Margin = new Thickness(0,0,0,12),
+                Margin = new Thickness(0, 0, 0, 12),
                 FontSize = 22,
                 FontWeight = FontWeights.SemiBold,
                 ForeGround = "White",
+                DelegateContextMenu = true
 
             };
             _body = new TextComponent
@@ -71,7 +72,8 @@ namespace EWDesign.Components.Models
                 Margin = new Thickness(0,0,0,0),
                 FontSize = 16,
                 ForeGround = "#DADADA",
-                TextWrap = TextWrapping.Wrap
+                TextWrap = TextWrapping.Wrap,
+                DelegateContextMenu = true
             };
         }
         public CardComponent(string title, string body)
@@ -85,15 +87,17 @@ namespace EWDesign.Components.Models
                 FontSize = 22,
                 FontWeight = FontWeights.SemiBold,
                 ForeGround = "White",
+                DelegateContextMenu = true
 
             };
             _body = new TextComponent
             {
                 Text = body,
-                Margin = new Thickness(0,0,0,0),
+                Margin = new Thickness(0, 0, 0, 0),
                 FontSize = 16,
                 ForeGround = "#DADADA",
-                TextWrap = TextWrapping.Wrap
+                TextWrap = TextWrapping.Wrap,
+                DelegateContextMenu = true
             };
         }
     }

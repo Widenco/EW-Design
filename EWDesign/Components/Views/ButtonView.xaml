@@ -8,6 +8,7 @@
     xmlns:model="clr-namespace:EWDesign.Components.Models"
     d:DesignHeight="{Binding Height}"
     d:DesignWidth="{Binding Width}"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
 
     <UserControl.DataContext>
@@ -27,9 +28,9 @@
         Padding="14,8"
         HorizontalAlignment="{Binding HorizontalAlignment}"
         Background="{Binding Background}"
-        BorderBrush="{x:Null}"
         CornerRadius="4"
-        Cursor="Hand">
+        Cursor="Hand"
+        Style="{StaticResource SelectedComponent}">
         <StackPanel
             x:Name="ButtonText"
             HorizontalAlignment="Center"

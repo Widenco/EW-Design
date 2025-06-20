@@ -2,6 +2,7 @@
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
+using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -115,6 +116,12 @@ namespace EWDesign.Components.Views
             var dialog = new ComponentEditorDialog(model);
             dialog.Owner = Window.GetWindow(this);
             dialog.ShowDialog();
+        }
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BuilderViewModel.Instance.SelectedComponent = null;
+            e.Handled = true;
         }
     }
 }
