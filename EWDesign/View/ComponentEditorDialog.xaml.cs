@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace EWDesign.View
 {
@@ -32,37 +33,21 @@ namespace EWDesign.View
 
         private void GenerateForm()
         {
-            //Recuperar las propiedades que tengan un binding
-            var props = _model.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                          .Where(p => p.CanRead && p.CanWrite && 
-                          p.GetCustomAttribute<EditablePropertyAttribute>() != null);
+            FormPanel.Children.Clear();
 
-            foreach (var prop in props)
+            // 1. Renderizar propiedades del componente principal
+            AddSection(_model, $"{_model.Type} Properties");
+
+            // 2. Renderizar propiedades de subcomponentes si los hay
+            foreach (var child in _model.EditableChildren)
             {
-                //Filtrando propiedades editables
-                var attr = prop.GetCustomAttribute<EditablePropertyAttribute>();
-                var displayName = attr?.DisplayName ?? prop.Name;
-
-                //Un label para cada propiedad
-                var label = new TextBlock
-                {
-                    Text = displayName,
-                    Margin = new Thickness(0, 10, 0, 2),
-                    FontWeight = FontWeights.Bold
-                };
-                FormPanel.Children.Add(label);
-
-                //Su respectivo tipo de formulario
-                FrameworkElement editor = CreateEditor(prop);
-                if (editor != null)
-                {
-                    FormPanel.Children.Add(editor);
-                }
+                AddSection(child, $"{child.Type} Properties");
             }
 
+            // 3. Botón de guardar
             var saveBtn = new Button
             {
-                Content = "Save",
+                Content = "Guardar",
                 Margin = new Thickness(0, 20, 0, 0),
                 IsDefault = true
             };
@@ -70,12 +55,50 @@ namespace EWDesign.View
             FormPanel.Children.Add(saveBtn);
         }
 
-        private FrameworkElement CreateEditor(PropertyInfo prop)
+
+        private void AddSection(ComponentModel model, string title)
+        {
+            var sectionHeader = new TextBlock
+            {
+                Text = title,
+                Margin = new Thickness(0, 20, 0, 10),
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                TextDecorations = TextDecorations.Underline
+            };
+            FormPanel.Children.Add(sectionHeader);
+
+            var props = model.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.CanRead && p.CanWrite && p.GetCustomAttribute<EditablePropertyAttribute>() != null);
+
+            foreach (var prop in props)
+            {
+                var attr = prop.GetCustomAttribute<EditablePropertyAttribute>();
+                var displayName = attr?.DisplayName ?? prop.Name;
+
+                var label = new TextBlock
+                {
+                    Text = displayName,
+                    Margin = new Thickness(0, 10, 0, 2),
+                    FontWeight = FontWeights.Normal
+                };
+                FormPanel.Children.Add(label);
+
+                FrameworkElement editor = CreateEditor(prop, model);
+                if (editor != null)
+                {
+                    FormPanel.Children.Add(editor);
+                }
+            }
+        }
+
+
+        private FrameworkElement CreateEditor(PropertyInfo prop, object model)
         {
             //Creando un binding segun la propiedad pasada como parametro
             var binding = new Binding(prop.Name)
             {
-                Source = _model,
+                Source = model,
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
@@ -98,13 +121,12 @@ namespace EWDesign.View
                 // Opcional: para representar color como string
                 var colorBinding = new Binding($"{prop.Name}.Color")
                 {
-                    Source = _model,
-                    Mode = BindingMode.TwoWay,
-                    Converter = new ColorToHexConverter()
+                    Source = model,
+                    Mode = BindingMode.TwoWay
                 };
-                var tb = new TextBox { MinWidth = 200 };
-                tb.SetBinding(TextBox.TextProperty, colorBinding);
-                return tb;
+                var bt = new ColorCanvas();
+                bt.SetBinding(ColorCanvas.SelectedColorProperty, colorBinding);
+                return bt;
             }
             else if (prop.PropertyType == typeof(FontWeight))
             {

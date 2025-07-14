@@ -1,4 +1,5 @@
 ﻿using EWDesign.Model;
+using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace EWDesign.Core
                     {
                         fe.ContextMenu.PlacementTarget = fe;
                         fe.ContextMenu.IsOpen = true;
+                        BuilderViewModel.Instance.SelectedComponent = parentModel;
                         return;
                     }
                 }

@@ -8,16 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
     public class BodyComponent : ComponentModel
     {
+
         public ObservableCollection<string> HeroSectionText { get; set; }
         public ObservableCollection<string> FeatureSectionText { get; set; }
 
+        private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1E2F"));
+
         [EditableProperty("Background Color")]
-        public string BodyBackgroundColor { get; set; } = "#1E1E2F";
+        public Brush BodyBackgroundColor
+        {
+            get => _backgroundColor;
+            set => SetProperty(ref _backgroundColor, value);
+        }
 
         public BodyComponent()
         {

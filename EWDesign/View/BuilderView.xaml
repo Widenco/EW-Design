@@ -17,7 +17,7 @@
         <viewModel:BuilderViewModel />
     </Window.DataContext>
     <Border Background="#121A21" CornerRadius="10">
-        <Grid>
+        <Grid Background="Transparent" PreviewMouseLeftButtonDown="DeselectAll">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />

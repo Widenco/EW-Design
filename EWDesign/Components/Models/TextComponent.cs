@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.TextFormatting;
 
 namespace EWDesign.Components.Models
 {
     public class TextComponent : ComponentModel
     {
-
         private string _text = "Sample Text";
 
         [EditableProperty("Text")]
@@ -25,10 +25,10 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _text, value);
         }
 
-        private string _foreground = "#2a2e35";
+        private Brush _foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2a2e35"));
 
         [EditableProperty("Text Color")]
-        public string ForeGround
+        public Brush ForeGround
         {
             get => _foreground;
             set => SetProperty(ref _foreground, value);
@@ -44,8 +44,6 @@ namespace EWDesign.Components.Models
         }
 
         private FontWeight _fontWeight = FontWeights.Black;
-
-        [EditableProperty("Font Weight")]
         public FontWeight FontWeight
         {
             get => _fontWeight;
@@ -82,6 +80,15 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _isEditing, value);
         }
 
+        public override void SetSelected(bool s)
+        {
+            base.SetSelected(s);
+
+            if (!s)
+            {
+                IsEditing = false;
+            }
+        }
         public TextComponent()
         {
             Type = "Text";

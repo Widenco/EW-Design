@@ -1,4 +1,5 @@
-﻿using EWDesign.Core;
+﻿using EWDesign.Components.Views;
+using EWDesign.Core;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
@@ -25,10 +27,12 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _body, value);
         }
 
-        private string _background = "#2A2A40";
+        public override IEnumerable<ComponentModel> EditableChildren => new[] { Title, Body };
+
+        private Brush _background = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#2A2A40"));
 
         [EditableProperty("Card Background")]
-        public string Background
+        public Brush Background
         {
             get => _background;
             set => SetProperty(ref _background, value);
@@ -52,26 +56,39 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _height, value);
         }
 
+        public override void SetSelected(bool s)
+        {
+            base.SetSelected(s);
+
+            if (!s)
+            {
+                Title.IsEditing = s;
+                Body.IsEditing = s;
+            }
+        }
+
         public CardComponent()
         {
             Type = "Card";
             _title = new TextComponent
             {
+                Type = "Title Text",
                 Text = "Sample Title",
                 TextWrap = TextWrapping.NoWrap,
                 Margin = new Thickness(0, 0, 0, 12),
                 FontSize = 22,
                 FontWeight = FontWeights.SemiBold,
-                ForeGround = "White",
+                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White")),
                 DelegateContextMenu = true
 
             };
             _body = new TextComponent
             {
+                Type = "Body Text",
                 Text = "This is a sample body text, here is where your text goes...",
                 Margin = new Thickness(0,0,0,0),
                 FontSize = 16,
-                ForeGround = "#DADADA",
+                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DADADA")),
                 TextWrap = TextWrapping.Wrap,
                 DelegateContextMenu = true
             };
@@ -81,24 +98,30 @@ namespace EWDesign.Components.Models
             Type = "Card";
             _title = new TextComponent
             {
+                Type = "Title Text",
                 Text = title,
                 TextWrap = TextWrapping.NoWrap,
                 Margin = new Thickness(0, 0, 0, 12),
                 FontSize = 22,
                 FontWeight = FontWeights.SemiBold,
-                ForeGround = "White",
+                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White")),
                 DelegateContextMenu = true
 
             };
             _body = new TextComponent
             {
+                Type = "Body Text",
                 Text = body,
                 Margin = new Thickness(0, 0, 0, 0),
                 FontSize = 16,
-                ForeGround = "#DADADA",
+                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DADADA")),
                 TextWrap = TextWrapping.Wrap,
                 DelegateContextMenu = true
             };
         }
+
+        
+
+       
     }
 }

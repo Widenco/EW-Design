@@ -9,7 +9,8 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="{Binding BodyBackgroundColor}"
-    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
+    PreviewMouseLeftButtonDown="UserControl_MouseLeftButtonDown"
+    MouseRightButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
 
     <UserControl.DataContext>
@@ -32,96 +33,32 @@
         </ContextMenu>
     </UserControl.ContextMenu>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel
-            MaxWidth="1200"
-            Margin="24,72,24,24"
-            HorizontalAlignment="Center">
-
-            <!--  Hero Section  -->
+    <Border Style="{StaticResource SelectedComponent}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel
-                x:Name="HeroSectionDropArea"
-                Width="800"
-                Margin="0,0,0,96"
-                HorizontalAlignment="Center" />
+        MaxWidth="1200"
+        Margin="24,72,24,24"
+        HorizontalAlignment="Center">
 
-            <!--  Features Section  -->
-            <WrapPanel
-                x:Name="FeatureSectionDropArea"
-                Margin="0,0,0,24"
-                HorizontalAlignment="Center"
-                ItemHeight="Auto"
-                ItemWidth="300">
+                <!--  Hero Section  -->
+                <StackPanel
+            x:Name="HeroSectionDropArea"
+            Width="800"
+            Margin="0,0,0,96"
+            HorizontalAlignment="Center" />
 
-                <!--<Border
-                    Width="300"
-                    Height="170"
-                    Margin="12"
-                    Padding="32"
-                    Background="{Binding FeatureBackgroundColor}"
-                    CornerRadius="16"
-                    Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel x:Name="Feature1DropArea">
-                        <TextBlock
-                            Margin="0,0,0,12"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="{Binding FeatureSectionText[0]}" />
-                        <TextBlock
-                            FontSize="16"
-                            Foreground="#DADADA"
-                            Text="{Binding FeatureSectionText[1]}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </Border>
+                <!--  Features Section  -->
+                <WrapPanel
+            x:Name="FeatureSectionDropArea"
+            Margin="0,0,0,24"
+            HorizontalAlignment="Center"
+            ItemHeight="Auto"
+            ItemWidth="300">
 
+                </WrapPanel>
 
-                <Border
-                    Width="300"
-                    Margin="12"
-                    Padding="32"
-                    Background="{Binding FeatureBackgroundColor}"
-                    CornerRadius="16"
-                    Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel x:Name="Feature2DropArea">
-                        <TextBlock
-                            Margin="0,0,0,12"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="{Binding FeatureSectionText[2]}" />
-                        <TextBlock
-                            FontSize="16"
-                            Foreground="#DADADA"
-                            Text="{Binding FeatureSectionText[3]}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </Border>
-
-                <Border
-                    Width="300"
-                    Margin="12"
-                    Padding="32"
-                    Background="{Binding FeatureBackgroundColor}"
-                    CornerRadius="16"
-                    Effect="{DynamicResource ShadowEffect}">
-                    <StackPanel x:Name="Feature3DropArea">
-                        <TextBlock
-                            Margin="0,0,0,12"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="{Binding FeatureSectionText[4]}" />
-                        <TextBlock
-                            FontSize="16"
-                            Foreground="#DADADA"
-                            Text="{Binding FeatureSectionText[5]}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </Border>-->
-            </WrapPanel>
-
-        </StackPanel>
-    </ScrollViewer>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+    
 </UserControl>

@@ -13,6 +13,7 @@ namespace EWDesign.Model
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Type { get; set; }
         public virtual bool DelegateContextMenu { get; set; } = false;
+        public virtual IEnumerable<ComponentModel> EditableChildren => Enumerable.Empty<ComponentModel>();
 
         private bool _isSelected = false;
         public bool IsSelected

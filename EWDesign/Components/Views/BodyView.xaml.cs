@@ -51,7 +51,7 @@ namespace EWDesign.Components.Views
                     Text = BodyModel.HeroSectionText[0],
                     Margin = new Thickness(0, 0, 0, 24),
                     FontSize = 48,
-                    ForeGround = "White",
+                    ForeGround = new SolidColorBrush((Color) ColorConverter.ConvertFromString("White")),
                     TextWrap = TextWrapping.Wrap,
                     TextAlignment = TextAlignment.Center
                 }),
@@ -61,7 +61,7 @@ namespace EWDesign.Components.Views
                     Text = BodyModel.HeroSectionText[1],
                     Margin = new Thickness(0, 0, 0, 40),
                     FontSize = 20,
-                    ForeGround = "#DADADA",
+                    ForeGround = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#DADADA")),
                     TextWrap = TextWrapping.Wrap,
                     TextAlignment = TextAlignment.Center
                 }),
@@ -120,8 +120,7 @@ namespace EWDesign.Components.Views
 
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BuilderViewModel.Instance.SelectedComponent = null;
-            e.Handled = true;
+            BuilderViewModel.Instance.SelectedComponent = this.Model;
         }
     }
 }

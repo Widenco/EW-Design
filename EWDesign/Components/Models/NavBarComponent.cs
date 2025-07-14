@@ -8,15 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
     public class NavBarComponent : ComponentModel
     {
-        private string _backgroundColor = "#f5f7fa";
+        private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f5f7fa"));
 
         [EditableProperty("Background Color")]
-        public string BackgroundColor 
+        public Brush BackgroundColor 
         { 
             get => _backgroundColor; 
             set => SetProperty(ref _backgroundColor, value);

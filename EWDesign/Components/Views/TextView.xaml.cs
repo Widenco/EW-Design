@@ -39,11 +39,6 @@ namespace EWDesign.Components.Views
             this.DataContext = TextModel;
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextModel.IsEditing = false;
-        }
-
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Escape)
@@ -54,7 +49,21 @@ namespace EWDesign.Components.Views
 
         private void TextBlock_Click(object sender, MouseButtonEventArgs e)
         {
-            TextModel.IsEditing = true;
+            if(!TextModel.DelegateContextMenu)
+            {
+                if(TextModel.IsSelected)
+                    TextModel.IsEditing = true;
+            }
+            else
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(this);
+                if(parent is FrameworkElement fe && fe.DataContext is ComponentModel cm)
+                {
+                    if (BuilderViewModel.Instance.SelectedComponent == cm)
+                        TextModel.IsEditing = true;
+                }
+            }
+                
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
@@ -78,17 +87,27 @@ namespace EWDesign.Components.Views
         private void UserControl_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+            if (!TextModel.DelegateContextMenu)
+            {
+                BuilderViewModel.Instance.SelectedComponent = this.Model;
+            }
             ContextMenuHelper.ShowParentContextMenu(this, Model);
         }
 
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            DependencyObject parent = VisualTreeHelper.GetParent(this);
+
             if (!TextModel.DelegateContextMenu)
             {
                 BuilderViewModel.Instance.SelectedComponent = this.Model;
+            }else if(parent is FrameworkElement fe && fe.DataContext is ComponentModel cm)
+            {
+                BuilderViewModel.Instance.SelectedComponent = cm;
             }
 
-            e.Handled = true;
+                e.Handled = true;
         }
+
     }
 }

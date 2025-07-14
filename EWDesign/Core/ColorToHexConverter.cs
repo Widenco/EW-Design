@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Core
 {
-    class ColorToHexConverter : IValueConverter
+    public class ColorToHexConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

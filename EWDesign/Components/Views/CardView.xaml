@@ -9,6 +9,7 @@
     d:DesignHeight="{Binding Height}"
     d:DesignWidth="{Binding Width}"
     MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
+    MouseRightButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
     <UserControl.DataContext>
         <model:CardComponent />

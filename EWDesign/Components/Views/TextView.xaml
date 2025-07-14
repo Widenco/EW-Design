@@ -8,9 +8,9 @@
     xmlns:model="clr-namespace:EWDesign.Components.Models"
     d:DesignHeight="75"
     d:DesignWidth="800"
-    mc:Ignorable="d"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     PreviewMouseRightButtonDown="UserControl_PreviewMouseRightButtonDown"
-    MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+    mc:Ignorable="d">
     <UserControl.DataContext>
         <model:TextComponent />
     </UserControl.DataContext>
@@ -24,32 +24,31 @@
     <Border Style="{StaticResource SelectedComponent}">
         <Grid>
             <TextBlock
-        Margin="{Binding Margin}"
-        VerticalAlignment="Center"
-        Cursor="Hand"
-        FontSize="{Binding FontSize}"
-        FontWeight="Bold"
-        Foreground="{Binding ForeGround}"
-        MouseLeftButtonDown="TextBlock_Click"
-        Text="{Binding Text}"
-        TextAlignment="{Binding TextAlignment}"
-        TextWrapping="{Binding TextWrap}"
-        Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+                Margin="{Binding Margin}"
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                FontSize="{Binding FontSize}"
+                FontWeight="Bold"
+                Foreground="{Binding ForeGround}"
+                MouseLeftButtonDown="TextBlock_Click"
+                Text="{Binding Text}"
+                TextAlignment="{Binding TextAlignment}"
+                TextWrapping="{Binding TextWrap}"
+                Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
 
             <TextBox
-        Margin="{Binding Margin}"
-        VerticalAlignment="Center"
-        Background="Transparent"
-        Cursor="Hand"
-        FontSize="{Binding FontSize}"
-        FontWeight="Bold"
-        Foreground="{Binding ForeGround}"
-        KeyDown="TextBox_KeyDown"
-        LostFocus="TextBox_LostFocus"
-        Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-        TextAlignment="{Binding TextAlignment}"
-        TextWrapping="{Binding TextWrap}"
-        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
+                Margin="{Binding Margin}"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                Cursor="Hand"
+                FontSize="{Binding FontSize}"
+                FontWeight="Bold"
+                Foreground="{Binding ForeGround}"
+                KeyDown="TextBox_KeyDown"
+                Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextAlignment="{Binding TextAlignment}"
+                TextWrapping="{Binding TextWrap}"
+                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
 
         </Grid>
     </Border>

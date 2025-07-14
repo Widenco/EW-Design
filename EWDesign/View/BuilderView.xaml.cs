@@ -145,5 +145,10 @@ namespace EWDesign.View
                 Model.DroppedComponents.Remove(componentView);
             }
         }
+
+        private void DeselectAll(object sender, MouseButtonEventArgs e)
+        {
+            BuilderViewModel.Instance.SelectedComponent = null;
+        }
     }
 }

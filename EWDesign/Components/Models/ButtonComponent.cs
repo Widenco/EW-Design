@@ -21,6 +21,8 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _textContent, value);
         }
 
+        public override IEnumerable<ComponentModel> EditableChildren => new[] {TextContent};
+
         private double _width = 200;
 
         [EditableProperty("Button Width")]
@@ -47,10 +49,10 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _horizontalAlignment, value);
         }
 
-        private string _background = "#6C63FF";
+        private Brush _background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6C63FF"));
 
         [EditableProperty("Button Background Color")]
-        public string Background
+        public Brush Background
         {
             get => _background;
             set => SetProperty(ref _background, value);
@@ -74,20 +76,28 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _fontWeigh, value);
         }
 
-        private string _foreground = "White";
-
-        [EditableProperty("Text Color")]
-        public string Foreground
+        private Brush _foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
+        public Brush Foreground
         {
             get => _foreground;
             set => SetProperty(ref _foreground, value);
         }
 
+        public override void SetSelected(bool s)
+        {
+            base.SetSelected(s);
+
+            if (!s)
+            {
+                TextContent.IsEditing = s;
+            }
+        }
         public ButtonComponent()
         {
             Type = "Button";
             _textContent = new TextComponent
             {
+                Margin = new Thickness(0, 0, 0, 0),
                 Text = "Sample Text",
                 FontSize = _fontSize,
                 FontWeight = _fontWeigh,

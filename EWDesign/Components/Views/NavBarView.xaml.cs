@@ -54,7 +54,7 @@ namespace EWDesign.Components.Views
             foreach (var item in NavBarModel.NavbarElementsText)
             {
                 var menuItem = new TextView(new TextComponent { Text = item, Margin = new Thickness(16, 0, 0, 0),
-                FontSize = 16, ForeGround = "#3A3F47", DelegateContextMenu = false});
+                FontSize = 16, ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3A3F47")), DelegateContextMenu = false});
                 menuItem.ComponentRemoveEvent += (s, e) => RemoveComponent(menuItem);
                 MenuItemsDropArea.Children.Add(menuItem);
             }
@@ -91,7 +91,7 @@ namespace EWDesign.Components.Views
 
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BuilderViewModel.Instance.SelectedComponent = null;
+            BuilderViewModel.Instance.SelectedComponent = this.Model;
             e.Handled = true;
         }
     }
