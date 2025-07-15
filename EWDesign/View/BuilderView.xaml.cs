@@ -1,4 +1,5 @@
-﻿using EWDesign.Components.Views;
+﻿using EWDesign.Components.Models;
+using EWDesign.Components.Views;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.ViewModel;
@@ -30,56 +31,41 @@ namespace EWDesign.View
             Model = new BuilderViewModel();
             InitializeComponent();
             this.DataContext = Model;
+            this.PreviewMouseLeftButtonDown += BuilderView_PreviewMouseLeftButtonDown;
             
         }
-        private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void ComponentItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var listBox = sender as ListBox;
-
-            // Obtener el ítem bajo el cursor
-            var hit = VisualTreeHelper.HitTest(listBox, e.GetPosition(listBox));
-            if (hit?.VisualHit is DependencyObject element)
+            if (sender is Border border && border.DataContext is ComponentPaletteItem item)
             {
-                // Buscar el ListBoxItem padre
-                while (element != null && !(element is ListBoxItem))
-                    element = VisualTreeHelper.GetParent(element);
-
-                if (element != null)
-                {
-                    var listBoxItem = (ListBoxItem)element;
-                    listBoxItem.IsSelected = true;  // Forzar la selección
-                    listBox.SelectedItem = listBoxItem.DataContext;
-
-                    // Iniciar el DragDrop inmediatamente
-                    DragDrop.DoDragDrop(listBox, listBox.SelectedItem, DragDropEffects.Copy);
-
-                    e.Handled = true;  // Opcional: prevenir procesamiento adicional
-                }
+                // Puedes pasar solo el tipo, una fábrica o el nombre
+                DragDrop.DoDragDrop(border, item, DragDropEffects.Copy);
+                e.Handled = true;
             }
         }
 
         private void DropArea_Drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            if (e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
             {
-                string componentType = (string)e.Data.GetData(DataFormats.StringFormat);
+                ComponentModel component = null;
+
+                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
+                {
+                    component = (ComponentModel)Activator.CreateInstance(type);
+                }
 
                 IComponentView newElement = null;
-                switch (componentType)
+                switch (component.Type)
                 {
                     case "NavBar":
-                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
+                        newElement = new Components.Views.NavBarView((NavBarComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
                     case "Body":
-                        newElement = new Components.Views.BodyView(new Components.Models.BodyComponent());
+                        newElement = new Components.Views.BodyView((BodyComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
-                        break;
-                    case "SideBar":
-                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
-                        break;
-                    case "Footer":
-                        newElement = new Components.Views.NavBarView(new Components.Models.NavBarComponent());
                         break;
                 }
                     if (newElement != null)
@@ -92,7 +78,7 @@ namespace EWDesign.View
 
                         if (alreadyExists)
                         {
-                            MessageBox.Show($"Ya has agregado un componente '{componentType}'.", "Componente duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show($"Ya has agregado un componente '{component.Type}'.", "Componente duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
 
@@ -146,9 +132,31 @@ namespace EWDesign.View
             }
         }
 
-        private void DeselectAll(object sender, MouseButtonEventArgs e)
+        private void BuilderView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BuilderViewModel.Instance.SelectedComponent = null;
+            // Verifica si el clic fue sobre un componente "interactivo"
+            var clickedElement = e.OriginalSource as DependencyObject;
+
+            // Busca hacia arriba si clicaste sobre un componente que implementa IComponentView
+            var parentComponent = FindParent<IComponentView>(clickedElement);
+
+            if (parentComponent == null)
+            {
+                // Si no se hizo clic en ningún componente, se deselecciona
+                BuilderViewModel.Instance.SelectedComponent = null;
+            }
+        }
+
+        private T FindParent<T>(DependencyObject current) where T : class
+        {
+            while (current != null)
+            {
+                if (current is T match)
+                    return match;
+
+                current = VisualTreeHelper.GetParent(current);
+            }
+            return null;
         }
     }
 }

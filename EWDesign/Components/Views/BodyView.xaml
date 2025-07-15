@@ -8,8 +8,6 @@
     xmlns:models="clr-namespace:EWDesign.Components.Models"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="{Binding BodyBackgroundColor}"
-    PreviewMouseLeftButtonDown="UserControl_MouseLeftButtonDown"
     MouseRightButtonDown="UserControl_MouseLeftButtonDown"
     mc:Ignorable="d">
 
@@ -33,7 +31,8 @@
         </ContextMenu>
     </UserControl.ContextMenu>
 
-    <Border Style="{StaticResource SelectedComponent}">
+    <Border Style="{StaticResource SelectedComponent}"
+                Background="{Binding BodyBackgroundColor}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel
         MaxWidth="1200"

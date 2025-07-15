@@ -17,7 +17,7 @@
         <viewModel:BuilderViewModel />
     </Window.DataContext>
     <Border Background="#121A21" CornerRadius="10">
-        <Grid Background="Transparent" PreviewMouseLeftButtonDown="DeselectAll">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />
@@ -44,15 +44,29 @@
                 Text="Start Building Your WebPage" />
 
             <ScrollViewer Grid.Row="1">
-                <ListBox
-                    Margin="0,15,0,0"
-                    HorizontalAlignment="Center"
-                    Background="#121A21"
-                    BorderThickness="0"
-                    FontSize="24"
-                    Foreground="White"
-                    ItemsSource="{Binding Components}"
-                    PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown" />
+                <ItemsControl ItemsSource="{Binding GroupedComponents}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Expander Header="{Binding Key}" Foreground="White" IsExpanded="True">
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border
+                                    Padding="8"
+                                    Margin="5"
+                                    Background="#1E2A36"
+                                    CornerRadius="8"
+                                    MouseLeftButtonDown="ComponentItem_MouseLeftButtonDown"
+                                    Cursor="Hand">
+                                                <TextBlock Text="{Binding DisplayName}" Foreground="White" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Expander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
 
             <Border

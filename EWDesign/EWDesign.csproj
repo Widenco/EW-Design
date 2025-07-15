@@ -99,6 +99,7 @@
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Interfaces\IComponentView.cs" />
     <Compile Include="Model\ComponentModel.cs" />
+    <Compile Include="Model\ComponentPaletteItem.cs" />
     <Compile Include="Model\IconModel.cs" />
     <Compile Include="ViewModel\BuilderViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

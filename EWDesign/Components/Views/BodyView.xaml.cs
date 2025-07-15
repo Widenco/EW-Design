@@ -38,6 +38,7 @@ namespace EWDesign.Components.Views
             BodyModel = model;
             DataContext = model;
             InitTemplateComponents();
+            this.PreviewMouseLeftButtonDown += UserControl_MouseLeftButtonDown;
         }
 
         //Inicializando y añadiendo componentes a la plantilla por codigo
@@ -120,7 +121,29 @@ namespace EWDesign.Components.Views
 
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BuilderViewModel.Instance.SelectedComponent = this.Model;
+            var original = e.OriginalSource as DependencyObject;
+
+            // Detectamos si se hizo clic directamente sobre el Body o sobre alguno de sus subcomponentes
+            var clickedSubcomponent = FindParent<IComponentView>(original);
+
+            // Si se hizo clic fuera de cualquier subcomponente (o justo en el body), selecciona el body
+            if (clickedSubcomponent == this)
+            {
+                BuilderViewModel.Instance.SelectedComponent = this.Model;
+                // No ponemos e.Handled = true para no bloquear subcomponentes
+            }
+        }
+
+        private T FindParent<T>(DependencyObject current) where T : class
+        {
+            while (current != null)
+            {
+                if (current is T match)
+                    return match;
+
+                current = VisualTreeHelper.GetParent(current);
+            }
+            return null;
         }
     }
 }

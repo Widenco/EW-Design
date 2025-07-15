@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\App.xaml
 13-653467336
 
-341351774097
+35-1651238007
 18-369661014
 Components\Views\BodyView.xaml;Components\Views\ButtonView.xaml;Components\Views\CardView.xaml;Components\Views\NavBarView.xaml;Components\Views\TextView.xaml;Core\Core Resources\Converters.xaml;Core\Core Resources\SelectedComponent.xaml;MainWindow.xaml;UITheme\MenuButtonTheme.xaml;View\BuilderView.xaml;View\ComponentEditorDialog.xaml;View\NewView.xaml;View\RecentView.xaml;
 
-False
+True
 

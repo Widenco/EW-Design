@@ -92,7 +92,6 @@ namespace EWDesign.Components.Views
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             BuilderViewModel.Instance.SelectedComponent = this.Model;
-            e.Handled = true;
         }
     }
 }
