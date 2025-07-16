@@ -145,5 +145,85 @@ namespace EWDesign.Components.Views
             }
             return null;
         }
+
+        private void HeroSectionDropArea_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
+            {
+                ComponentModel component = null;
+
+                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
+                {
+                    component = (ComponentModel)Activator.CreateInstance(type);
+                }
+
+                IComponentView newElement = null;
+
+                switch (component.Type.ToLower())
+                {
+                    case "text":
+                        newElement = new TextView((TextComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    case "button":
+                        newElement = new ButtonView((ButtonComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    case "card":
+                        newElement = new CardView((CardComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    default:
+                        MessageBox.Show("No se puede insertar este componente en el contenedor.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                }
+
+                if(newElement != null)
+                {
+                    var panel = sender as StackPanel;
+                    panel.Children.Add((UIElement)newElement);
+                }
+        }
+        }
+
+        private void FeatureSectionDropArea_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
+            {
+                ComponentModel component = null;
+
+                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
+                {
+                    component = (ComponentModel)Activator.CreateInstance(type);
+                }
+
+                IComponentView newElement = null;
+
+                switch (component.Type.ToLower())
+                {
+                    case "text":
+                        newElement = new TextView((TextComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    case "button":
+                        newElement = new ButtonView((ButtonComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    case "card":
+                        newElement = new CardView((CardComponent)component);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        break;
+                    default:
+                        MessageBox.Show("No se puede insertar este componente en el contenedor.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                }
+
+                if (newElement != null)
+                {
+                    var panel = sender as WrapPanel;
+                    panel.Children.Add((UIElement)newElement);
+                }
+            }
+        }
     }
 }

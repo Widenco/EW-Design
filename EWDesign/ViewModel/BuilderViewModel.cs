@@ -19,8 +19,22 @@ namespace EWDesign.ViewModel
 
         public ObservableCollection<ComponentPaletteItem> AllComponents { get; }
         public IEnumerable<IGrouping<string, ComponentPaletteItem>> GroupedComponents =>
-            AllComponents.GroupBy(c => c.Category);
-        public ObservableCollection<string> Components { get; set; }
+    AllComponents
+        .Where(c => string.IsNullOrWhiteSpace(SearchText) ||
+                    c.DisplayName?.ToLower().Contains(SearchText?.ToLower()) == true)
+        .GroupBy(c => c.Category);
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(GroupedComponents)); // Refresca la agrupación cuando cambia el texto
+            }
+        }
 
         private ComponentModel _selectedComponent;
         public ComponentModel SelectedComponent
@@ -75,9 +89,6 @@ namespace EWDesign.ViewModel
                 ComponentFactory = typeof(BodyComponent)
             });
 
-            Components = new ObservableCollection<string>{
-                "NavBar", "Body", "SideBar", "Footer"
-            };
             DroppedComponents = new ObservableCollection<IComponentView>();
         }
     }

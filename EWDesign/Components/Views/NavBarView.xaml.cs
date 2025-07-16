@@ -93,5 +93,84 @@ namespace EWDesign.Components.Views
         {
             BuilderViewModel.Instance.SelectedComponent = this.Model;
         }
+
+        private void TitleDropArea_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
+            {
+                ComponentModel component = null;
+
+                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
+                {
+                    component = (ComponentModel)Activator.CreateInstance(type);
+                }
+
+                IComponentView newElement = null;
+
+                if(component.Type.ToLower() == "text")
+                {
+                    newElement = new TextView((TextComponent)component);
+                    newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                }
+                else
+                {
+                    MessageBox.Show("No se puede insertar otro componente que no sea Texto.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (component != null)
+                {
+                    var panel = sender as StackPanel;
+
+                   /* if(panel.Children.Count != 0)
+                    {
+                        MessageBox.Show("Ya existe un texto de titulo", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }*/
+
+                    panel.Children.Add((UIElement)newElement);
+                }
+            }
+        }
+
+        private void MenuItemsDropArea_Drop(object sender, DragEventArgs e)
+        {
+            
+            if (e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
+            {
+                ComponentModel component = null;
+
+                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
+                {
+                    component = (ComponentModel)Activator.CreateInstance(type);
+                }
+
+                IComponentView newElement = null;
+
+                if (component.Type.ToLower() == "text")
+                {
+                    newElement = new TextView((TextComponent)component);
+                    newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                }
+                else
+                {
+                    MessageBox.Show("No se puede insertar otro componente que no sea Texto.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (component != null)
+                {
+                    var panel = sender as StackPanel;
+
+                     if(panel.Children.Count > 5)
+                     {
+                         MessageBox.Show("Demasiados menu item.", "Demasiados Componentes", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                     }
+
+                    panel.Children.Add((UIElement)newElement);
+                }
+            }
+            
+        }
     }
 }

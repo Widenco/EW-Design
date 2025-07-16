@@ -97,6 +97,7 @@
     <Compile Include="Core\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\StringNullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Interfaces\IComponentView.cs" />
     <Compile Include="Model\ComponentModel.cs" />
     <Compile Include="Model\ComponentPaletteItem.cs" />

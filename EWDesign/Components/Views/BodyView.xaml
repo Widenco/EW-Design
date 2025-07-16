@@ -31,33 +31,37 @@
         </ContextMenu>
     </UserControl.ContextMenu>
 
-    <Border Style="{StaticResource SelectedComponent}"
-                Background="{Binding BodyBackgroundColor}">
+    <Border Background="{Binding BodyBackgroundColor}" Style="{StaticResource SelectedComponent}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel
-        MaxWidth="1200"
-        Margin="24,72,24,24"
-        HorizontalAlignment="Center">
+                MaxWidth="1200"
+                Margin="24,72,24,24"
+                HorizontalAlignment="Center">
 
                 <!--  Hero Section  -->
                 <StackPanel
-            x:Name="HeroSectionDropArea"
-            Width="800"
-            Margin="0,0,0,96"
-            HorizontalAlignment="Center" />
+                    x:Name="HeroSectionDropArea"
+                    Width="800"
+                    MinWidth="30"
+                    Margin="0,0,0,96"
+                    HorizontalAlignment="Center"
+                    AllowDrop="True"
+                    Background="Transparent"
+                    Drop="HeroSectionDropArea_Drop" />
 
                 <!--  Features Section  -->
                 <WrapPanel
-            x:Name="FeatureSectionDropArea"
-            Margin="0,0,0,24"
-            HorizontalAlignment="Center"
-            ItemHeight="Auto"
-            ItemWidth="300">
-
-                </WrapPanel>
+                    x:Name="FeatureSectionDropArea"
+                    Margin="0,0,0,24"
+                    HorizontalAlignment="Center"
+                    ItemHeight="Auto"
+                    ItemWidth="300"
+                    Background="Transparent"
+                    AllowDrop="True"
+                    Drop="FeatureSectionDropArea_Drop"/>
 
             </StackPanel>
         </ScrollViewer>
     </Border>
-    
+
 </UserControl>
