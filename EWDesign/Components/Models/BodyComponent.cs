@@ -14,7 +14,6 @@ namespace EWDesign.Components.Models
 {
     public class BodyComponent : ComponentModel
     {
-
         public ObservableCollection<string> HeroSectionText { get; set; }
         public ObservableCollection<string> FeatureSectionText { get; set; }
 
@@ -45,6 +44,7 @@ namespace EWDesign.Components.Models
                 "Soporte dedicado", 
                 "Te acompañamos en cada paso con asistencia rápida y confiable."
             };
+
         }
 
     }

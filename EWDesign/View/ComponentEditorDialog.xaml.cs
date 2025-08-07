@@ -1,7 +1,10 @@
-﻿using EWDesign.Core;
+﻿using EWDesign.Components.Models;
+using EWDesign.Core;
+using EWDesign.Core.Code_Generator;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -39,7 +42,7 @@ namespace EWDesign.View
             AddSection(_model, $"{_model.Type} Properties");
 
             // 2. Renderizar propiedades de subcomponentes si los hay
-            foreach (var child in _model.EditableChildren)
+            foreach (var child in _model.Children)
             {
                 AddSection(child, $"{child.Type} Properties");
             }
@@ -85,10 +88,12 @@ namespace EWDesign.View
                 FormPanel.Children.Add(label);
 
                 FrameworkElement editor = CreateEditor(prop, model);
+                
                 if (editor != null)
                 {
                     FormPanel.Children.Add(editor);
                 }
+     
             }
         }
 
@@ -141,6 +146,33 @@ namespace EWDesign.View
                 tb.SelectedItem = tb.Items[0];
                 tb.SetBinding(ComboBox.SelectedItemProperty, binding);
                 return tb;
+            }
+            else if (prop.PropertyType == typeof(ObservableCollection<TextComponent>))
+            {
+                var panel = new StackPanel();
+                var MenuItems = (ObservableCollection<TextComponent>)prop.GetValue(model);
+
+                for (int i = 0; i < MenuItems.Count; i++)
+                {
+                    var textComponent = MenuItems[i];
+
+                    var tb = new TextBox
+                    {
+                        Margin = new Thickness(5)
+                    };
+
+                    // Binding directo a la propiedad Text del TextComponent
+                    tb.SetBinding(TextBox.TextProperty, new Binding("Text")
+                    {
+                        Source = textComponent,
+                        Mode = BindingMode.TwoWay,
+                        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                    });
+
+                    panel.Children.Add(tb);
+                }
+
+                return panel;
             }
             else
             {

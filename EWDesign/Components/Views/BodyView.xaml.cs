@@ -1,4 +1,5 @@
 ﻿using EWDesign.Components.Models;
+using EWDesign.Core.Code_Generator;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
@@ -49,6 +50,7 @@ namespace EWDesign.Components.Views
 
                 new TextView(new TextComponent
                 {
+                    Type = "Title Text",
                     Text = BodyModel.HeroSectionText[0],
                     Margin = new Thickness(0, 0, 0, 24),
                     FontSize = 48,
@@ -59,6 +61,7 @@ namespace EWDesign.Components.Views
 
                 new TextView(new TextComponent
                 {
+                    Type = "Subtitle Text",
                     Text = BodyModel.HeroSectionText[1],
                     Margin = new Thickness(0, 0, 0, 40),
                     FontSize = 20,
@@ -81,12 +84,14 @@ namespace EWDesign.Components.Views
             {
                 item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
                 HeroSectionDropArea.Children.Add((UIElement)item);
+                Model.AddChild(item.Model);
             }
 
             foreach (var item in FeatureSectionItems)
             {
                 item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
                 FeatureSectionDropArea.Children.Add((UIElement)item);
+                Model.AddChild(item.Model);
             }
 
         }
@@ -105,10 +110,12 @@ namespace EWDesign.Components.Views
             if (HeroSectionDropArea.Children.Contains((UserControl)componentView))
             {
                 HeroSectionDropArea.Children.Remove((UserControl)componentView);
+                Model.RemoveChild(componentView.Model);
             }
             else
             {
                 FeatureSectionDropArea.Children.Remove((UserControl)componentView);
+                Model.RemoveChild(componentView.Model);
             }
         }
 
@@ -162,6 +169,16 @@ namespace EWDesign.Components.Views
                 switch (component.Type.ToLower())
                 {
                     case "text":
+
+                        if (item.DisplayName == "Title Text")
+                        {
+                            component.Type = item.DisplayName;
+                        }
+                        else if (item.DisplayName == "Subtitle Text")
+                        {
+                            component.Type = item.DisplayName;
+                        }
+
                         newElement = new TextView((TextComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
@@ -182,6 +199,7 @@ namespace EWDesign.Components.Views
                 {
                     var panel = sender as StackPanel;
                     panel.Children.Add((UIElement)newElement);
+                    Model.AddChild(newElement.Model);
                 }
         }
         }
@@ -202,6 +220,16 @@ namespace EWDesign.Components.Views
                 switch (component.Type.ToLower())
                 {
                     case "text":
+
+                        if (item.DisplayName == "Title Text")
+                        {
+                            component.Type = item.DisplayName;
+                        }
+                        else if (item.DisplayName == "Subtitle Text")
+                        {
+                            component.Type = item.DisplayName;
+                        }
+
                         newElement = new TextView((TextComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
@@ -222,6 +250,7 @@ namespace EWDesign.Components.Views
                 {
                     var panel = sender as WrapPanel;
                     panel.Children.Add((UIElement)newElement);
+                    Model.AddChild(newElement.Model);
                 }
             }
         }

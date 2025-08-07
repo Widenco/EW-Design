@@ -14,6 +14,21 @@ namespace EWDesign.Components.Models
 {
     public class NavBarComponent : ComponentModel
     {
+        private TextComponent _title;
+        public TextComponent Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+
+        private MenuComponent _menu;
+
+        public MenuComponent Menu
+        {
+            get => _menu;
+            set => SetProperty(ref _menu, value);
+        }
+
         private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f5f7fa"));
 
         [EditableProperty("Background Color")]
@@ -28,7 +43,17 @@ namespace EWDesign.Components.Models
 
         public NavBarComponent() 
         { 
-            Type = "NavBar"; 
+            Type = "NavBar";
+            Title = new TextComponent
+            {
+                Type = "Navbar Title Text",
+                Text = "Mi Producto",
+                DelegateContextMenu = false
+
+            };
+
+            Menu = new MenuComponent { DelegateContextMenu = false };
+
             NavbarElementsText = new ObservableCollection<string>
             {
                 "Inicio",

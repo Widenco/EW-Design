@@ -1,5 +1,6 @@
 ﻿using EWDesign.Components.Models;
 using EWDesign.Components.Views;
+using EWDesign.Core.Code_Generator;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.ViewModel;
@@ -116,6 +117,8 @@ namespace EWDesign.View
                             {
                                 panel.Children.Add((UserControl)newElement);
                                 Model.DroppedComponents.Add(newElement);
+                                
+                                
                             }
                         }
                     
@@ -137,6 +140,9 @@ namespace EWDesign.View
             // Verifica si el clic fue sobre un componente "interactivo"
             var clickedElement = e.OriginalSource as DependencyObject;
 
+            if (clickedElement == null || !IsDescendantOfBuilder(clickedElement))
+                return;
+
             // Busca hacia arriba si clicaste sobre un componente que implementa IComponentView
             var parentComponent = FindParent<IComponentView>(clickedElement);
 
@@ -146,6 +152,26 @@ namespace EWDesign.View
                 BuilderViewModel.Instance.SelectedComponent = null;
             }
         }
+
+        private bool IsDescendantOfBuilder(DependencyObject element)
+        {
+            while (element != null)
+            {
+                if (element is BuilderView)
+                    return true;
+
+                try
+                {
+                    element = VisualTreeHelper.GetParent(element);
+                }
+                catch
+                {
+                    return false; // Evita excepciones al acceder al árbol visual de elementos "especiales"
+                }
+            }
+            return false;
+        }
+
 
         private T FindParent<T>(DependencyObject current) where T : class
         {
@@ -157,6 +183,19 @@ namespace EWDesign.View
                 current = VisualTreeHelper.GetParent(current);
             }
             return null;
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            Generator gen = new Generator();
+
+            Console.WriteLine(gen.BuildPageCode(Model.DroppedComponents));
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

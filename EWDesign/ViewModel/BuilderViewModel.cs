@@ -66,7 +66,19 @@ namespace EWDesign.ViewModel
             });
             AllComponents.Add(new ComponentPaletteItem
             {
-                DisplayName = "Text",
+                DisplayName = "Title Text",
+                Category = "Design Components",
+                ComponentFactory = typeof(TextComponent)
+            });
+            AllComponents.Add(new ComponentPaletteItem
+            {
+                DisplayName = "SubTitle Text",
+                Category = "Design Components",
+                ComponentFactory = typeof(TextComponent)
+            });
+            AllComponents.Add(new ComponentPaletteItem
+            {
+                DisplayName = "Menu Item",
                 Category = "Design Components",
                 ComponentFactory = typeof(TextComponent)
             });
@@ -75,6 +87,12 @@ namespace EWDesign.ViewModel
                 DisplayName = "Card",
                 Category = "Design Components",
                 ComponentFactory = typeof(CardComponent)
+            });
+            AllComponents.Add(new ComponentPaletteItem
+            {
+                DisplayName = "Menu",
+                Category = "Design Components",
+                ComponentFactory = typeof(MenuComponent)
             });
             AllComponents.Add(new ComponentPaletteItem
             {

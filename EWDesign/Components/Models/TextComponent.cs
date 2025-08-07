@@ -1,10 +1,12 @@
 ﻿using EWDesign.Components.Views;
 using EWDesign.Core;
+using EWDesign.Interfaces;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
 using System.IO.Packaging;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +16,7 @@ using System.Windows.Media.TextFormatting;
 
 namespace EWDesign.Components.Models
 {
-    public class TextComponent : ComponentModel
+    public class TextComponent : ComponentModel, ICodeGeneratable
     {
         private string _text = "Sample Text";
 
@@ -89,6 +91,47 @@ namespace EWDesign.Components.Models
                 IsEditing = false;
             }
         }
+
+        public string HTMLContent()
+        {
+            if(this.Type == "Navbar Title Text")
+            {
+                return $"<div class='navbar-logo'>{Text}</div>";
+            }
+            else if(this.Type == "Title Text")
+            {
+                return $"<h1 class='hero-title'>{Text}</h1>";
+            }
+            else
+            {
+                return $"<p class=\"hero-subtitle\">{Text}</p>";
+            }
+        }
+        public string CSSContent()
+        {
+            if(this.Type == "Navbar Title Text")
+            {
+                return ".navbar-logo {\r\n" +
+                    $"  font-size: {FontSize};\r\n" +
+                    $"  font-weight: {FontWeight};\r\n" +
+                    $"  color: {ForeGround};\r\n}}\n";
+            }
+            else if(this.Type == "Title Text")
+            {
+                return ".hero-title {\r\n" +
+                    $"  font-size: {FontSize};\r\n" +
+                    $"  font-weight: {FontWeight};\r\n" +
+                    "  line-height: 1.2;\r\n" +
+                    $"  margin: {Margin};\r\n}}";
+            }else
+            {
+                return ".hero-subtitle {\r\n" +
+                    $"  font-size: {FontSize}px;\r\n" +
+                    $"  color: {ForeGround};\r\n" +
+                    $"  margin-bottom: {Margin};\r\n}}";
+            }
+        }
+
         public TextComponent()
         {
             Type = "Text";

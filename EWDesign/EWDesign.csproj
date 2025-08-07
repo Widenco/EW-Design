@@ -73,7 +73,10 @@
     <Compile Include="Components\Models\BodyComponent.cs" />
     <Compile Include="Components\Models\ButtonComponent.cs" />
     <Compile Include="Components\Models\CardComponent.cs" />
+    <Compile Include="Components\Models\MenuComponent.cs" />
+    <Compile Include="Components\Models\MenuItemComponent.cs" />
     <Compile Include="Components\Models\NavBarComponent.cs" />
+    <Compile Include="Components\Models\SubtitleText.cs" />
     <Compile Include="Components\Models\TextComponent.cs" />
     <Compile Include="Components\Views\BodyView.xaml.cs">
       <DependentUpon>BodyView.xaml</DependentUpon>
@@ -84,6 +87,9 @@
     <Compile Include="Components\Views\CardView.xaml.cs">
       <DependentUpon>CardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Views\NavBarView.xaml.cs">
       <DependentUpon>NavBarView.xaml</DependentUpon>
     </Compile>
@@ -91,6 +97,10 @@
       <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
+    <Compile Include="Core\Code Generator\ComponentCodeBuilder.cs" />
+    <Compile Include="Core\Code Generator\ComponentType.cs" />
+    <Compile Include="Core\Code Generator\Generator.cs" />
+    <Compile Include="Core\Code Generator\Interpreter.cs" />
     <Compile Include="Core\ColorToHexConverter.cs" />
     <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />
@@ -98,10 +108,12 @@
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Core\StringNullOrEmptyToVisibilityConverter.cs" />
+    <Compile Include="Interfaces\ICodeGeneratable.cs" />
     <Compile Include="Interfaces\IComponentView.cs" />
     <Compile Include="Model\ComponentModel.cs" />
     <Compile Include="Model\ComponentPaletteItem.cs" />
     <Compile Include="Model\IconModel.cs" />
+    <Compile Include="Model\RawComponentData.cs" />
     <Compile Include="ViewModel\BuilderViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewViewModel.cs" />
@@ -127,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Views\CardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,5 +225,6 @@
   <ItemGroup>
     <Resource Include="Assets\newPageIcon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,17 +47,15 @@ namespace EWDesign.Components.Views
         //Inicializando y añadiendo componentes del NavBar por codigo
         public void InitTemplateComponents()
         {
-            var TitleText = new TextView( new TextComponent { Text = "Mi Producto", DelegateContextMenu = false});
+            var TitleText = new TextView(NavBarModel.Title);
             TitleText.ComponentRemoveEvent += (s, e) => RemoveComponent(TitleText);
             TitleDropArea.Children.Add(TitleText);
+            Model.AddChild(TitleText.Model);
 
-            foreach (var item in NavBarModel.NavbarElementsText)
-            {
-                var menuItem = new TextView(new TextComponent { Text = item, Margin = new Thickness(16, 0, 0, 0),
-                FontSize = 16, ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3A3F47")), DelegateContextMenu = false});
-                menuItem.ComponentRemoveEvent += (s, e) => RemoveComponent(menuItem);
-                MenuItemsDropArea.Children.Add(menuItem);
-            }
+            var Menu = new MenuView(NavBarModel.Menu);
+            Menu.ComponentRemoveEvent += (s, e) => RemoveComponent(Menu);
+            MenuDropArea.Children.Add(Menu);
+            Model.AddChild(Menu.Model);
         }
 
         private void RemoveComponent(IComponentView componentView)
@@ -66,9 +64,12 @@ namespace EWDesign.Components.Views
             if (TitleDropArea.Children.Contains((UserControl)componentView))
             {
                 TitleDropArea.Children.Remove((UserControl)componentView);
+                Model.RemoveChild(componentView.Model);
+                
             }else
             {
-                MenuItemsDropArea.Children.Remove((UserControl)componentView);
+                MenuDropArea.Children.Remove((UserControl)componentView);
+                Model.RemoveChild(componentView.Model);
             }
         }
 
@@ -94,7 +95,7 @@ namespace EWDesign.Components.Views
             BuilderViewModel.Instance.SelectedComponent = this.Model;
         }
 
-        private void TitleDropArea_Drop(object sender, DragEventArgs e)
+        private void DropArea_Drop(object sender, DragEventArgs e)
         {
             if(e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
             {
@@ -103,74 +104,49 @@ namespace EWDesign.Components.Views
                 if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
                 {
                     component = (ComponentModel)Activator.CreateInstance(type);
+                    if (item.DisplayName == "Title Text")
+                        component.Type = "Navbar Title Text";
                 }
 
                 IComponentView newElement = null;
 
-                if(component.Type.ToLower() == "text")
+                if(component.Type.ToLower() == "navbar title text")
                 {
                     newElement = new TextView((TextComponent)component);
                     newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                 }
+                else if (component.Type.ToLower() == "menu")
+                {
+                    newElement = new MenuView((MenuComponent)component);
+                    newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                }
                 else
                 {
-                    MessageBox.Show("No se puede insertar otro componente que no sea Texto.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("No se puede insertar otro componente que no sea un Titulo o un Menu.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
                 if (component != null)
                 {
                     var panel = sender as StackPanel;
+                    bool duplicated = false;
 
-                   /* if(panel.Children.Count != 0)
+                    foreach (var child in Model.Children)
                     {
-                        MessageBox.Show("Ya existe un texto de titulo", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }*/
+                        if (child.Type == component.Type)
+                            duplicated = true;
+                    }
 
-                    panel.Children.Add((UIElement)newElement);
-                }
-            }
-        }
-
-        private void MenuItemsDropArea_Drop(object sender, DragEventArgs e)
-        {
-            
-            if (e.Data.GetData(typeof(ComponentPaletteItem)) is ComponentPaletteItem item)
-            {
-                ComponentModel component = null;
-
-                if (item.ComponentFactory is Type type && typeof(ComponentModel).IsAssignableFrom(type))
-                {
-                    component = (ComponentModel)Activator.CreateInstance(type);
-                }
-
-                IComponentView newElement = null;
-
-                if (component.Type.ToLower() == "text")
-                {
-                    newElement = new TextView((TextComponent)component);
-                    newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
-                }
-                else
-                {
-                    MessageBox.Show("No se puede insertar otro componente que no sea Texto.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (component != null)
-                {
-                    var panel = sender as StackPanel;
-
-                     if(panel.Children.Count > 5)
+                    if (duplicated)
                      {
-                         MessageBox.Show("Demasiados menu item.", "Demasiados Componentes", MessageBoxButton.OK, MessageBoxImage.Warning);
+                         MessageBox.Show("Solo se puede colocar un titulo o un menu", "Demasiados Componentes", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                      }
 
                     panel.Children.Add((UIElement)newElement);
+                    Model.AddChild(newElement.Model);
                 }
             }
-            
         }
     }
 }

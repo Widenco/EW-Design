@@ -1,13 +1,10 @@
 ﻿using EWDesign.Components.Models;
-using EWDesign.Core.Code_Generator;
 using EWDesign.Interfaces;
 using EWDesign.Model;
 using EWDesign.View;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,47 +21,42 @@ using System.Windows.Shapes;
 namespace EWDesign.Components.Views
 {
     /// <summary>
-    /// Interaction logic for CardView.xaml
+    /// Interaction logic for MenuView.xaml
     /// </summary>
-    public partial class CardView : UserControl, IComponentView
+    public partial class MenuView : UserControl, IComponentView
     {
-        public CardComponent CardModel { get; }
-
-        public ComponentModel Model => CardModel;
+        public MenuComponent MenuModel { get; }
+        public ComponentModel Model => MenuModel;
 
         public event EventHandler ComponentRemoveEvent;
-
-        public CardView(CardComponent model)
+        public MenuView(MenuComponent model)
         {
             InitializeComponent();
-            CardModel = model;
+            MenuModel = model;
             this.DataContext = model;
-            InitComponents();
+            InitTemplateComponents();
         }
 
-
-        public void InitComponents()
+        public void InitTemplateComponents()
         {
-            var CardComponents = new ObservableCollection<TextView>
+            foreach (var item in MenuModel.MenuItems)
             {
-                new TextView(CardModel.Title),
-                new TextView(CardModel.Body)
-            };
-
-            foreach (var item in CardComponents)
-            {
-                Card.Children.Add(item);
+                var menuItem = new TextView(item);
+                MenuItemsDropArea.Children.Add(menuItem);
+                
             }
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            OpenComponentEditor(this.Model);
+            
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
             ComponentRemoveEvent?.Invoke(this, EventArgs.Empty);
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenComponentEditor(this.Model);
         }
 
         private void OpenComponentEditor(ComponentModel model)
@@ -79,5 +71,6 @@ namespace EWDesign.Components.Views
             BuilderViewModel.Instance.SelectedComponent = this.Model;
             e.Handled = true;
         }
+
     }
 }

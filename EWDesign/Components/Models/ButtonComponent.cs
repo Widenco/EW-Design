@@ -1,5 +1,6 @@
 ﻿using EWDesign.Components.Views;
 using EWDesign.Core;
+using EWDesign.Interfaces;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
-    public class ButtonComponent : ComponentModel
+    public class ButtonComponent : ComponentModel, ICodeGeneratable
     {
         private TextComponent _textContent;
         public TextComponent TextContent
@@ -20,8 +21,6 @@ namespace EWDesign.Components.Models
             get => _textContent;
             set => SetProperty(ref _textContent, value);
         }
-
-        public override IEnumerable<ComponentModel> EditableChildren => new[] {TextContent};
 
         private double _width = 200;
 
@@ -91,6 +90,24 @@ namespace EWDesign.Components.Models
             {
                 TextContent.IsEditing = s;
             }
+        }
+
+        public string HTMLContent()
+        {
+            return $"<button class='cta-button'>{TextContent.Text}</button>";
+        }
+        public string CSSContent()
+        {
+            return ".cta-button {\r\n" +
+                $"  background-color: #6c63ff;\r\n" +
+                $"  color: {Foreground};\r\n" +
+                $"  font-size: {FontSize};\r\n" +
+                $"  font-weight: {FontWeight};\r\n" +
+                "  padding: 14px 32px;\r\n" +
+                "  border: none;\r\n" +
+                "  border-radius: 8px;\r\n" +
+                "  cursor: pointer;\r\n" +
+                "  transition: background-color 0.3s ease;\r\n}\n";
         }
         public ButtonComponent()
         {

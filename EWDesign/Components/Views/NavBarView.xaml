@@ -35,22 +35,24 @@
 
             <StackPanel
                 x:Name="TitleDropArea"
+                MinWidth="300"
                 MinHeight="20"
                 VerticalAlignment="Center"
                 AllowDrop="True"
                 Background="Transparent"
-                Drop="TitleDropArea_Drop"
+                Drop="DropArea_Drop"
                 Orientation="Horizontal" />
 
             <StackPanel
-                x:Name="MenuItemsDropArea"
+                x:Name="MenuDropArea"
                 Grid.Column="1"
+                MinWidth="300"
                 MinHeight="20"
                 Margin="0,0,24,0"
                 HorizontalAlignment="Right"
                 AllowDrop="True"
                 Background="Transparent"
-                Drop="MenuItemsDropArea_Drop"
+                Drop="DropArea_Drop"
                 Orientation="Horizontal" />
 
         </Grid>
