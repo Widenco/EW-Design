@@ -46,7 +46,7 @@ namespace EWDesign.Components.Models
             Type = "NavBar";
             Title = new TextComponent
             {
-                Type = "Navbar Title Text",
+                Type = "Navbar-Title-Text",
                 Text = "Mi Producto",
                 DelegateContextMenu = false
 

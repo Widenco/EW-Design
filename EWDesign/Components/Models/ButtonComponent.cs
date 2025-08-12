@@ -92,17 +92,17 @@ namespace EWDesign.Components.Models
             }
         }
 
-        public string HTMLContent()
+        public string HTMLContent(string className)
         {
-            return $"<button class='cta-button'>{TextContent.Text}</button>";
+            return $"<button class='{className}'>{TextContent.Text}</button>";
         }
-        public string CSSContent()
+        public string CSSContent(string className)
         {
-            return ".cta-button {\r\n" +
-                $"  background-color: #6c63ff;\r\n" +
-                $"  color: {Foreground};\r\n" +
-                $"  font-size: {FontSize};\r\n" +
-                $"  font-weight: {FontWeight};\r\n" +
+            return $".{className} {{\r\n" +
+                $"  background-color: {BrushToHexRGB(Background)};\r\n" +
+                $"  color: {BrushToHexRGB(Foreground)};\r\n" +
+                $"  font-size: {FontSize}px;\r\n" +
+                "  font-weight: 600;\r\n" +
                 "  padding: 14px 32px;\r\n" +
                 "  border: none;\r\n" +
                 "  border-radius: 8px;\r\n" +

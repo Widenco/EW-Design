@@ -8,8 +8,8 @@ namespace EWDesign.Interfaces
 {
     public interface ICodeGeneratable
     {
-        string HTMLContent();
-        string CSSContent();
+        string HTMLContent(string className);
+        string CSSContent(string className);
     }
 
 }

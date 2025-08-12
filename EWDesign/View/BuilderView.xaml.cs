@@ -188,9 +188,7 @@ namespace EWDesign.View
         private void Export_Click(object sender, RoutedEventArgs e)
         {
             Generator gen = new Generator();
-
-            Console.WriteLine(gen.BuildPageCode(Model.DroppedComponents));
-
+            gen.GenerateFiles(Model.DroppedComponents);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

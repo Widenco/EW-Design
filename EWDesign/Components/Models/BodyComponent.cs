@@ -1,5 +1,6 @@
 ﻿using EWDesign.Components.Views;
 using EWDesign.Core;
+using EWDesign.Interfaces;
 using EWDesign.Model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace EWDesign.Components.Models
     {
         public ObservableCollection<string> HeroSectionText { get; set; }
         public ObservableCollection<string> FeatureSectionText { get; set; }
+        public ObservableCollection<ComponentModel> HeroSectionComponents { get; set; }
+        public ObservableCollection<ComponentModel> FeatureSectionComponents { get; set; }
 
         private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1E2F"));
 
@@ -44,6 +47,9 @@ namespace EWDesign.Components.Models
                 "Soporte dedicado", 
                 "Te acompañamos en cada paso con asistencia rápida y confiable."
             };
+
+            HeroSectionComponents = new ObservableCollection<ComponentModel>();
+            FeatureSectionComponents = new ObservableCollection<ComponentModel>();
 
         }
 

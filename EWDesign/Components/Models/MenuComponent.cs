@@ -77,9 +77,9 @@ namespace EWDesign.Components.Models
             }
         }
 
-        public string HTMLContent()
+        public string HTMLContent(string className)
         {
-            var code = $"<ul class=\"{Type.ToLower()}\">\n";
+            var code = $"<ul class=\"{className}\">\n";
             foreach(var item in _menuItems)
             {
                 code += $"<li><a href=\"#{item.Text}\">{item.Text}</a></li>\r\n";
@@ -90,17 +90,17 @@ namespace EWDesign.Components.Models
             return code;
         }
 
-        public string CSSContent()
+        public string CSSContent(string className)
         {
-            return $".{Type.ToLower()} {{\r\n" +
+            return $".{className} {{\r\n" +
                 "  list-style: none;\r\n" +
                 "  display: flex;\r\n" +
                 "  gap: 32px;\r\n" +
                 "  margin: 0;\r\n" +
                 "  padding: 0;\r\n}" +
-                $"\n.{Type.ToLower()} li a {{\r\n" +
+                $"\n.{className} li a {{\r\n" +
                 "  text-decoration: none;\r\n" +
-                $"  color: #{ForeGround};\r\n" +
+                $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
                 "  font-weight: 500;\r\n" +
                 $"  font-size: {FontSize}px;\r\n" +
                 "  transition: color 0.3s ease;\r\n}";

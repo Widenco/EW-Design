@@ -105,12 +105,12 @@ namespace EWDesign.Components.Views
                 {
                     component = (ComponentModel)Activator.CreateInstance(type);
                     if (item.DisplayName == "Title Text")
-                        component.Type = "Navbar Title Text";
+                        component.Type = "Navbar-Title-Text";
                 }
 
                 IComponentView newElement = null;
 
-                if(component.Type.ToLower() == "navbar title text")
+                if(component.Type.ToLower() == "navbar-title-text")
                 {
                     newElement = new TextView((TextComponent)component);
                     newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);

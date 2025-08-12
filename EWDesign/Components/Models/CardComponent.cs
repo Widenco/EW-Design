@@ -67,32 +67,32 @@ namespace EWDesign.Components.Models
             }
         }
 
-        public string HTMLContent()
+        public string HTMLContent(string className)
         {
-            return $"<div class='feature-item'>" +
-           $"<h2 class='feature-title'>{_title.Text}</h2>\n" +
-           $"<p class='feature-text'>{_body.Text}</p>\n" +
+            return $"<div class='{className}-item'>" +
+           $"<h2 class='{className}-title'>{_title.Text}</h2>\n" +
+           $"<p class='{className}-text'>{_body.Text}</p>\n" +
            $"</div>";
         }
-        public string CSSContent()
+        public string CSSContent(string className)
         {
-            return ".feature-item {\n" +
-                $"  background-color: {Background};\n" +
+            return $".{className}-item {{\n" +
+                $"  background-color: {BrushToHexRGB(Background)};\n" +
                 "  padding: 32px;\n" +
                 "  border-radius: 16px;\n" +
-                $"  width: {Width};\n" +
+                $"  width: {Width}px;\n" +
                 "  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n" +
                 "  transition: transform 0.2s ease;\n}\n\n" +
-                ".feature-item:hover {\n" +
+                $".{className}-item:hover {{\n" +
                 "  transform: translateY(-4px);\n}\n\n" +
-                ".feature-title {\n" +
-                $"  font-size: {_title.FontSize};\n" +
+                $".{className}-title {{\n" +
+                $"  font-size: {_title.FontSize}px;\n" +
                 $"  font-weight: {_title.FontWeight};\n" +
                 $"  margin: {_title.Margin};\n" +
-                $"  color: {_title.ForeGround};\n}}\n\n" +
-                ".feature-text {\n" +
-                $"  font-size: {_body.FontSize};\n" +
-                $"  color: {_body.ForeGround};\n" +
+                $"  color: {BrushToHexRGB(_title.ForeGround)};\n}}\n\n" +
+                $".{className}-text {{\n" +
+                $"  font-size: {_body.FontSize}px;\n" +
+                $"  color: {BrushToHexRGB(_body.ForeGround)};\n" +
                 "  line-height: 1.5;\n}\n";
         }
 

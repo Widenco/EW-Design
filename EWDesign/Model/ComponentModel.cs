@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using WpfApp1.Core;
 
 namespace EWDesign.Model
@@ -50,6 +51,16 @@ namespace EWDesign.Model
         public virtual void SetSelected(bool s)
         {
             IsSelected = s;
+        }
+
+        public string BrushToHexRGB(Brush brush)
+        {
+            if (brush is SolidColorBrush solidColorBrush)
+            {
+                var color = solidColorBrush.Color;
+                return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+            }
+            return null;
         }
     }
 }

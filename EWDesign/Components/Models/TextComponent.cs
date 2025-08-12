@@ -92,42 +92,45 @@ namespace EWDesign.Components.Models
             }
         }
 
-        public string HTMLContent()
+        public string HTMLContent(string className)
         {
-            if(this.Type == "Navbar Title Text")
+            if(this.Type == "Navbar-Title-Text")
             {
-                return $"<div class='navbar-logo'>{Text}</div>";
+                return $"<div class='{className}'>{Text}</div>";
             }
-            else if(this.Type == "Title Text")
+            else if(this.Type == "Title-Text")
             {
-                return $"<h1 class='hero-title'>{Text}</h1>";
+                return $"<h1 class='{className}'>{Text}</h1>";
             }
             else
             {
-                return $"<p class=\"hero-subtitle\">{Text}</p>";
+                return $"<p class=\"{className}\">{Text}</p>";
             }
         }
-        public string CSSContent()
+        public string CSSContent(string className)
         {
-            if(this.Type == "Navbar Title Text")
+
+            if(this.Type == "Navbar-Title-Text")
             {
-                return ".navbar-logo {\r\n" +
-                    $"  font-size: {FontSize};\r\n" +
-                    $"  font-weight: {FontWeight};\r\n" +
-                    $"  color: {ForeGround};\r\n}}\n";
+                
+                return $".{className} {{\r\n" +
+                    $"  font-size: {FontSize}px;\r\n" +
+                    "  font-weight: 600;\r\n" +
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n}}\n";
             }
-            else if(this.Type == "Title Text")
+            else if(this.Type == "Title-Text")
             {
-                return ".hero-title {\r\n" +
-                    $"  font-size: {FontSize};\r\n" +
-                    $"  font-weight: {FontWeight};\r\n" +
+                return $".{className} {{\r\n" +
+                    $"  font-size: {FontSize}px;\r\n" +
+                    "  font-weight: 700;\r\n" +
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n"+
                     "  line-height: 1.2;\r\n" +
                     $"  margin: {Margin};\r\n}}";
             }else
             {
-                return ".hero-subtitle {\r\n" +
+                return $".{className} {{\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +
-                    $"  color: {ForeGround};\r\n" +
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
                     $"  margin-bottom: {Margin};\r\n}}";
             }
         }

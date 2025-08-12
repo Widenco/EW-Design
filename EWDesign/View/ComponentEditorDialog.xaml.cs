@@ -130,6 +130,7 @@ namespace EWDesign.View
                     Mode = BindingMode.TwoWay
                 };
                 var bt = new ColorCanvas();
+                bt.UsingAlphaChannel = false;
                 bt.SetBinding(ColorCanvas.SelectedColorProperty, colorBinding);
                 return bt;
             }

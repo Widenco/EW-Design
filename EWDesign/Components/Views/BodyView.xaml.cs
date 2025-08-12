@@ -50,7 +50,7 @@ namespace EWDesign.Components.Views
 
                 new TextView(new TextComponent
                 {
-                    Type = "Title Text",
+                    Type = "Title-Text",
                     Text = BodyModel.HeroSectionText[0],
                     Margin = new Thickness(0, 0, 0, 24),
                     FontSize = 48,
@@ -61,7 +61,7 @@ namespace EWDesign.Components.Views
 
                 new TextView(new TextComponent
                 {
-                    Type = "Subtitle Text",
+                    Type = "Subtitle-Text",
                     Text = BodyModel.HeroSectionText[1],
                     Margin = new Thickness(0, 0, 0, 40),
                     FontSize = 20,
@@ -85,6 +85,7 @@ namespace EWDesign.Components.Views
                 item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
                 HeroSectionDropArea.Children.Add((UIElement)item);
                 Model.AddChild(item.Model);
+                BodyModel.HeroSectionComponents.Add(item.Model);
             }
 
             foreach (var item in FeatureSectionItems)
@@ -92,6 +93,7 @@ namespace EWDesign.Components.Views
                 item.ComponentRemoveEvent += (s, e) => RemoveComponent(item);
                 FeatureSectionDropArea.Children.Add((UIElement)item);
                 Model.AddChild(item.Model);
+                BodyModel.FeatureSectionComponents.Add(item.Model);
             }
 
         }
@@ -170,11 +172,11 @@ namespace EWDesign.Components.Views
                 {
                     case "text":
 
-                        if (item.DisplayName == "Title Text")
+                        if (item.DisplayName == "Title-Text")
                         {
                             component.Type = item.DisplayName;
                         }
-                        else if (item.DisplayName == "Subtitle Text")
+                        else if (item.DisplayName == "Subtitle-Text")
                         {
                             component.Type = item.DisplayName;
                         }
@@ -221,11 +223,11 @@ namespace EWDesign.Components.Views
                 {
                     case "text":
 
-                        if (item.DisplayName == "Title Text")
+                        if (item.DisplayName == "Title-Text")
                         {
                             component.Type = item.DisplayName;
                         }
-                        else if (item.DisplayName == "Subtitle Text")
+                        else if (item.DisplayName == "Subtitle-Text")
                         {
                             component.Type = item.DisplayName;
                         }
