@@ -57,3 +57,5 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.exe
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.pdb
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\MenuView.g.cs
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\MenuView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\bin\Debug\Newtonsoft.Json.xml

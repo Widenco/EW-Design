@@ -11,13 +11,16 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using EWDesign.Core;
 using System.Windows.Data;
 using EWDesign.Interfaces;
+using Newtonsoft.Json;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class MenuComponent: ComponentModel, ICodeGeneratable
     {
         private ObservableCollection<TextComponent> _menuItems;
         [EditableProperty("Menu Items Text")]
+        [JsonProperty]
         public ObservableCollection<TextComponent> MenuItems
         {
             get => _menuItems;
@@ -29,6 +32,7 @@ namespace EWDesign.Components.Models
         private double _fontSize = 16;
 
         [EditableProperty("Font Size")]
+        [JsonProperty]
         public double FontSize
         {
             get => _fontSize;
@@ -42,6 +46,7 @@ namespace EWDesign.Components.Models
         private Brush _foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3A3F47"));
 
         [EditableProperty("Text Color")]
+        [JsonProperty]
         public Brush ForeGround
         {
             get => _foreground;

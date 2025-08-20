@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -97,9 +100,11 @@
       <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
+    <Compile Include="Core\Code Generator\ComponentConverter.cs" />
     <Compile Include="Core\Code Generator\ComponentType.cs" />
     <Compile Include="Core\Code Generator\Generator.cs" />
     <Compile Include="Core\Code Generator\Interpreter.cs" />
+    <Compile Include="Core\Code Generator\ProjectMetadata.cs" />
     <Compile Include="Core\ColorToHexConverter.cs" />
     <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />

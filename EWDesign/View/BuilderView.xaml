@@ -25,7 +25,7 @@
             <Menu Background="#243647" Foreground="White">
                 <MenuItem Header="_File">
                     <MenuItem Foreground="Black" Header="_New" />
-                    <MenuItem Foreground="Black" Header="_Save" />
+                    <MenuItem Foreground="Black" Header="_Save" Click="Save_Click" />
                     <MenuItem Foreground="Black" Header="_Load" />
                     <MenuItem
                         Click="Export_Click"

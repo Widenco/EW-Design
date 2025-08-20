@@ -5,38 +5,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace EWDesign.Core.Code_Generator
 {
-    public static class Interpreter
+    public class Interpreter
     {
-        public static ComponentModel CreateModelFromRaw(RawComponentData raw)
+
+        private readonly JsonSerializerSettings _settings;
+
+        public Interpreter()
         {
-            ComponentModel model = null;
-            
-            switch(raw.Type.ToLower())
+            _settings = new JsonSerializerSettings()
             {
-                case "text":
-                    model = new TextComponent
-                    {
-                        Text = raw.Properties["Content"]?.ToString(),
-                        FontSize = Convert.ToInt32(raw.Properties["FontSize"])
-                    };
-                    break;
-                case "navbar":
-                    model = new NavBarComponent { Id = raw.Id }; // Y así sucesivamente
-                    break;
-                default:
-                    throw new NotSupportedException($"Tipo no soportado: {raw.Type}");
+                Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.All,
+                //Converters = new List<JsonConverter> { new ComponentConverter() }
             };
+        }
 
-            foreach (var childRaw in raw.Children)
-            {
-                var child = CreateModelFromRaw(childRaw);
-                model.Children.Append(child);
-            }
+        public void SaveProject(ProjectMetadata project, string filePath)
+        {
+            string json = JsonConvert.SerializeObject(project, _settings);
+            File.WriteAllText(filePath, json);
+        }
 
-            return model;
+        public ProjectMetadata LoadProject(string filePath)
+        {
+            string json = File.ReadAllText(filePath);
+            return JsonConvert.DeserializeObject<ProjectMetadata>(json, _settings);
         }
     }
 
