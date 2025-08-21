@@ -2,6 +2,7 @@
 using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO.Packaging;
@@ -16,11 +17,13 @@ using System.Windows.Media.TextFormatting;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class TextComponent : ComponentModel, ICodeGeneratable
     {
         private string _text = "Sample Text";
 
         [EditableProperty("Text")]
+        [JsonProperty]
         public string Text 
         { 
             get => _text; 
@@ -30,6 +33,7 @@ namespace EWDesign.Components.Models
         private Brush _foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2a2e35"));
 
         [EditableProperty("Text Color")]
+        [JsonProperty]
         public Brush ForeGround
         {
             get => _foreground;
@@ -39,6 +43,7 @@ namespace EWDesign.Components.Models
         private double _fontSize = 24;
 
         [EditableProperty("Font Size")]
+        [JsonProperty]
         public double FontSize
         {
             get => _fontSize;
@@ -69,6 +74,7 @@ namespace EWDesign.Components.Models
         private TextAlignment _textAlignment = TextAlignment.Left;
 
         [EditableProperty("Text Alignment")]
+        [JsonProperty]
         public TextAlignment TextAlignment
         {
             get => _textAlignment;

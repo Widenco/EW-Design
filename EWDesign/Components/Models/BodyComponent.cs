@@ -2,6 +2,7 @@
 using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class BodyComponent : ComponentModel
     {
         public ObservableCollection<string> HeroSectionText { get; set; }
@@ -23,6 +25,7 @@ namespace EWDesign.Components.Models
         private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1E2F"));
 
         [EditableProperty("Background Color")]
+        [JsonProperty]
         public Brush BodyBackgroundColor
         {
             get => _backgroundColor;

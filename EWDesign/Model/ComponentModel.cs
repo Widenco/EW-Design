@@ -6,16 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+<<<<<<< HEAD
 using EWDesign.Core;
+=======
+using WpfApp1.Core;
+using Newtonsoft.Json;
+>>>>>>> dcf3ddce65651c2a44900a931eabf05acbe48e57
 
 namespace EWDesign.Model
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public abstract class ComponentModel : ObservableObject
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string CSSCode { get; set; }
+
+        [JsonProperty]
         public string Type { get; set; }
         public virtual bool DelegateContextMenu { get; set; } = false;
+
+        [JsonProperty]
         public ObservableCollection<ComponentModel> Children = new ObservableCollection<ComponentModel>();
 
         public void AddChild(ComponentModel child)

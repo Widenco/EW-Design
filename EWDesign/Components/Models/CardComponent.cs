@@ -2,6 +2,7 @@
 using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class CardComponent : ComponentModel, ICodeGeneratable
     {
         private TextComponent _title;
@@ -32,6 +34,7 @@ namespace EWDesign.Components.Models
         private Brush _background = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#2A2A40"));
 
         [EditableProperty("Card Background")]
+        [JsonProperty]
         public Brush Background
         {
             get => _background;
@@ -41,6 +44,7 @@ namespace EWDesign.Components.Models
         private double _width = 300;
 
         [EditableProperty("Card Width")]
+        [JsonProperty]
         public double Width
         {
             get => _width;
@@ -50,6 +54,7 @@ namespace EWDesign.Components.Models
         private double _height = 170;
 
         [EditableProperty("Card Height")]
+        [JsonProperty]
         public double Height
         {
             get => _height;
