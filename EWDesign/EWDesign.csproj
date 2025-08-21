@@ -107,11 +107,6 @@
     <Compile Include="Core\Code Generator\ComponentConverter.cs" />
     <Compile Include="Core\Code Generator\ComponentType.cs" />
     <Compile Include="Core\Code Generator\Generator.cs" />
-<<<<<<< HEAD
-=======
-    <Compile Include="Core\Code Generator\Interpreter.cs" />
-    <Compile Include="Core\Code Generator\ProjectMetadata.cs" />
->>>>>>> dcf3ddce65651c2a44900a931eabf05acbe48e57
     <Compile Include="Core\ColorToHexConverter.cs" />
     <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />
