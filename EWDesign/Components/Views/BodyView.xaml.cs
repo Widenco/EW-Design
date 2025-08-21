@@ -33,12 +33,23 @@ namespace EWDesign.Components.Views
 
         public event EventHandler ComponentRemoveEvent;
 
-        public BodyView(BodyComponent model)
+        public BodyView(BodyComponent model, bool isImporting = false)
         {
             InitializeComponent();
             BodyModel = model;
             DataContext = model;
-            InitTemplateComponents();
+            
+            // Solo inicializar componentes por defecto si no se está importando
+            if (!isImporting)
+            {
+                InitTemplateComponents();
+            }
+            else
+            {
+                // Si se está importando, mostrar los componentes hijos que ya están cargados
+                LoadImportedComponents();
+            }
+            
             this.PreviewMouseLeftButtonDown += UserControl_MouseLeftButtonDown;
         }
 
@@ -97,6 +108,109 @@ namespace EWDesign.Components.Views
             }
 
         }
+
+        // Cargar componentes importados
+        private void LoadImportedComponents()
+        {
+            // Limpiar áreas de drop
+            HeroSectionDropArea.Children.Clear();
+            FeatureSectionDropArea.Children.Clear();
+
+            // Crear un conjunto para rastrear componentes ya cargados (por ID)
+            var loadedComponentIds = new HashSet<Guid>();
+
+            // Cargar componentes de HeroSection
+            if (BodyModel.HeroSectionComponents != null)
+            {
+                foreach (var component in BodyModel.HeroSectionComponents)
+                {
+                    if (!loadedComponentIds.Contains(component.Id))
+                    {
+                        IComponentView componentView = CreateComponentView(component);
+                        if (componentView != null)
+                        {
+                            componentView.ComponentRemoveEvent += (s, e) => RemoveComponent(componentView);
+                            HeroSectionDropArea.Children.Add((UIElement)componentView);
+                            loadedComponentIds.Add(component.Id);
+                        }
+                    }
+                }
+            }
+
+            // Cargar componentes de FeatureSection
+            if (BodyModel.FeatureSectionComponents != null)
+            {
+                foreach (var component in BodyModel.FeatureSectionComponents)
+                {
+                    if (!loadedComponentIds.Contains(component.Id))
+                    {
+                        IComponentView componentView = CreateComponentView(component);
+                        if (componentView != null)
+                        {
+                            componentView.ComponentRemoveEvent += (s, e) => RemoveComponent(componentView);
+                            FeatureSectionDropArea.Children.Add((UIElement)componentView);
+                            loadedComponentIds.Add(component.Id);
+                        }
+                    }
+                }
+            }
+
+            // Cargar componentes hijos adicionales que se arrastraron al Body
+            // Solo cargar los que no están ya en HeroSection o FeatureSection
+            foreach (var child in Model.Children)
+            {
+                if (!loadedComponentIds.Contains(child.Id))
+                {
+                    IComponentView componentView = CreateComponentView(child);
+                    if (componentView != null)
+                    {
+                        componentView.ComponentRemoveEvent += (s, e) => RemoveComponent(componentView);
+                        
+                        // Determinar en qué sección agregar el componente basado en su tipo
+                        if (child.Type?.ToLower().Contains("title") == true || 
+                            child.Type?.ToLower().Contains("subtitle") == true ||
+                            child.Type?.ToLower() == "button")
+                        {
+                            HeroSectionDropArea.Children.Add((UIElement)componentView);
+                        }
+                        else if (child.Type?.ToLower() == "card")
+                        {
+                            FeatureSectionDropArea.Children.Add((UIElement)componentView);
+                        }
+                        else
+                        {
+                            // Por defecto, agregar a HeroSection
+                            HeroSectionDropArea.Children.Add((UIElement)componentView);
+                        }
+                        
+                        loadedComponentIds.Add(child.Id);
+                    }
+                }
+            }
+        }
+
+        // Método auxiliar para crear vistas de componentes
+        private IComponentView CreateComponentView(ComponentModel component)
+        {
+            switch (component.Type?.ToLower())
+            {
+                case "text":
+                case "title-text":
+                case "subtitle-text":
+                case "title text":
+                case "body text":
+                    return new TextView((TextComponent)component);
+                case "button":
+                    return new ButtonView((ButtonComponent)component);
+                case "card":
+                    return new CardView((CardComponent)component);
+                case "menu":
+                    return new MenuView((MenuComponent)component);
+                default:
+                    return null;
+            }
+        }
+
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             OpenComponentEditor(this.Model);

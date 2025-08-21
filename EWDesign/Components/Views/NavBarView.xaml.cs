@@ -20,7 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Core;
+using EWDesign.Core;
 
 namespace EWDesign.Components.Views
 {
@@ -35,12 +35,22 @@ namespace EWDesign.Components.Views
 
         public event EventHandler ComponentRemoveEvent;
 
-        public NavBarView(NavBarComponent model)
+        public NavBarView(NavBarComponent model, bool isImporting = false)
         {
             InitializeComponent();
             NavBarModel = model;
             this.DataContext = model;
-            InitTemplateComponents();
+            
+            // Solo inicializar componentes por defecto si no se está importando
+            if (!isImporting)
+            {
+                InitTemplateComponents();
+            }
+            else
+            {
+                // Si se está importando, mostrar los componentes hijos que ya están cargados
+                LoadImportedComponents();
+            }
              
         }
 
@@ -56,6 +66,46 @@ namespace EWDesign.Components.Views
             Menu.ComponentRemoveEvent += (s, e) => RemoveComponent(Menu);
             MenuDropArea.Children.Add(Menu);
             Model.AddChild(Menu.Model);
+        }
+
+        // Cargar componentes importados
+        private void LoadImportedComponents()
+        {
+            // Limpiar áreas de drop
+            TitleDropArea.Children.Clear();
+            MenuDropArea.Children.Clear();
+
+            // Cargar componentes hijos que ya están en el modelo
+            foreach (var child in Model.Children)
+            {
+                IComponentView componentView = null;
+
+                switch (child.Type?.ToLower())
+                {
+                    case "navbar-title-text":
+                    case "text":
+                        componentView = new TextView((TextComponent)child);
+                        break;
+                    case "menu":
+                        componentView = new MenuView((MenuComponent)child);
+                        break;
+                }
+
+                if (componentView != null)
+                {
+                    componentView.ComponentRemoveEvent += (s, e) => RemoveComponent(componentView);
+                    
+                    // Determinar en qué área agregar el componente
+                    if (child.Type?.ToLower() == "navbar-title-text" || child.Type?.ToLower() == "text")
+                    {
+                        TitleDropArea.Children.Add((UserControl)componentView);
+                    }
+                    else if (child.Type?.ToLower() == "menu")
+                    {
+                        MenuDropArea.Children.Add((UserControl)componentView);
+                    }
+                }
+            }
         }
 
         private void RemoveComponent(IComponentView componentView)

@@ -25,12 +25,22 @@
             <Menu Background="#243647" Foreground="White">
                 <MenuItem Header="_File">
                     <MenuItem Foreground="Black" Header="_New" />
-                    <MenuItem Foreground="Black" Header="_Save" />
-                    <MenuItem Foreground="Black" Header="_Load" />
-                    <MenuItem
+                    <MenuItem 
+                        Command="{Binding ImportProjectCommand}"
+                        Foreground="Black" 
+                        Header="_Import Project" />
+                    <MenuItem 
+                        Command="{Binding ExportProjectCommand}"
+                        Foreground="Black" 
+                        Header="_Export Project" />
+                     <MenuItem 
                         Click="Export_Click"
-                        Foreground="Black"
+                        Foreground="Black" 
                         Header="_Export" />
+                    <MenuItem 
+                        Command="{Binding ClearCanvasCommand}"
+                        Foreground="Black" 
+                        Header="_Clear Canvas" />
                     <Separator />
                     <MenuItem
                         Click="Exit_Click"
