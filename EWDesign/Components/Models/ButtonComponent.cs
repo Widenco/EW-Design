@@ -2,6 +2,7 @@
 using EWDesign.Core;
 using EWDesign.Interfaces;
 using EWDesign.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class ButtonComponent : ComponentModel, ICodeGeneratable
     {
         private TextComponent _textContent;
@@ -25,6 +27,7 @@ namespace EWDesign.Components.Models
         private double _width = 200;
 
         [EditableProperty("Button Width")]
+        [JsonProperty]
         public double Width
         {
             get => _width;
@@ -34,6 +37,7 @@ namespace EWDesign.Components.Models
         private double _heigth = 40;
 
         [EditableProperty("Button Height")]
+        [JsonProperty]
         public double Height
         {
             get => _heigth;
@@ -51,6 +55,7 @@ namespace EWDesign.Components.Models
         private Brush _background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6C63FF"));
 
         [EditableProperty("Button Background Color")]
+        [JsonProperty]
         public Brush Background
         {
             get => _background;
@@ -60,6 +65,7 @@ namespace EWDesign.Components.Models
         private double _fontSize = 18;
 
         [EditableProperty("Text Font Size")]
+        [JsonProperty]
         public double FontSize
         {
             get => _fontSize;
@@ -67,8 +73,6 @@ namespace EWDesign.Components.Models
         }
 
         private FontWeight _fontWeigh = FontWeights.SemiBold;
-
-        [EditableProperty("Text Font Weight")]
         public FontWeight FontWeight
         {
             get => _fontWeigh;

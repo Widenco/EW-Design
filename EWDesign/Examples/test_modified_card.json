@@ -1,0 +1,116 @@
+{
+  "projectName": "Test Modified Card",
+  "exportDate": "2024-01-15T14:30:25.1234567",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Test App",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio",
+      "Contacto"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Test Hero",
+      "Test Subtitle",
+      "Test Button"
+    ],
+    "featureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "heroSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
+        "type": "Text",
+        "text": "Test Hero",
+        "backgroundColor": null,
+        "foregroundColor": "#ffffff",
+        "fontSize": "48",
+        "fontWeight": "Bold",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440002",
+        "type": "Text",
+        "text": "Test Subtitle",
+        "backgroundColor": null,
+        "foregroundColor": "#cccccc",
+        "fontSize": "18",
+        "fontWeight": "Normal",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440003",
+        "type": "Button",
+        "text": "Test Button",
+        "backgroundColor": "#6C63FF",
+        "foregroundColor": "#ffffff",
+        "fontSize": "16",
+        "fontWeight": "SemiBold",
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 200,
+        "height": 40,
+        "children": []
+      }
+    ],
+    "featureSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
+        "type": "Card",
+        "backgroundColor": "#ffffff",
+        "width": 300,
+        "height": 200,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440005",
+            "type": "Title Text",
+            "text": "Mi Card Personalizado",
+            "textWrap": "Wrap",
+            "textAlignment": "Center",
+            "foregroundColor": "#333333",
+            "fontSize": "24",
+            "fontWeight": "Bold",
+            "margin": "0,0,0,10",
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440006",
+            "type": "Body Text",
+            "text": "Este es un card que he modificado personalmente para probar la exportación.",
+            "textWrap": "Wrap",
+            "textAlignment": "Left",
+            "foregroundColor": "#666666",
+            "fontSize": "14",
+            "fontWeight": "Normal",
+            "margin": "0,0,0,0",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "children": []
+  }
+}

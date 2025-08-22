@@ -1,0 +1,67 @@
+{
+  "ProjectName": "Test Single Card Simple",
+  "ExportDate": "2024-01-15T20:00:00.0000000",
+  "Version": "1.0",
+  "NavBar": {
+    "Type": "NavBar",
+    "Title": "Test App",
+    "BackgroundColor": "#f5f7fa",
+    "NavBarElements": [
+      "Inicio"
+    ],
+    "NavBarElementsColor": "#3a3f47",
+    "Children": []
+  },
+  "Body": {
+    "Type": "Body",
+    "BackgroundColor": "#1E1E2F",
+    "HeroSectionText": [
+      "Test Hero"
+    ],
+    "FeatureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "HeroSectionComponents": [],
+    "FeatureSectionComponents": [
+      {
+        "Id": "test-card-1",
+        "Type": "Card",
+        "BackgroundColor": "#2A2A40",
+        "Width": 300.0,
+        "Height": 170.0,
+        "Children": [
+          {
+            "Id": "test-title-1",
+            "Type": "Title Text",
+            "Text": "Mi Card Personalizado",
+            "ForegroundColor": "#FFFFFF",
+            "FontSize": "22",
+            "FontWeight": "SemiBold",
+            "TextAlignment": "Left",
+            "TextWrap": "NoWrap",
+            "Margin": "0,0,0,12",
+            "Children": []
+          },
+          {
+            "Id": "test-body-1",
+            "Type": "Body Text",
+            "Text": "Este es un card personalizado que debería aparecer al importar.",
+            "ForegroundColor": "#DADADA",
+            "FontSize": "16",
+            "FontWeight": "Black",
+            "TextAlignment": "Left",
+            "TextWrap": "Wrap",
+            "Margin": "0,0,0,0",
+            "Children": []
+          }
+        ]
+      }
+    ],
+    "Children": []
+  }
+}

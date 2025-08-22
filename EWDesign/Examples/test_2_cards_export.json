@@ -1,0 +1,208 @@
+{
+  "ProjectName": "Test_2_Cards_Export",
+  "ExportDate": "2025-08-20T23:50:00.0000000-06:00",
+  "Version": "1.0",
+  "NavBar": {
+    "Type": "NavBar",
+    "Title": "Mi Producto",
+    "BackgroundColor": "#F5F7FA",
+    "NavBarElements": [
+      "Inicio",
+      "Características",
+      "Precios",
+      "Contacto"
+    ],
+    "NavBarElementsColor": "#3A3F47",
+    "Children": [
+      {
+        "Id": "7fde726d-123d-46fb-aa6c-b56dd9e35d82",
+        "Type": "Navbar-Title-Text",
+        "Text": "Mi Producto",
+        "BackgroundColor": null,
+        "ForegroundColor": "#2A2E35",
+        "FontSize": "24",
+        "FontWeight": "Black",
+        "TextAlignment": "Left",
+        "TextWrap": "Wrap",
+        "Margin": "20,0,0,0",
+        "Width": 0.0,
+        "Height": 0.0,
+        "Children": []
+      },
+      {
+        "Id": "dff2a249-0181-4e00-9f3c-f9051b459339",
+        "Type": "Menu",
+        "Text": null,
+        "BackgroundColor": null,
+        "ForegroundColor": "#3A3F47",
+        "FontSize": null,
+        "FontWeight": null,
+        "TextAlignment": null,
+        "TextWrap": null,
+        "Margin": null,
+        "Width": 0.0,
+        "Height": 0.0,
+        "Children": []
+      }
+    ]
+  },
+  "Body": {
+    "Type": "Body",
+    "BackgroundColor": "#1E1E2F",
+    "HeroSectionText": [
+      "Impulsa tu productividad con MiProducto",
+      "Una solución simple, poderosa y accesible para optimizar tu flujo de trabajo.",
+      "Comienza ahora"
+    ],
+    "FeatureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "HeroSectionComponents": [
+      {
+        "Id": "006b71cb-950d-4850-a7c7-fb224cd3f59c",
+        "Type": "Title-Text",
+        "Text": "Impulsa tu productividad con MiProducto",
+        "BackgroundColor": null,
+        "ForegroundColor": "#FFFFFF",
+        "FontSize": "48",
+        "FontWeight": "Black",
+        "TextAlignment": "Center",
+        "TextWrap": "Wrap",
+        "Margin": "0,0,0,24",
+        "Width": 0.0,
+        "Height": 0.0,
+        "Children": []
+      },
+      {
+        "Id": "14a78b06-a43b-4a9a-bd7d-d821683e8155",
+        "Type": "Subtitle-Text",
+        "Text": "Una solución simple, poderosa y accesible para optimizar tu flujo de trabajo.",
+        "BackgroundColor": null,
+        "ForegroundColor": "#DADADA",
+        "FontSize": "20",
+        "FontWeight": "Black",
+        "TextAlignment": "Center",
+        "TextWrap": "Wrap",
+        "Margin": "0,0,0,40",
+        "Width": 0.0,
+        "Height": 0.0,
+        "Children": []
+      },
+      {
+        "Id": "be58bdbb-c33b-4280-ba20-b859470c35bb",
+        "Type": "Button",
+        "Text": "Comienza ahora",
+        "BackgroundColor": "#6C63FF",
+        "ForegroundColor": "#FFFFFF",
+        "FontSize": "18",
+        "FontWeight": "SemiBold",
+        "TextAlignment": null,
+        "TextWrap": null,
+        "Margin": null,
+        "Width": 0.0,
+        "Height": 0.0,
+        "Children": []
+      }
+    ],
+    "FeatureSectionComponents": [
+      {
+        "Id": "card-1",
+        "Type": "Card",
+        "Text": null,
+        "BackgroundColor": "#2A2A40",
+        "ForegroundColor": null,
+        "FontSize": null,
+        "FontWeight": null,
+        "TextAlignment": null,
+        "TextWrap": null,
+        "Margin": null,
+        "Width": 300.0,
+        "Height": 170.0,
+        "Children": [
+          {
+            "Id": "title-1",
+            "Type": "Title Text",
+            "Text": "Fácil de usar",
+            "BackgroundColor": null,
+            "ForegroundColor": "#FFFFFF",
+            "FontSize": "22",
+            "FontWeight": "SemiBold",
+            "TextAlignment": "Left",
+            "TextWrap": "NoWrap",
+            "Margin": "0,0,0,12",
+            "Width": 0.0,
+            "Height": 0.0,
+            "Children": []
+          },
+          {
+            "Id": "body-1",
+            "Type": "Body Text",
+            "Text": "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+            "BackgroundColor": null,
+            "ForegroundColor": "#DADADA",
+            "FontSize": "16",
+            "FontWeight": "Black",
+            "TextAlignment": "Left",
+            "TextWrap": "Wrap",
+            "Margin": "0,0,0,0",
+            "Width": 0.0,
+            "Height": 0.0,
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Id": "card-2",
+        "Type": "Card",
+        "Text": null,
+        "BackgroundColor": "#2A2A40",
+        "ForegroundColor": null,
+        "FontSize": null,
+        "FontWeight": null,
+        "TextAlignment": null,
+        "TextWrap": null,
+        "Margin": null,
+        "Width": 300.0,
+        "Height": 170.0,
+        "Children": [
+          {
+            "Id": "title-2",
+            "Type": "Title Text",
+            "Text": "Altamente personalizable",
+            "BackgroundColor": null,
+            "ForegroundColor": "#FFFFFF",
+            "FontSize": "22",
+            "FontWeight": "SemiBold",
+            "TextAlignment": "Left",
+            "TextWrap": "NoWrap",
+            "Margin": "0,0,0,12",
+            "Width": 0.0,
+            "Height": 0.0,
+            "Children": []
+          },
+          {
+            "Id": "body-2",
+            "Type": "Body Text",
+            "Text": "Adapta la herramienta a tus necesidades sin complicaciones.",
+            "BackgroundColor": null,
+            "ForegroundColor": "#DADADA",
+            "FontSize": "16",
+            "FontWeight": "Black",
+            "TextAlignment": "Left",
+            "TextWrap": "Wrap",
+            "Margin": "0,0,0,0",
+            "Width": 0.0,
+            "Height": 0.0,
+            "Children": []
+          }
+        ]
+      }
+    ],
+    "Children": []
+  }
+}

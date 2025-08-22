@@ -1,0 +1,223 @@
+{
+  "projectName": "Proyecto de Ejemplo",
+  "exportDate": "2024-01-15T14:30:25.1234567",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Mi Aplicación Web",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio",
+      "Servicios",
+      "Portafolio",
+      "Contacto"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Bienvenido a Mi Aplicación",
+      "Una solución moderna y elegante para tus necesidades digitales",
+      "Comenzar Ahora"
+    ],
+    "featureSectionText": [
+      "Diseño Responsivo",
+      "Nuestras aplicaciones se adaptan perfectamente a cualquier dispositivo",
+      "Rendimiento Optimizado",
+      "Velocidad y eficiencia en cada interacción",
+      "Soporte 24/7",
+      "Estamos aquí para ayudarte en todo momento"
+    ],
+    "heroSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
+        "type": "Text",
+        "text": "Bienvenido a Mi Aplicación",
+        "backgroundColor": null,
+        "foregroundColor": "#ffffff",
+        "fontSize": "48",
+        "fontWeight": "Bold",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440002",
+        "type": "Text",
+        "text": "Una solución moderna y elegante para tus necesidades digitales",
+        "backgroundColor": null,
+        "foregroundColor": "#cccccc",
+        "fontSize": "18",
+        "fontWeight": "Normal",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440003",
+        "type": "Button",
+        "text": "Comenzar Ahora",
+        "backgroundColor": "#6C63FF",
+        "foregroundColor": "#ffffff",
+        "fontSize": "16",
+        "fontWeight": "SemiBold",
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 200,
+        "height": 40,
+        "children": []
+      }
+    ],
+    "featureSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
+        "type": "Card",
+        "text": null,
+        "backgroundColor": "#2A2A40",
+        "foregroundColor": null,
+        "fontSize": null,
+        "fontWeight": null,
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 300,
+        "height": 170,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440007",
+            "type": "Title Text",
+            "text": "Diseño Responsivo",
+            "backgroundColor": null,
+            "foregroundColor": "#ffffff",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "width": 0,
+            "height": 0,
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440008",
+            "type": "Body Text",
+            "text": "Nuestras aplicaciones se adaptan perfectamente a cualquier dispositivo",
+            "backgroundColor": null,
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Normal",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "width": 0,
+            "height": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440005",
+        "type": "Card",
+        "text": null,
+        "backgroundColor": "#2A2A40",
+        "foregroundColor": null,
+        "fontSize": null,
+        "fontWeight": null,
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 300,
+        "height": 170,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440009",
+            "type": "Title Text",
+            "text": "Rendimiento Optimizado",
+            "backgroundColor": null,
+            "foregroundColor": "#ffffff",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "width": 0,
+            "height": 0,
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440010",
+            "type": "Body Text",
+            "text": "Velocidad y eficiencia en cada interacción",
+            "backgroundColor": null,
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Normal",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "width": 0,
+            "height": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440006",
+        "type": "Card",
+        "text": null,
+        "backgroundColor": "#2A2A40",
+        "foregroundColor": null,
+        "fontSize": null,
+        "fontWeight": null,
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 300,
+        "height": 170,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440011",
+            "type": "Title Text",
+            "text": "Soporte 24/7",
+            "backgroundColor": null,
+            "foregroundColor": "#ffffff",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "width": 0,
+            "height": 0,
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440012",
+            "type": "Body Text",
+            "text": "Estamos aquí para ayudarte en todo momento",
+            "backgroundColor": null,
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Normal",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "width": 0,
+            "height": 0,
+            "children": []
+          }
+        ]
+      }
+    ],
+    "children": []
+  }
+}

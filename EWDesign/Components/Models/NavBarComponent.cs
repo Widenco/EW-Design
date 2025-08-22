@@ -1,6 +1,7 @@
 ﻿using EWDesign.Components.Views;
 using EWDesign.Core;
 using EWDesign.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 
 namespace EWDesign.Components.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class NavBarComponent : ComponentModel
     {
         private TextComponent _title;
@@ -32,6 +34,7 @@ namespace EWDesign.Components.Models
         private Brush _backgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f5f7fa"));
 
         [EditableProperty("Background Color")]
+        [JsonProperty]
         public Brush BackgroundColor 
         { 
             get => _backgroundColor; 
@@ -39,7 +42,15 @@ namespace EWDesign.Components.Models
         }
         public ObservableCollection<string> NavbarElementsText { get; set; }
 
-        public string NavBarElementsColor { get; set; } = "#3a3f47";
+        private Brush _navBarElementsColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3f47"));
+
+        [EditableProperty("NavBar Elements Color")]
+        [JsonProperty]
+        public Brush NavBarElementsColor
+        {
+            get => _navBarElementsColor;
+            set => SetProperty(ref _navBarElementsColor, value);
+        }
 
         public NavBarComponent() 
         { 

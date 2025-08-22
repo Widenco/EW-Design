@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -97,9 +101,10 @@
       <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
+    <Compile Include="Core\Code Generator\ComponentConverter.cs" />
     <Compile Include="Core\Code Generator\ComponentType.cs" />
     <Compile Include="Core\Code Generator\Generator.cs" />
-    <Compile Include="Core\Code Generator\Interpreter.cs" />
+    <Compile Include="Core\Code Generator\ProjectMetadata.cs" />
     <Compile Include="Core\ColorToHexConverter.cs" />
     <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />
@@ -112,7 +117,8 @@
     <Compile Include="Model\ComponentModel.cs" />
     <Compile Include="Model\ComponentPaletteItem.cs" />
     <Compile Include="Model\IconModel.cs" />
-    <Compile Include="Model\RawComponentData.cs" />
+    <Compile Include="Model\ProjectData.cs" />
+    <Compile Include="Services\ProjectService.cs" />
     <Compile Include="ViewModel\BuilderViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewViewModel.cs" />
@@ -220,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Documentation\ExportImportGuide.md" />
+    <None Include="Examples\ejemplo_proyecto.json" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\newPageIcon.png" />

@@ -1,0 +1,103 @@
+{
+  "projectName": "Test Removed Cards",
+  "exportDate": "2024-01-15T14:30:25.1234567",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Test App",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio",
+      "Contacto"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Test Hero",
+      "Test Subtitle",
+      "Test Button"
+    ],
+    "featureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "heroSectionComponents": [],
+    "featureSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
+        "type": "Card",
+        "backgroundColor": "#ffffff",
+        "width": 300,
+        "height": 200,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440002",
+            "type": "Title Text",
+            "text": "Fácil de usar",
+            "textWrap": "Wrap",
+            "textAlignment": "Center",
+            "foregroundColor": "#333333",
+            "fontSize": "24",
+            "fontWeight": "Bold",
+            "margin": "0,0,0,10",
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440003",
+            "type": "Body Text",
+            "text": "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+            "textWrap": "Wrap",
+            "textAlignment": "Left",
+            "foregroundColor": "#666666",
+            "fontSize": "14",
+            "fontWeight": "Normal",
+            "margin": "0,0,0,0",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
+        "type": "Card",
+        "backgroundColor": "#ffffff",
+        "width": 300,
+        "height": 200,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440005",
+            "type": "Title Text",
+            "text": "Altamente personalizable",
+            "textWrap": "Wrap",
+            "textAlignment": "Center",
+            "foregroundColor": "#333333",
+            "fontSize": "24",
+            "fontWeight": "Bold",
+            "margin": "0,0,0,10",
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440006",
+            "type": "Body Text",
+            "text": "Adapta la herramienta a tus necesidades sin complicaciones.",
+            "textWrap": "Wrap",
+            "textAlignment": "Left",
+            "foregroundColor": "#666666",
+            "fontSize": "14",
+            "fontWeight": "Normal",
+            "margin": "0,0,0,0",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "children": []
+  }
+}

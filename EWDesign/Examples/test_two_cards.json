@@ -1,0 +1,173 @@
+{
+  "projectName": "Test Two Cards",
+  "exportDate": "2024-01-15T14:30:25.1234567",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Test App",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio",
+      "Contacto"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Test Hero",
+      "Test Subtitle",
+      "Test Button"
+    ],
+    "featureSectionText": [
+      "Feature 1",
+      "Description 1",
+      "Feature 2",
+      "Description 2"
+    ],
+    "heroSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
+        "type": "Text",
+        "text": "Test Hero",
+        "backgroundColor": null,
+        "foregroundColor": "#ffffff",
+        "fontSize": "48",
+        "fontWeight": "Bold",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440002",
+        "type": "Text",
+        "text": "Test Subtitle",
+        "backgroundColor": null,
+        "foregroundColor": "#cccccc",
+        "fontSize": "18",
+        "fontWeight": "Normal",
+        "textAlignment": "Center",
+        "textWrap": "Wrap",
+        "margin": "0,0,0,0",
+        "width": 0,
+        "height": 0,
+        "children": []
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440003",
+        "type": "Button",
+        "text": "Test Button",
+        "backgroundColor": "#6C63FF",
+        "foregroundColor": "#ffffff",
+        "fontSize": "16",
+        "fontWeight": "SemiBold",
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 200,
+        "height": 40,
+        "children": []
+      }
+    ],
+    "featureSectionComponents": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
+        "type": "Card",
+        "text": null,
+        "backgroundColor": "#2A2A40",
+        "foregroundColor": null,
+        "fontSize": null,
+        "fontWeight": null,
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 300,
+        "height": 170,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440005",
+            "type": "Title Text",
+            "text": "Feature 1",
+            "backgroundColor": null,
+            "foregroundColor": "#ffffff",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "width": 0,
+            "height": 0,
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440006",
+            "type": "Body Text",
+            "text": "Description 1",
+            "backgroundColor": null,
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Normal",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "width": 0,
+            "height": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440007",
+        "type": "Card",
+        "text": null,
+        "backgroundColor": "#2A2A40",
+        "foregroundColor": null,
+        "fontSize": null,
+        "fontWeight": null,
+        "textAlignment": null,
+        "textWrap": null,
+        "margin": null,
+        "width": 300,
+        "height": 170,
+        "children": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440008",
+            "type": "Title Text",
+            "text": "Feature 2",
+            "backgroundColor": null,
+            "foregroundColor": "#ffffff",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "width": 0,
+            "height": 0,
+            "children": []
+          },
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440009",
+            "type": "Body Text",
+            "text": "Description 2",
+            "backgroundColor": null,
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Normal",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "width": 0,
+            "height": 0,
+            "children": []
+          }
+        ]
+      }
+    ],
+    "children": []
+  }
+}

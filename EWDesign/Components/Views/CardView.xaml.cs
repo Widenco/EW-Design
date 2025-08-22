@@ -45,15 +45,66 @@ namespace EWDesign.Components.Views
 
         public void InitComponents()
         {
-            var CardComponents = new ObservableCollection<TextView>
+            System.Diagnostics.Debug.WriteLine($"=== DEBUG: CardView.InitComponents ===");
+            System.Diagnostics.Debug.WriteLine($"CardModel.Title: {(CardModel.Title != null ? "EXISTS" : "NULL")}");
+            System.Diagnostics.Debug.WriteLine($"CardModel.Body: {(CardModel.Body != null ? "EXISTS" : "NULL")}");
+            System.Diagnostics.Debug.WriteLine($"CardModel.Children.Count: {CardModel.Children?.Count ?? 0}");
+            
+            // Limpiar componentes existentes
+            Card.Children.Clear();
+            
+            // Si Title y Body existen, crear vistas para ellos
+            if (CardModel.Title != null)
             {
-                new TextView(CardModel.Title),
-                new TextView(CardModel.Body)
-            };
-
-            foreach (var item in CardComponents)
+                var titleView = new TextView(CardModel.Title);
+                Card.Children.Add(titleView);
+                System.Diagnostics.Debug.WriteLine($"Added Title view: {CardModel.Title.Text}");
+            }
+            
+            if (CardModel.Body != null)
             {
-                Card.Children.Add(item);
+                var bodyView = new TextView(CardModel.Body);
+                Card.Children.Add(bodyView);
+                System.Diagnostics.Debug.WriteLine($"Added Body view: {CardModel.Body.Text}");
+            }
+            
+            // Agregar componentes hijos adicionales si existen
+            if (CardModel.Children != null && CardModel.Children.Count > 2)
+            {
+                System.Diagnostics.Debug.WriteLine($"Adding {CardModel.Children.Count - 2} additional children");
+                foreach (var child in CardModel.Children.Skip(2))
+                {
+                    IComponentView childView = CreateComponentView(child);
+                    if (childView != null)
+                    {
+                        Card.Children.Add((UIElement)childView);
+                        System.Diagnostics.Debug.WriteLine($"Added additional child: {child.Type}");
+                    }
+                }
+            }
+            
+            System.Diagnostics.Debug.WriteLine($"Final Card.Children.Count: {Card.Children.Count}");
+        }
+        
+        // Método auxiliar para crear vistas de componentes hijos
+        private IComponentView CreateComponentView(ComponentModel component)
+        {
+            switch (component.Type?.ToLower())
+            {
+                case "text":
+                case "title text":
+                case "body text":
+                case "title-text":
+                case "subtitle-text":
+                    return new TextView((TextComponent)component);
+                case "button":
+                    return new ButtonView((ButtonComponent)component);
+                case "card":
+                    return new CardView((CardComponent)component);
+                case "menu":
+                    return new MenuView((MenuComponent)component);
+                default:
+                    return null;
             }
         }
 

@@ -1,0 +1,33 @@
+{
+  "projectName": "Test Debug Export",
+  "exportDate": "2024-01-15T18:00:00.0000000",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Test App",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Test Hero"
+    ],
+    "featureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "heroSectionComponents": [],
+    "featureSectionComponents": [],
+    "children": []
+  }
+}

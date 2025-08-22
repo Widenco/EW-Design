@@ -1,0 +1,100 @@
+{
+  "projectName": "Test Partial Cards",
+  "exportDate": "2024-01-15T19:00:00.0000000",
+  "version": "1.0",
+  "navBar": {
+    "type": "NavBar",
+    "title": "Test App",
+    "backgroundColor": "#f5f7fa",
+    "navBarElements": [
+      "Inicio"
+    ],
+    "navBarElementsColor": "#3a3f47",
+    "children": []
+  },
+  "body": {
+    "type": "Body",
+    "backgroundColor": "#1E1E2F",
+    "heroSectionText": [
+      "Test Hero"
+    ],
+    "featureSectionText": [
+      "Fácil de usar",
+      "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+      "Altamente personalizable",
+      "Adapta la herramienta a tus necesidades sin complicaciones.",
+      "Soporte dedicado",
+      "Te acompañamos en cada paso con asistencia rápida y confiable."
+    ],
+    "heroSectionComponents": [],
+    "featureSectionComponents": [
+      {
+        "id": "card-1",
+        "type": "Card",
+        "backgroundColor": "#2A2A40",
+        "width": 300.0,
+        "height": 170.0,
+        "children": [
+          {
+            "id": "title-1",
+            "type": "Title Text",
+            "text": "Fácil de usar",
+            "foregroundColor": "#FFFFFF",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "children": []
+          },
+          {
+            "id": "body-1",
+            "type": "Body Text",
+            "text": "Diseñado pensando en la simplicidad y eficiencia, sin curva de aprendizaje.",
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Black",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "card-2",
+        "type": "Card",
+        "backgroundColor": "#2A2A40",
+        "width": 300.0,
+        "height": 170.0,
+        "children": [
+          {
+            "id": "title-2",
+            "type": "Title Text",
+            "text": "Altamente personalizable",
+            "foregroundColor": "#FFFFFF",
+            "fontSize": "22",
+            "fontWeight": "SemiBold",
+            "textAlignment": "Left",
+            "textWrap": "NoWrap",
+            "margin": "0,0,0,12",
+            "children": []
+          },
+          {
+            "id": "body-2",
+            "type": "Body Text",
+            "text": "Adapta la herramienta a tus necesidades sin complicaciones.",
+            "foregroundColor": "#DADADA",
+            "fontSize": "16",
+            "fontWeight": "Black",
+            "textAlignment": "Left",
+            "textWrap": "Wrap",
+            "margin": "0,0,0,0",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "children": []
+  }
+}
