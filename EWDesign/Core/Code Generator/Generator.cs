@@ -277,32 +277,5 @@ namespace EWDesign.Core.Code_Generator
                 }
             }
         }
-
-        public void SaveProject(ObservableCollection<IComponentView> page)
-        {
-            var interpreter = new Interpreter();
-            var browser = new System.Windows.Forms.SaveFileDialog();
-            browser.Title = "Save Project";
-            browser.Filter = "Json files (*.json)|*.json";
-            var result = browser.ShowDialog();
-            var components = new ObservableCollection<ComponentModel>();
-
-            foreach (var item in page)
-            {
-                components.Add(item.Model);
-            }
-
-            if(result == System.Windows.Forms.DialogResult.OK)
-            {
-                var projectName = Path.GetFileNameWithoutExtension(browser.FileName);
-                var project = new ProjectMetadata
-                {
-                    ProjectName = projectName,
-                    Components = components.ToList()
-                };
-                
-                interpreter.SaveProject(project, browser.FileName);
-            }
-        }
     }
 }

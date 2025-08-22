@@ -25,7 +25,6 @@
             <Menu Background="#243647" Foreground="White">
                 <MenuItem Header="_File">
                     <MenuItem Foreground="Black" Header="_New" />
-<<<<<<< HEAD
                     <MenuItem 
                         Command="{Binding ImportProjectCommand}"
                         Foreground="Black" 
@@ -35,11 +34,6 @@
                         Foreground="Black" 
                         Header="_Export Project" />
                      <MenuItem 
-=======
-                    <MenuItem Foreground="Black" Header="_Save" Click="Save_Click" />
-                    <MenuItem Foreground="Black" Header="_Load" />
-                    <MenuItem
->>>>>>> dcf3ddce65651c2a44900a931eabf05acbe48e57
                         Click="Export_Click"
                         Foreground="Black" 
                         Header="_Export" />

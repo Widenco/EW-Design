@@ -210,12 +210,6 @@ namespace EWDesign.View
             gen.GenerateFiles(Model.DroppedComponents);
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            Generator gen = new Generator();
-            gen.SaveProject(Model.DroppedComponents);
-        }
-
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
