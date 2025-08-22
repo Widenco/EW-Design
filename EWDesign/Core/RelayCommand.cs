@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace EWDesign.Core
+namespace WpfApp1.Core
 {
-    public class RelayCommand : ICommand
+    class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;

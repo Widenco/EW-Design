@@ -1,54 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\",
+  "WorkspaceRootPath": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\desktop\\ew-design\\ewdesign\\viewmodel\\builderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\viewmodel\\builderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\source\\repos\\ewdesign\\ewdesign\\components\\models\\cardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\cardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\desktop\\ew-design\\ewdesign\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\desktop\\ew-design\\ewdesign\\model\\projectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\model\\projectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\core\\code generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\core\\code generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\view\\builderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\view\\builderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\components\\models\\bodycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\bodycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\desktop\\ew-design\\ewdesign\\components\\views\\navbarview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\views\\navbarview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\components\\models\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\components\\views\\bodyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\views\\bodyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\desktop\\ew-design\\ewdesign\\view\\builderview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\view\\builderview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\components\\models\\buttoncomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\ewdesign\\components\\models\\buttoncomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\buttoncomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\ewdesign\\components\\models\\cardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\cardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\ewdesign\\components\\models\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\source\\repos\\ewdesign\\ewdesign\\core\\code generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\core\\code generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|c:\\users\\denzell connolly\\source\\repos\\ewdesign\\ewdesign\\components\\views\\bodyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\views\\bodyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\ewdesign\\components\\models\\bodycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\components\\models\\bodycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\ewdesign\\view\\builderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{856A0E39-0BEA-459D-B528-3BA6BCEB5F95}|EWDesign\\EWDesign.csproj|solutionrelative:ewdesign\\view\\builderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,106 +38,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NavBarView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Views\\NavBarView.xaml.cs",
-              "RelativeDocumentMoniker": "EWDesign\\Components\\Views\\NavBarView.xaml.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Views\\NavBarView.xaml.cs",
-              "RelativeToolTip": "EWDesign\\Components\\Views\\NavBarView.xaml.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T23:19:36.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BuilderViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\ViewModel\\BuilderViewModel.cs",
-              "RelativeDocumentMoniker": "EWDesign\\ViewModel\\BuilderViewModel.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\ViewModel\\BuilderViewModel.cs",
-              "RelativeToolTip": "EWDesign\\ViewModel\\BuilderViewModel.cs",
-              "ViewState": "AgIAAAsBAAAAAAAAAAAQwO8AAAANAAAAAAAAAA==",
+              "Title": "CardComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\CardComponent.cs",
+              "RelativeDocumentMoniker": "EWDesign\\Components\\Models\\CardComponent.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\CardComponent.cs",
+              "RelativeToolTip": "EWDesign\\Components\\Models\\CardComponent.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAuwFMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T23:17:50.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProjectService.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Services\\ProjectService.cs",
-              "RelativeDocumentMoniker": "EWDesign\\Services\\ProjectService.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Services\\ProjectService.cs",
-              "RelativeToolTip": "EWDesign\\Services\\ProjectService.cs",
-              "ViewState": "AgIAAOQBAAAAAAAAAAAewNIBAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T21:32:54.889Z",
+              "WhenOpened": "2025-08-12T21:57:48.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProjectData.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Model\\ProjectData.cs",
-              "RelativeDocumentMoniker": "EWDesign\\Model\\ProjectData.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Model\\ProjectData.cs",
-              "RelativeToolTip": "EWDesign\\Model\\ProjectData.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAwwEkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T21:29:07.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BuilderView.xaml",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\View\\BuilderView.xaml",
-              "RelativeDocumentMoniker": "EWDesign\\View\\BuilderView.xaml",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\View\\BuilderView.xaml",
-              "RelativeToolTip": "EWDesign\\View\\BuilderView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-18T21:08:54.928Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CardComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\CardComponent.cs",
-              "RelativeDocumentMoniker": "EWDesign\\Components\\Models\\CardComponent.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\CardComponent.cs",
-              "RelativeToolTip": "EWDesign\\Components\\Models\\CardComponent.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAmwFQAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T21:57:48.583Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "TextComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\TextComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\TextComponent.cs",
               "RelativeDocumentMoniker": "EWDesign\\Components\\Models\\TextComponent.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\TextComponent.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\TextComponent.cs",
               "RelativeToolTip": "EWDesign\\Components\\Models\\TextComponent.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAcwIAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAswIAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-10T05:22:39.83Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "BodyView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Views\\BodyView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Views\\BodyView.xaml.cs",
               "RelativeDocumentMoniker": "EWDesign\\Components\\Views\\BodyView.xaml.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Views\\BodyView.xaml.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Views\\BodyView.xaml.cs",
               "RelativeToolTip": "EWDesign\\Components\\Views\\BodyView.xaml.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAwwFsAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAIwF8AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T21:14:52.987Z",
               "EditorCaption": ""
@@ -166,9 +83,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "BodyComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\BodyComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\BodyComponent.cs",
               "RelativeDocumentMoniker": "EWDesign\\Components\\Models\\BodyComponent.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\BodyComponent.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\BodyComponent.cs",
               "RelativeToolTip": "EWDesign\\Components\\Models\\BodyComponent.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -177,13 +94,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "BuilderView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\View\\BuilderView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\View\\BuilderView.xaml.cs",
               "RelativeDocumentMoniker": "EWDesign\\View\\BuilderView.xaml.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\View\\BuilderView.xaml.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\View\\BuilderView.xaml.cs",
               "RelativeToolTip": "EWDesign\\View\\BuilderView.xaml.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAcwB0AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAUwL4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-09T22:42:58.831Z",
               "EditorCaption": ""
@@ -192,24 +109,24 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Generator.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Core\\Code Generator\\Generator.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Core\\Code Generator\\Generator.cs",
               "RelativeDocumentMoniker": "EWDesign\\Core\\Code Generator\\Generator.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Core\\Code Generator\\Generator.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Core\\Code Generator\\Generator.cs",
               "RelativeToolTip": "EWDesign\\Core\\Code Generator\\Generator.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAcwJIAAACBAAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAcwJIAAACBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T06:42:18.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "ButtonComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\ButtonComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\ButtonComponent.cs",
               "RelativeDocumentMoniker": "EWDesign\\Components\\Models\\ButtonComponent.cs",
-              "ToolTip": "C:\\Users\\Denzell Connolly\\Desktop\\EW-Design\\EWDesign\\Components\\Models\\ButtonComponent.cs",
+              "ToolTip": "C:\\Users\\Denzell Connolly\\source\\repos\\EWDesign\\EWDesign\\Components\\Models\\ButtonComponent.cs",
               "RelativeToolTip": "EWDesign\\Components\\Models\\ButtonComponent.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAmwGgAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAzwGgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-09T21:55:33.354Z",
               "EditorCaption": ""

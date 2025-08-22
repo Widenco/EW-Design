@@ -1,9 +1,6 @@
 ﻿using EWDesign.Components.Models;
-using EWDesign.Components.Views;
 using EWDesign.Interfaces;
 using EWDesign.Model;
-using EWDesign.Services;
-using EWDesign.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,8 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using EWDesign.View;
-using System.IO;
+using WpfApp1.Core;
 
 namespace EWDesign.ViewModel
 {
@@ -56,18 +52,6 @@ namespace EWDesign.ViewModel
             }
         }
         public ObservableCollection<IComponentView> DroppedComponents { get; set; }
-
-        // Propiedades para los componentes principales
-        public NavBarComponent CurrentNavBar { get; set; }
-        public BodyComponent CurrentBody { get; set; }
-
-        // Comandos para exportar e importar
-        public RelayCommand ExportProjectCommand { get; set; }
-        public RelayCommand ImportProjectCommand { get; set; }
-        public RelayCommand ClearCanvasCommand { get; set; }
-
-        // Evento para notificar cuando se importan componentes
-        public event Action OnComponentsImported;
 
         public BuilderViewModel()
         {
@@ -124,158 +108,6 @@ namespace EWDesign.ViewModel
             });
 
             DroppedComponents = new ObservableCollection<IComponentView>();
-
-            // Inicializar comandos
-            ExportProjectCommand = new RelayCommand(ExportProject);
-            ImportProjectCommand = new RelayCommand(ImportProject);
-            ClearCanvasCommand = new RelayCommand(ClearCanvas);
-        }
-
-        private void ExportProject(object parameter)
-        {
-            try
-            {
-                // Verificar que tenemos los componentes necesarios
-                if (CurrentNavBar == null || CurrentBody == null)
-                {
-                    MessageBox.Show("Debe tener un NavBar y un Body en el lienzo para exportar el proyecto.", 
-                        "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Crear diálogo para guardar archivo
-                var saveFileDialog = new Microsoft.Win32.SaveFileDialog
-                {
-                    Filter = "Archivos JSON (*.json)|*.json|Todos los archivos (*.*)|*.*",
-                    DefaultExt = "json",
-                    FileName = $"Proyecto_{DateTime.Now:yyyyMMdd_HHmmss}.json"
-                };
-
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    bool success = ProjectService.Instance.ExportProject(CurrentNavBar, CurrentBody, saveFileDialog.FileName);
-                    if (success)
-                    {
-                        BuilderView.Instance.Title = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
-                        MessageBox.Show("Proyecto exportado exitosamente.", 
-                            "Exportación Completada", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al exportar el proyecto: {ex.Message}", 
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void ImportProject(object parameter)
-        {
-            try
-            {
-                // Crear diálogo para abrir archivo
-                var openFileDialog = new Microsoft.Win32.OpenFileDialog
-                {
-                    Filter = "Archivos JSON (*.json)|*.json|Todos los archivos (*.*)|*.*",
-                    DefaultExt = "json"
-                };
-
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    var (navbar, body) = ProjectService.Instance.ImportProject(openFileDialog.FileName);
-                    
-                    if (navbar != null && body != null)
-                    {
-                        // Limpiar el lienzo actual sin mostrar confirmación
-                        ClearCanvasSilently();
-                        
-                        // Cargar los componentes importados
-                        CurrentNavBar = navbar;
-                        CurrentBody = body;
-                        
-                        // Crear las vistas visuales para los componentes importados
-                        var navbarView = new EWDesign.Components.Views.NavBarView(navbar, true); // isImporting = true
-                        var bodyView = new EWDesign.Components.Views.BodyView(body, true); // isImporting = true
-                        
-                        // Configurar eventos de eliminación
-                        navbarView.ComponentRemoveEvent += (s, e) => RemoveComponentFromCanvas(navbarView);
-                        bodyView.ComponentRemoveEvent += (s, e) => RemoveComponentFromCanvas(bodyView);
-                        
-                        // Agregar a la colección de componentes
-                        DroppedComponents.Clear();
-                        DroppedComponents.Add(navbarView);
-                        DroppedComponents.Add(bodyView);
-                        
-                        // Notificar al BuilderView que debe actualizar la interfaz
-                        NotifyCanvasUpdate(navbarView, bodyView);
-                        BuilderView.Instance.Title = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-
-                        MessageBox.Show("Proyecto importado exitosamente. Los componentes están listos para usar.", 
-                            "Importación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al importar el proyecto: {ex.Message}", 
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void ClearCanvas(object parameter)
-        {
-            try
-            {
-                var result = MessageBox.Show("¿Está seguro de que desea limpiar el lienzo? Esta acción no se puede deshacer.", 
-                    "Confirmar Limpieza", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                
-                if (result == MessageBoxResult.Yes)
-                {
-                    ClearCanvasSilently();
-                    BuilderView.Instance.Title = "Untitled Project";
-
-                    MessageBox.Show("Lienzo limpiado exitosamente.", 
-                        "Limpieza Completada", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al limpiar el lienzo: {ex.Message}", 
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void ClearCanvasSilently()
-        {
-            CurrentNavBar = null;
-            CurrentBody = null;
-            DroppedComponents.Clear();
-            SelectedComponent = null;
-            
-            // Notificar al View que debe limpiar el lienzo visual
-            OnPropertyChanged(nameof(DroppedComponents));
-            OnComponentsImported?.Invoke();
-        }
-
-        private void RemoveComponentFromCanvas(IComponentView componentView)
-        {
-            DroppedComponents.Remove(componentView);
-            
-            if (componentView is EWDesign.Components.Views.NavBarView)
-            {
-                CurrentNavBar = null;
-            }
-            else if (componentView is EWDesign.Components.Views.BodyView)
-            {
-                CurrentBody = null;
-            }
-        }
-
-        private void NotifyCanvasUpdate(IComponentView navbarView, IComponentView bodyView)
-        {
-            // Notificar que se han importado componentes
-            OnPropertyChanged(nameof(DroppedComponents));
-            OnComponentsImported?.Invoke();
         }
     }
 }

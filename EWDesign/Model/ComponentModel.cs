@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
-using EWDesign.Core;
+using WpfApp1.Core;
 
 namespace EWDesign.Model
 {

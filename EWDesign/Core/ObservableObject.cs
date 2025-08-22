@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-namespace EWDesign.Core
+namespace WpfApp1.Core
 {
     public class ObservableObject : INotifyPropertyChanged
     {

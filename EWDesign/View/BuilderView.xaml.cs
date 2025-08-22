@@ -27,18 +27,13 @@ namespace EWDesign.View
     {
 
         public BuilderViewModel Model { get; }
-        public static Window Instance { get; private set; }
         public BuilderView()
         {
             Model = new BuilderViewModel();
             InitializeComponent();
             this.DataContext = Model;
-            this.Title = "Untitled Project";
-            Instance = this;
             this.PreviewMouseLeftButtonDown += BuilderView_PreviewMouseLeftButtonDown;
             
-            // Suscribirse al evento de importación de componentes
-            Model.OnComponentsImported += UpdateCanvasFromViewModel;
         }
 
         private void ComponentItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -66,16 +61,12 @@ namespace EWDesign.View
                 switch (component.Type)
                 {
                     case "NavBar":
-                        newElement = new Components.Views.NavBarView((NavBarComponent)component, false); // isImporting = false
+                        newElement = new Components.Views.NavBarView((NavBarComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
-                        // Asignar al CurrentNavBar del ViewModel
-                        Model.CurrentNavBar = (NavBarComponent)component;
                         break;
                     case "Body":
-                        newElement = new Components.Views.BodyView((BodyComponent)component, false); // isImporting = false
+                        newElement = new Components.Views.BodyView((BodyComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
-                        // Asignar al CurrentBody del ViewModel
-                        Model.CurrentBody = (BodyComponent)component;
                         break;
                 }
                     if (newElement != null)
@@ -141,16 +132,6 @@ namespace EWDesign.View
             {
                 DropArea.Children.Remove((UserControl)componentView);
                 Model.DroppedComponents.Remove(componentView);
-                
-                // Limpiar las propiedades principales si se elimina el componente correspondiente
-                if (componentView is NavBarView)
-                {
-                    Model.CurrentNavBar = null;
-                }
-                else if (componentView is BodyView)
-                {
-                    Model.CurrentBody = null;
-                }
             }
         }
 
@@ -213,42 +194,6 @@ namespace EWDesign.View
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        // Método para actualizar la interfaz visual cuando se importan componentes
-        public void UpdateCanvasFromViewModel()
-        {
-            // Limpiar el lienzo visual
-            DropArea.Children.Clear();
-            
-            // Agregar los componentes del ViewModel al lienzo visual
-            foreach (var componentView in Model.DroppedComponents)
-            {
-                if (componentView is UserControl userControl)
-                {
-                    // Determinar la posición de inserción
-                    if (componentView is NavBarView)
-                    {
-                        componentView.ComponentRemoveEvent += (s,a) => RemoveComponent(componentView);
-                        DropArea.Children.Insert(0, userControl);
-                    }
-                    else
-                    {
-                        componentView.ComponentRemoveEvent += (s, a) => RemoveComponent(componentView);
-                        DropArea.Children.Add(userControl);
-                    }
-                }
-            }
-        }
-
-        protected override void OnClosed(EventArgs e)
-        {
-            // Limpiar la suscripción al evento
-            if (Model != null)
-            {
-                Model.OnComponentsImported -= UpdateCanvasFromViewModel;
-            }
-            base.OnClosed(e);
         }
     }
 }
