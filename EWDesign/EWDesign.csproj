@@ -78,6 +78,7 @@
     <Compile Include="Components\Models\BodyComponent.cs" />
     <Compile Include="Components\Models\ButtonComponent.cs" />
     <Compile Include="Components\Models\CardComponent.cs" />
+    <Compile Include="Components\Models\FooterComponent.cs" />
     <Compile Include="Components\Models\MenuComponent.cs" />
     <Compile Include="Components\Models\MenuItemComponent.cs" />
     <Compile Include="Components\Models\NavBarComponent.cs" />
@@ -91,6 +92,9 @@
     <Compile Include="Components\Views\CardView.xaml.cs">
       <DependentUpon>CardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Views\FooterView.xaml.cs">
+      <DependentUpon>FooterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -101,10 +105,8 @@
       <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\BoolToVisibilityConverter.cs" />
-    <Compile Include="Core\Code Generator\ComponentConverter.cs" />
     <Compile Include="Core\Code Generator\ComponentType.cs" />
     <Compile Include="Core\Code Generator\Generator.cs" />
-    <Compile Include="Core\Code Generator\ProjectMetadata.cs" />
     <Compile Include="Core\ColorToHexConverter.cs" />
     <Compile Include="Core\ContextMenuHelper.cs" />
     <Compile Include="Core\EditablePropertyAttribute.cs" />
@@ -144,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Views\CardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\FooterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

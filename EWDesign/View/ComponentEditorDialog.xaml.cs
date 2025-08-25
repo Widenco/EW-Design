@@ -41,12 +41,15 @@ namespace EWDesign.View
             // 1. Renderizar propiedades del componente principal
             AddSection(_model, $"{_model.Type} Properties");
 
-            // 2. Renderizar propiedades de subcomponentes si los hay
-            foreach (var child in _model.Children)
+            // 2. Renderizar propiedades de subcomponentes si no son componentes de layout
+            if(_model.Type != "NavBar" && _model.Type != "Body" && _model.Type != "Footer")
             {
-                AddSection(child, $"{child.Type} Properties");
+                foreach (var child in _model.Children)
+                {
+                    AddSection(child, $"{child.Type} Properties");
+                }
             }
-
+           
             // 3. Botón de guardar
             var saveBtn = new Button
             {

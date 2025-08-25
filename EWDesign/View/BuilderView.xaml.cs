@@ -77,10 +77,17 @@ namespace EWDesign.View
                         // Asignar al CurrentBody del ViewModel
                         Model.CurrentBody = (BodyComponent)component;
                         break;
+                    case "Footer":
+                        newElement = new Components.Views.FooterView((FooterComponent)component, false);
+                        newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
+                        // Asignar al CurrentFooter del ViewModel
+                        Model.CurrentFooter = (FooterComponent)component;
+                        break;
                 }
                     if (newElement != null)
                     {
                         var panel = sender as StackPanel;
+                        
 
                     // Verificar duplicados
                     bool alreadyExists = panel.Children
@@ -97,39 +104,48 @@ namespace EWDesign.View
                         {
                             panel.Children.Insert(0, (UserControl)newElement);
                             Model.DroppedComponents.Insert(0, newElement);
-                            
+                        }else if(newElement is FooterView)
+                    {
+                        var body = Model.DroppedComponents.FirstOrDefault(c => c.Model.Type == "Body");
+                        if(body != null)
+                        {
+                            panel.Children.Add((UserControl)newElement);
+                            Model.DroppedComponents.Add(newElement);
                         }
                         else
                         {
-                            // Buscar la posición del NavBar si existe
-                            int navbarIndex = -1;
-                            for (int i = 0; i < panel.Children.Count; i++)
+                            MessageBox.Show($"Para agregar un componente '{component.Type}' es necesario un Body.", "Jerarquia de Componentes", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                        else
+                    {
+                        // Buscar la posición del NavBar si existe
+                        int navbarIndex = -1;
+                        for (int i = 0; i < panel.Children.Count; i++)
+                        {
+                            if (panel.Children[i] is StackPanel childContainer)
                             {
-                                if (panel.Children[i] is StackPanel childContainer)
+                                var childUC = childContainer.Children.OfType<UserControl>().FirstOrDefault();
+                                if (childUC is NavBarView)
                                 {
-                                    var childUC = childContainer.Children.OfType<UserControl>().FirstOrDefault();
-                                    if (childUC is NavBarView)
-                                    {
-                                        navbarIndex = i;
-                                        break;
-                                    }
+                                    navbarIndex = i;
+                                    break;
                                 }
                             }
-
-                            // Insertar después del NavBar o al final si no existe
-                            if (navbarIndex != -1)
-                            {
-                                panel.Children.Insert(navbarIndex + 1, (UserControl)newElement);
-                                Model.DroppedComponents.Insert(navbarIndex + 1, newElement);
-                            }
-                            else
-                            {
-                                panel.Children.Add((UserControl)newElement);
-                                Model.DroppedComponents.Add(newElement);
-                                
-                                
-                            }
                         }
+
+                        // Insertar después del NavBar o al final si no existe
+                        if (navbarIndex != -1)
+                        {
+                            panel.Children.Insert(navbarIndex + 1, (UserControl)newElement);
+                            Model.DroppedComponents.Insert(navbarIndex + 1, newElement);
+                        }
+                        else
+                        {
+                            panel.Children.Add((UserControl)newElement);
+                            Model.DroppedComponents.Add(newElement);
+                        }
+                    }
                     
                 }
             }

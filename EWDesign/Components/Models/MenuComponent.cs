@@ -39,7 +39,7 @@ namespace EWDesign.Components.Models
             set 
             { 
                 SetProperty(ref _fontSize, value);
-                SyncFontSizeToTextComponents();
+                SyncPropertiesToTextComponents();
             }
         }
 
@@ -50,7 +50,11 @@ namespace EWDesign.Components.Models
         public Brush ForeGround
         {
             get => _foreground;
-            set => SetProperty(ref _foreground, value);
+            set
+            {
+                SetProperty(ref _foreground, value);
+                SyncPropertiesToTextComponents();
+            }
         }
 
         private Thickness _margin = new Thickness(16, 0, 0, 0);
@@ -74,11 +78,12 @@ namespace EWDesign.Components.Models
             }
         }
 
-        private void SyncFontSizeToTextComponents()
+        private void SyncPropertiesToTextComponents()
         {
             foreach (var item in MenuItems)
             {
                 item.FontSize = this.FontSize;
+                item.ForeGround = this.ForeGround;
             }
         }
 
@@ -138,6 +143,61 @@ namespace EWDesign.Components.Models
 
                 _menuItems.Add(menuItem);
             }  
+        }
+
+        public MenuComponent(Brush foreground, bool delegateMenu)
+        {
+            Type = "Menu";
+
+            _menuItemsText = new string[]
+            {
+                "Inicio",
+                "Caracteristicas",
+                "Precio",
+                "Contacto"
+            };
+
+            _menuItems = new ObservableCollection<TextComponent>();
+
+            foreach (var item in _menuItemsText)
+            {
+                var menuItem = new TextComponent
+                {
+                    Text = item,
+                    Margin = Margin,
+                    FontSize = FontSize,
+                    ForeGround = foreground,
+                    DelegateContextMenu = true
+                };
+
+                _menuItems.Add(menuItem);
+            }
+
+            this.DelegateContextMenu = delegateMenu;
+        }
+        public MenuComponent(string[] menuItemTexts, bool delegateMenu, Brush foreground)
+        {
+            Type = "Menu";
+
+            _menuItemsText = menuItemTexts;
+
+            _menuItems = new ObservableCollection<TextComponent>();
+
+            foreach (var item in _menuItemsText)
+            {
+                var menuItem = new TextComponent
+                {
+                    Text = item,
+                    Margin = Margin,
+                    FontSize = FontSize,
+                    ForeGround = foreground,
+                    DelegateContextMenu = true
+                };
+
+                _menuItems.Add(menuItem);
+            }
+
+            this.DelegateContextMenu = delegateMenu;
         }
     }
 }

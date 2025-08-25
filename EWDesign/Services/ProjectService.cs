@@ -19,14 +19,14 @@ namespace EWDesign.Services
 
         private ProjectService() { }
 
-        public bool ExportProject(NavBarComponent navbar, BodyComponent body, string filePath)
+        public bool ExportProject(NavBarComponent navbar, BodyComponent body, FooterComponent footer, string filePath)
         {
             try
             {
                 // Validar que los componentes no sean null
-                if (navbar == null || body == null)
+                if (navbar == null || body == null || footer == null)
                 {
-                    MessageBox.Show("Error: Los componentes NavBar y Body son requeridos para exportar.", 
+                    MessageBox.Show("Error: Los componentes NavBar, Body y Footer son requeridos para exportar.", 
                         "Error de Exportación", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
@@ -38,7 +38,8 @@ namespace EWDesign.Services
                     ExportDate = DateTime.Now,
                     Version = "1.0",
                     NavBar = ConvertNavBarToData(navbar),
-                    Body = ConvertBodyToData(body)
+                    Body = ConvertBodyToData(body),
+                    Footer = ConvertFooterToData(footer)
                 };
 
                 // Serializar a JSON
@@ -60,7 +61,7 @@ namespace EWDesign.Services
             }
         }
 
-        public (NavBarComponent navbar, BodyComponent body) ImportProject(string filePath)
+        public (NavBarComponent navbar, BodyComponent body, FooterComponent footer) ImportProject(string filePath)
         {
             try
             {
@@ -69,7 +70,7 @@ namespace EWDesign.Services
                 {
                     MessageBox.Show("El archivo especificado no existe.", 
                         "Error de Importación", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return (null, null);
+                    return (null, null, null);
                 }
 
                 // Leer el archivo JSON
@@ -79,33 +80,34 @@ namespace EWDesign.Services
                 var projectData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectData>(json);
                 
                 // Validar la estructura del proyecto
-                if (projectData == null || projectData.NavBar == null || projectData.Body == null)
+                if (projectData == null || projectData.NavBar == null || projectData.Body == null || projectData.Footer == null)
                 {
                     MessageBox.Show("El archivo no contiene un proyecto válido.", 
                         "Error de Importación", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return (null, null);
+                    return (null, null, null);
                 }
 
                 // Convertir de vuelta a componentes
                 var navbar = ConvertDataToNavBar(projectData.NavBar);
                 var body = ConvertDataToBody(projectData.Body);
+                var footer = ConvertDataToFooter(projectData.Footer);
 
                 MessageBox.Show($"Proyecto importado exitosamente:\n{projectData.ProjectName}\nExportado: {projectData.ExportDate:dd/MM/yyyy HH:mm}", 
                     "Importación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                return (navbar, body);
+                return (navbar, body, footer);
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
                 MessageBox.Show($"Error al leer el archivo JSON:\n{ex.Message}", 
                     "Error de Importación", MessageBoxButton.OK, MessageBoxImage.Error);
-                return (null, null);
+                return (null, null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al importar el proyecto:\n{ex.Message}", 
                     "Error de Importación", MessageBoxButton.OK, MessageBoxImage.Error);
-                return (null, null);
+                return (null, null, null);
             }
         }
 
@@ -117,7 +119,6 @@ namespace EWDesign.Services
                 Title = navbar.Title?.Text ?? "Mi Producto",
                 BackgroundColor = navbar.BrushToHexRGB(navbar.BackgroundColor) ?? "#f5f7fa",
                 NavBarElements = navbar.NavbarElementsText?.ToList() ?? new List<string>(),
-                NavBarElementsColor = navbar.BrushToHexRGB(navbar.NavBarElementsColor) ?? "#3a3f47",
                 Children = ConvertComponentsToData(navbar.Children)
             };
         }
@@ -176,6 +177,27 @@ namespace EWDesign.Services
                 FeatureSectionComponents = ConvertComponentsToData(body.FeatureSectionComponents),
                 Children = additionalChildren
             };
+        }
+        private FooterData ConvertFooterToData(FooterComponent footer)
+        {
+            List<string> footerLinks = new List<string>();
+
+            foreach(var item in footer.Links.MenuItems)
+            {
+                footerLinks.Add(item.Text);
+            }
+
+            return new FooterData
+            {
+                Type = footer.Type,
+                Logo = footer.Logo?.Text ?? "Mi Producto",
+                Copyright = footer.Copyright?.Text ?? "© 2025 MiProducto. Todos los derechos reservados.",
+                FooterLinks = footerLinks ?? new List<string>(),
+                BackgroundColor = footer.Background.ToString() ?? "#FFFFFF",
+                Foreground = footer.Foreground.ToString() ?? "#2a2a40",
+                Children = ConvertComponentsToData(footer.Children)
+            };
+
         }
 
         private List<ComponentData> ConvertOnlyModifiedFeatureComponents(ObservableCollection<ComponentModel> components)
@@ -422,11 +444,6 @@ namespace EWDesign.Services
                 navbar.NavbarElementsText = new ObservableCollection<string>(data.NavBarElements);
             }
             
-            if (data.NavBarElementsColor != null)
-            {
-                navbar.NavBarElementsColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.NavBarElementsColor));
-            }
-            
             // Cargar los componentes hijos que se arrastraron al NavBar
             if (data.Children != null)
             {
@@ -542,6 +559,42 @@ namespace EWDesign.Services
 
             return body;
         }
+        private FooterComponent ConvertDataToFooter(FooterData data)
+        {
+            var footer = new FooterComponent();
+
+            if(data.Logo != null)
+            {
+                footer.Logo.Text = data.Logo;
+            }
+
+            if(data.Copyright != null)
+            {
+                footer.Copyright.Text = data.Copyright;
+            }
+
+            if(data.Foreground != null)
+            {
+                footer.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.Foreground));
+            }
+
+            if(data.BackgroundColor != null)
+            {
+                footer.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.BackgroundColor));
+            }
+
+            if (data.FooterLinks != null)
+            {
+                footer.Links = new MenuComponent(data.FooterLinks.ToArray(), false, footer.Foreground);
+            }
+
+            if(data.Children != null)
+            {
+                footer.Children = ConvertDataToComponents(data.Children);
+            }
+
+            return footer;
+        }
 
         private ObservableCollection<ComponentModel> ConvertDataToComponents(List<ComponentData> componentsData)
         {
@@ -559,6 +612,8 @@ namespace EWDesign.Services
                     case "title-text":
                     case "subtitle-text":
                     case "navbar-title-text":
+                    case "footer-title-text":
+                    case "copyright-text":
                         component = new TextComponent();
                         if (component is TextComponent textComponent)
                         {
@@ -774,6 +829,7 @@ namespace EWDesign.Services
                         break;
 
                     case "menu":
+                    case "footer-menu":
                         component = new MenuComponent();
                         if (component is MenuComponent menuComponent)
                         {

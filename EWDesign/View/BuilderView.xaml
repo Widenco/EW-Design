@@ -24,22 +24,21 @@
             </Grid.RowDefinitions>
             <Menu Background="#243647" Foreground="White">
                 <MenuItem Header="_File">
-                    <MenuItem Foreground="Black" Header="_New" />
-                    <MenuItem 
+                    <MenuItem
                         Command="{Binding ImportProjectCommand}"
-                        Foreground="Black" 
+                        Foreground="Black"
                         Header="_Import Project" />
-                    <MenuItem 
+                    <MenuItem
                         Command="{Binding ExportProjectCommand}"
-                        Foreground="Black" 
+                        Foreground="Black"
                         Header="_Export Project" />
                     <MenuItem
                         Click="Export_Click"
-                        Foreground="Black" 
-                        Header="_Export" />
-                    <MenuItem 
+                        Foreground="Black"
+                        Header="_Export Files" />
+                    <MenuItem
                         Command="{Binding ClearCanvasCommand}"
-                        Foreground="Black" 
+                        Foreground="Black"
                         Header="_Clear Canvas" />
                     <Separator />
                     <MenuItem

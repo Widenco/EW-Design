@@ -432,9 +432,6 @@ namespace EWDesign.Components.Views
                         newElement = new CardView((CardComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
-                    default:
-                        MessageBox.Show("No se puede insertar este componente en el contenedor.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
                 }
 
                 if(newElement != null)
@@ -492,9 +489,6 @@ namespace EWDesign.Components.Views
                         newElement = new CardView((CardComponent)component);
                         newElement.ComponentRemoveEvent += (s, a) => RemoveComponent(newElement);
                         break;
-                    default:
-                        MessageBox.Show("No se puede insertar este componente en el contenedor.", "Componente no soportado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
                 }
 
                 if (newElement != null)

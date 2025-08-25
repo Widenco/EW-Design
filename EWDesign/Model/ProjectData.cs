@@ -13,6 +13,7 @@ namespace EWDesign.Model
         public string Version { get; set; } = "1.0";
         public NavBarData NavBar { get; set; }
         public BodyData Body { get; set; }
+        public FooterData Footer { get; set; }
     }
 
     [Serializable]
@@ -28,7 +29,6 @@ namespace EWDesign.Model
                     "Precios",
                     "Contacto"
                 };
-                public string NavBarElementsColor { get; set; } = "#3a3f47";
                 // Agregar propiedad para los componentes hijos arrastrados al NavBar
                 public List<ComponentData> Children { get; set; } = new List<ComponentData>();
     }
@@ -57,6 +57,24 @@ namespace EWDesign.Model
                 public List<ComponentData> FeatureSectionComponents { get; set; } = new List<ComponentData>();
                 // Agregar propiedad para los componentes hijos arrastrados al Body
                 public List<ComponentData> Children { get; set; } = new List<ComponentData>();
+    }
+
+    [Serializable]
+    public class FooterData
+    {
+        public string Type { get; set; } = "Footer";
+        public string Logo { get; set; } = "Mi Producto";
+        public string Copyright { get; set; } = "© 2025 MiProducto. Todos los derechos reservados.";
+        public List<string> FooterLinks { get; set; } = new List<string>
+                {
+                    "Inicio",
+                    "Características",
+                    "Precios",
+                    "Contacto"
+                };
+        public string BackgroundColor { get; set; } = "#2a2a40";
+        public string Foreground { get; set; } = "#FFFFFF";
+        public List<ComponentData> Children { get; set; } = new List<ComponentData>();
     }
 
     [Serializable]

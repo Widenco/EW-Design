@@ -80,9 +80,7 @@ namespace EWDesign.Core.Code_Generator
 
                 _cssBuilder.AppendLine(bodyCSS);
 
-                if (component.Children.Count > 0)
-                {
-                    if(body.HeroSectionComponents.Count > 0)
+                    if (body.HeroSectionComponents.Count > 0)
                     {
                         _cssBuilder.AppendLine(
                             ".hero {\r\n" +
@@ -92,7 +90,7 @@ namespace EWDesign.Core.Code_Generator
 
                         sb.AppendLine("<section class=\"hero\">");
 
-                        foreach(var heroComponent in body.HeroSectionComponents)
+                        foreach (var heroComponent in body.HeroSectionComponents)
                         {
                             sb.AppendLine(BuildComponentCode(heroComponent));
                         }
@@ -101,7 +99,7 @@ namespace EWDesign.Core.Code_Generator
 
                     }
 
-                    if(body.FeatureSectionComponents.Count > 0)
+                    if (body.FeatureSectionComponents.Count > 0)
                     {
                         _cssBuilder.AppendLine(
                             ".features {\r\n" +
@@ -120,15 +118,51 @@ namespace EWDesign.Core.Code_Generator
                         }
 
                         sb.AppendLine("</section>");
-
-                    }
-                    /*foreach (var child in component.Children)
-                    {
-                        sb.AppendLine(BuildComponentCode(child));
-                    }*/
                 }
 
                 sb.AppendLine("</main>");
+            }
+            else if (component.Type.ToLower() == "footer")
+            {
+                var footer = component as FooterComponent;
+
+                sb.AppendLine("<footer class=\"footer\">\r\n" +
+                    "<div class=\"footer-container\">");
+
+                var footerCSS = ".footer {\r\n" +
+                    $"  background-color: {footer.BrushToHexRGB(footer.Background)};\r\n" +
+                    $"  color: {footer.BrushToHexRGB(footer.Foreground)};\r\n" +
+                    "  padding: 48px 24px 24px 24px;\r\n" +
+                    "  margin-top: 96px;\r\n}\r\n\r\n" +
+                    ".footer-container {\r\n" +
+                    "  max-width: 1200px;\r\n" +
+                    "  margin: 0 auto;\r\n" +
+                    "  display: flex;\r\n" +
+                    "  flex-direction: row;\r\n" +
+                    "  justify-content: space-between;\r\n" +
+                    "  align-items: center;\r\n" +
+                    "  flex-wrap: wrap;\r\n" +
+                    "  gap: 24px;\r\n}\r\n";
+
+                _cssBuilder.AppendLine(footerCSS);
+
+                if (component.Children.Count > 0)
+                {
+                    foreach (var child in component.Children)
+                    {
+                        if(child.Type != "Copyright-Text")
+                            sb.AppendLine(BuildComponentCode(child));
+                    }
+
+                    sb.AppendLine("\n</div>");
+                    var copyrightText = component.Children.FirstOrDefault(c => c.Type == "Copyright-Text");
+                    if(copyrightText != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(copyrightText));
+                    }
+                }
+
+                sb.AppendLine("\n</footer>");
             }
             else if (component is ICodeGeneratable)
             {
@@ -167,7 +201,7 @@ namespace EWDesign.Core.Code_Generator
 
             html.AppendLine("  </body>\r\n</html>");
 
-            if(!hasBody)
+            if (!hasBody)
                 _cssBuilder.AppendLine(
                         "body {\r\n" +
                         "  margin: 0;\r\n" +
@@ -193,7 +227,7 @@ namespace EWDesign.Core.Code_Generator
             // Serializamos las propiedades relevantes para identificar estilos
             string styleKey = SerializeStyles(component);
 
-            if(styleKey != null)
+            if (styleKey != null)
             {
                 // Si ya existe este estilo, usamos la misma clase
                 if (_styleToClassMap.TryGetValue(styleKey, out string existingClass))
@@ -218,7 +252,7 @@ namespace EWDesign.Core.Code_Generator
 
             return null;
         }
-    
+
         private string SerializeStyles(ComponentModel component)
         {
             switch (component.Type)
@@ -226,6 +260,8 @@ namespace EWDesign.Core.Code_Generator
                 case "Navbar-Title-Text":
                 case "Title-Text":
                 case "Subtitle-Text":
+                case "Footer-Title-Text":
+                case "Copyright-Text":
 
                     TextComponent textModel = component as TextComponent;
                     return $"FontSize={textModel.FontSize};" +
@@ -245,6 +281,7 @@ namespace EWDesign.Core.Code_Generator
                    $"Width={cardModel.Width};";
 
                 case "Menu":
+                case "Footer-Menu":
                     MenuComponent menuModel = component as MenuComponent;
                     return $"FontSize={menuModel.FontSize};" +
                    $"Foreground={menuModel.ForeGround};";

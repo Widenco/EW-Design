@@ -61,6 +61,8 @@ namespace EWDesign.ViewModel
         public NavBarComponent CurrentNavBar { get; set; }
         public BodyComponent CurrentBody { get; set; }
 
+        public FooterComponent CurrentFooter { get; set; }
+
         // Comandos para exportar e importar
         public RelayCommand ExportProjectCommand { get; set; }
         public RelayCommand ImportProjectCommand { get; set; }
@@ -122,6 +124,12 @@ namespace EWDesign.ViewModel
                 Category = "Layout Components",
                 ComponentFactory = typeof(BodyComponent)
             });
+            AllComponents.Add(new ComponentPaletteItem
+            {
+                DisplayName = "Footer",
+                Category = "Layout Components",
+                ComponentFactory = typeof(FooterComponent)
+            });
 
             DroppedComponents = new ObservableCollection<IComponentView>();
 
@@ -136,9 +144,9 @@ namespace EWDesign.ViewModel
             try
             {
                 // Verificar que tenemos los componentes necesarios
-                if (CurrentNavBar == null || CurrentBody == null)
+                if (CurrentNavBar == null || CurrentBody == null || CurrentFooter == null)
                 {
-                    MessageBox.Show("Debe tener un NavBar y un Body en el lienzo para exportar el proyecto.", 
+                    MessageBox.Show("Debe tener un NavBar, un Body y un Footer en el lienzo para exportar el proyecto.", 
                         "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -153,7 +161,7 @@ namespace EWDesign.ViewModel
 
                 if (saveFileDialog.ShowDialog() == true)
                 {
-                    bool success = ProjectService.Instance.ExportProject(CurrentNavBar, CurrentBody, saveFileDialog.FileName);
+                    bool success = ProjectService.Instance.ExportProject(CurrentNavBar, CurrentBody, CurrentFooter, saveFileDialog.FileName);
                     if (success)
                     {
                         BuilderView.Instance.Title = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
@@ -182,9 +190,9 @@ namespace EWDesign.ViewModel
 
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    var (navbar, body) = ProjectService.Instance.ImportProject(openFileDialog.FileName);
+                    var (navbar, body, footer) = ProjectService.Instance.ImportProject(openFileDialog.FileName);
                     
-                    if (navbar != null && body != null)
+                    if (navbar != null && body != null && footer != null)
                     {
                         // Limpiar el lienzo actual sin mostrar confirmación
                         ClearCanvasSilently();
@@ -192,22 +200,26 @@ namespace EWDesign.ViewModel
                         // Cargar los componentes importados
                         CurrentNavBar = navbar;
                         CurrentBody = body;
+                        CurrentFooter = footer;
                         
                         // Crear las vistas visuales para los componentes importados
                         var navbarView = new EWDesign.Components.Views.NavBarView(navbar, true); // isImporting = true
                         var bodyView = new EWDesign.Components.Views.BodyView(body, true); // isImporting = true
+                        var footerView = new EWDesign.Components.Views.FooterView(footer, true); // isImporting = true
                         
                         // Configurar eventos de eliminación
                         navbarView.ComponentRemoveEvent += (s, e) => RemoveComponentFromCanvas(navbarView);
                         bodyView.ComponentRemoveEvent += (s, e) => RemoveComponentFromCanvas(bodyView);
-                        
+                        footerView.ComponentRemoveEvent += (s, e) => RemoveComponentFromCanvas(footerView);
+
                         // Agregar a la colección de componentes
                         DroppedComponents.Clear();
                         DroppedComponents.Add(navbarView);
                         DroppedComponents.Add(bodyView);
+                        DroppedComponents.Add(footerView);
                         
                         // Notificar al BuilderView que debe actualizar la interfaz
-                        NotifyCanvasUpdate(navbarView, bodyView);
+                        NotifyCanvasUpdate(navbarView, bodyView, footerView);
                         BuilderView.Instance.Title = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
 
                         MessageBox.Show("Proyecto importado exitosamente. Los componentes están listos para usar.", 
@@ -271,7 +283,7 @@ namespace EWDesign.ViewModel
             }
         }
 
-        private void NotifyCanvasUpdate(IComponentView navbarView, IComponentView bodyView)
+        private void NotifyCanvasUpdate(IComponentView navbarView, IComponentView bodyView, IComponentView footerView)
         {
             // Notificar que se han importado componentes
             OnPropertyChanged(nameof(DroppedComponents));

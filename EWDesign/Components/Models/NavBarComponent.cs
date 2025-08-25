@@ -42,16 +42,6 @@ namespace EWDesign.Components.Models
         }
         public ObservableCollection<string> NavbarElementsText { get; set; }
 
-        private Brush _navBarElementsColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3f47"));
-
-        [EditableProperty("NavBar Elements Color")]
-        [JsonProperty]
-        public Brush NavBarElementsColor
-        {
-            get => _navBarElementsColor;
-            set => SetProperty(ref _navBarElementsColor, value);
-        }
-
         public NavBarComponent() 
         { 
             Type = "NavBar";

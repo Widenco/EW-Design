@@ -104,7 +104,11 @@ namespace EWDesign.Components.Models
             {
                 return $"<div class='{className}'>{Text}</div>";
             }
-            else if(this.Type == "Title-Text")
+            else if(this.Type == "Copyright-Text")
+            {
+                return $"<div class='{className}'>{Text}</div>";
+            }
+            else if (this.Type == "Title-Text")
             {
                 return $"<h1 class='{className}'>{Text}</h1>";
             }
@@ -116,7 +120,7 @@ namespace EWDesign.Components.Models
         public string CSSContent(string className)
         {
 
-            if(this.Type == "Navbar-Title-Text")
+            if(this.Type == "Navbar-Title-Text" || this.Type == "Footer-Title-Text")
             {
                 
                 return $".{className} {{\r\n" +
@@ -124,15 +128,24 @@ namespace EWDesign.Components.Models
                     "  font-weight: 600;\r\n" +
                     $"  color: {BrushToHexRGB(ForeGround)};\r\n}}\n";
             }
-            else if(this.Type == "Title-Text")
+            else if(this.Type == "Copyright-Text")
+            {
+                return $".{className} {{\r\n" +
+                    "  max-width: 1200px;\r\n" +
+                    "  margin: 32px auto 0;\r\n" +
+                    "  text-align: center;\r\n" +
+                    $"  font-size: {FontSize}px;\r\n" +
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n}}\r\n";
+            }
+            else if (this.Type == "Title-Text")
             {
                 return $".{className} {{\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +
                     "  font-weight: 700;\r\n" +
-                    $"  color: {BrushToHexRGB(ForeGround)};\r\n"+
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
                     "  line-height: 1.2;\r\n" +
                     $"  margin: {Margin};\r\n}}";
-            }else
+            } else
             {
                 return $".{className} {{\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +
