@@ -79,7 +79,6 @@
                         x:Name="LinksDropArea"
                         MinWidth="30"
                         MinHeight="30"
-                        HorizontalAlignment="Left"
                         AllowDrop="True"
                         Background="Transparent"
                         Drop="FooterDropArea_Drop"

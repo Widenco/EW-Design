@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:EWDesign"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:EWDesign.ViewModel"
-    Title="MainWindow"
+    Title="EW Design"
     Width="920"
     Height="600"
     Background="Transparent"

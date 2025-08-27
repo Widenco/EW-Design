@@ -24,9 +24,9 @@ namespace EWDesign.Components.Models
 
         [EditableProperty("Text")]
         [JsonProperty]
-        public string Text 
-        { 
-            get => _text; 
+        public string Text
+        {
+            get => _text;
             set => SetProperty(ref _text, value);
         }
 
@@ -57,7 +57,7 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _fontWeight, value);
         }
 
-        private Thickness _margin = new Thickness(20,0,0,0);
+        private Thickness _margin = new Thickness(20, 0, 0, 0);
         public Thickness Margin
         {
             get => _margin;
@@ -100,13 +100,17 @@ namespace EWDesign.Components.Models
 
         public string HTMLContent(string className)
         {
-            if(this.Type == "Navbar-Title-Text")
+            if (this.Type == "Navbar-Title-Text")
             {
                 return $"<div class='{className}'>{Text}</div>";
             }
-            else if(this.Type == "Copyright-Text")
+            else if (this.Type == "Footer-Title-Text")
             {
                 return $"<div class='{className}'>{Text}</div>";
+            }
+            else if (this.Type == "Footer-Description-Text")
+            {
+                return $"<p class='{className}'>{Text}</p>";
             }
             else if (this.Type == "Title-Text")
             {
@@ -120,22 +124,21 @@ namespace EWDesign.Components.Models
         public string CSSContent(string className)
         {
 
-            if(this.Type == "Navbar-Title-Text" || this.Type == "Footer-Title-Text")
+            if (this.Type == "Navbar-Title-Text" || this.Type == "Footer-Title-Text")
             {
-                
+
                 return $".{className} {{\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +
                     "  font-weight: 600;\r\n" +
                     $"  color: {BrushToHexRGB(ForeGround)};\r\n}}\n";
             }
-            else if(this.Type == "Copyright-Text")
+            else if (this.Type == "Footer-Description-Text")
             {
                 return $".{className} {{\r\n" +
-                    "  max-width: 1200px;\r\n" +
-                    "  margin: 32px auto 0;\r\n" +
-                    "  text-align: center;\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +
-                    $"  color: {BrushToHexRGB(ForeGround)};\r\n}}\r\n";
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
+                    "  line-height: 1.6;\r\n" +
+                    "  margin: 0;\r\n}\r\n";
             }
             else if (this.Type == "Title-Text")
             {
@@ -145,7 +148,8 @@ namespace EWDesign.Components.Models
                     $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
                     "  line-height: 1.2;\r\n" +
                     $"  margin: {Margin};\r\n}}";
-            } else
+            }
+            else
             {
                 return $".{className} {{\r\n" +
                     $"  font-size: {FontSize}px;\r\n" +

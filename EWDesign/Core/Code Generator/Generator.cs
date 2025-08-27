@@ -1,6 +1,7 @@
 ﻿using EWDesign.Components.Models;
 using EWDesign.Interfaces;
 using EWDesign.Model;
+using EWDesign.View;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -127,42 +128,137 @@ namespace EWDesign.Core.Code_Generator
                 var footer = component as FooterComponent;
 
                 sb.AppendLine("<footer class=\"footer\">\r\n" +
-                    "<div class=\"footer-container\">");
+                    "      <div class=\"footer-container\">\r\n" +
+                    "        <div class=\"footer-main\">\r\n");
 
                 var footerCSS = ".footer {\r\n" +
                     $"  background-color: {footer.BrushToHexRGB(footer.Background)};\r\n" +
                     $"  color: {footer.BrushToHexRGB(footer.Foreground)};\r\n" +
-                    "  padding: 48px 24px 24px 24px;\r\n" +
-                    "  margin-top: 96px;\r\n}\r\n\r\n" +
+                    "  padding: 0;\r\n" +
+                    "  margin-top: 96px;\r\n" +
+                    "  font-family: \"Inter\", sans-serif;\r\n}\r\n\r\n" +
                     ".footer-container {\r\n" +
                     "  max-width: 1200px;\r\n" +
                     "  margin: 0 auto;\r\n" +
+                    "  padding: 40px;\r\n}\r\n\r\n" +
+                    ".footer-main {\r\n" +
+                    "  display: grid;\r\n" +
+                    "  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\r\n" +
+                    "  gap: 40px;\r\n" +
+                    "  margin-bottom: 32px;\r\n}\r\n\r\n" +
+                    ".footer-section {\r\n" +
                     "  display: flex;\r\n" +
-                    "  flex-direction: row;\r\n" +
-                    "  justify-content: space-between;\r\n" +
-                    "  align-items: center;\r\n" +
-                    "  flex-wrap: wrap;\r\n" +
-                    "  gap: 24px;\r\n}\r\n";
+                    "  flex-direction: column;\r\n" +
+                    "  gap: 16px;\r\n}\r\n\r\n" +
+                    ".footer-brand {\r\n  gap: 24px;\r\n}\r\n" +
+                    ".footer-logo {\r\n" +
+                    "  margin-bottom: 16px;\r\n}\r\n\r\n" +
+                    ".footer-description {\r\n" +
+                    "  line-height: 1.6;\r\n}\r\n" +
+                    ".social-icons {\r\n" +
+                    "  display: flex;\r\n" +
+                    "  gap: 12px;\r\n" +
+                    "  margin-top: 12px;\r\n}\r\n" +
+                    "@media (max-width: 768px) {\r\n" +
+                    "  .footer-main {\r\n" +
+                    "    grid-template-columns: 1fr;\r\n" +
+                    "    gap: 24px;\r\n  }\r\n" +
+                    "  .footer-container {\r\n" +
+                    "    padding: 24px 16px;\r\n  }\r\n\r\n}";
 
                 _cssBuilder.AppendLine(footerCSS);
 
-                if (component.Children.Count > 0)
+                // Generando codigo por seccion
+
+                // Seccion de Descripcion
+                if(footer.DescriptionSection.Count > 0)
                 {
-                    foreach (var child in component.Children)
+                    sb.AppendLine("<div class=\"footer-section footer-brand\">\r\n");
+                    var logo = footer.DescriptionSection.FirstOrDefault(c => c.Type == "Footer-Title-Text");
+                    var logoDescription = footer.DescriptionSection.FirstOrDefault(c => c.Type == "Footer-Description-Text");
+
+                    if(logo != null)
                     {
-                        if(child.Type != "Copyright-Text")
-                            sb.AppendLine(BuildComponentCode(child));
+                        sb.AppendLine("<div class=\"footer-logo\">\r\n");
+                        sb.AppendLine(BuildComponentCode(logo));
+                        sb.AppendLine("\r\n</div>");
                     }
 
-                    sb.AppendLine("\n</div>");
-                    var copyrightText = component.Children.FirstOrDefault(c => c.Type == "Copyright-Text");
-                    if(copyrightText != null)
+                    if (logoDescription != null)
                     {
-                        sb.AppendLine(BuildComponentCode(copyrightText));
+                        sb.AppendLine("<div class=\"footer-description\">\r\n");
+                        sb.AppendLine(BuildComponentCode(logoDescription));
+                        sb.AppendLine("\r\n</div>");
+                    }
+
+                    sb.AppendLine("\r\n</div>");
+
+                }
+
+                // Seccion de Links
+                if(footer.LinksSection.Count > 0)
+                {
+                    sb.AppendLine("<div class=\"footer-section footer-links\">\r\n");
+                    var linksTitle = footer.LinksSection.FirstOrDefault(c => c.Type == "Footer-Title-Text");
+                    var links = footer.LinksSection.FirstOrDefault(c => c.Type == "Footer-Menu" || c.Type == "Menu");
+
+                    if(linksTitle != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(linksTitle));
+                    }
+                    if(links != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(links));
+                    }
+
+                    sb.AppendLine("\r\n</div>");
+                }
+
+                // Seccion de Contacto
+                if(footer.ContactSection.Count > 0)
+                {
+                    sb.AppendLine("<div class=\"footer-section footer-contact\">\r\n");
+                    var contactTitle = footer.ContactSection.FirstOrDefault(c => c.Type == "Footer-Title-Text");
+                    var contactText = footer.ContactSection.FirstOrDefault(c => c.Type == "Footer-Description-Text");
+
+                    if (contactTitle != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(contactTitle));
+                    }
+                    if(contactText != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(contactText));
+                    }
+
+                    sb.AppendLine("\r\n</div>");
+                }
+
+                // Seccion de Redes Sociales
+                if(footer.IconsSection.Count > 0)
+                {
+                    sb.AppendLine("<div class=\"footer-section footer-social\">\r\n");
+                    var iconsText = footer.IconsSection.FirstOrDefault(c => c.Type == "Footer-Title-Text");
+
+                    if (iconsText != null)
+                    {
+                        sb.AppendLine(BuildComponentCode(iconsText));
+                    }
+
+                    var icons = footer.IconsSection.Where(c => c.Type == "Footer-Icon" || c.Type == "Icon") ?? null;
+                    if (icons != null)
+                    {
+                        sb.AppendLine("<div class=\"social-icons\">\r\n");
+                        foreach (var item in icons)
+                        {
+                            sb.AppendLine(BuildComponentCode(item));
+                        }
+                        sb.AppendLine("\r\n</div>");
                     }
                 }
 
-                sb.AppendLine("\n</footer>");
+                sb.AppendLine("        </div>\r\n" +
+                    "      </div>\r\n" +
+                    "    </footer>");
             }
             else if (component is ICodeGeneratable)
             {
@@ -185,7 +281,7 @@ namespace EWDesign.Core.Code_Generator
                 "  <head>\r\n" +
                 "    <meta charset=\"utf-8\" />\r\n" +
                 "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n" +
-                "    <title>Page Title</title>\r\n" +
+                $"    <title>{BuilderView.Instance.Title}</title>\r\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n" +
                 "    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"style.css\" />\r\n" +
                 "  </head>\r\n" +
@@ -261,8 +357,7 @@ namespace EWDesign.Core.Code_Generator
                 case "Title-Text":
                 case "Subtitle-Text":
                 case "Footer-Title-Text":
-                case "Copyright-Text":
-
+                case "Footer-Description-Text":
                     TextComponent textModel = component as TextComponent;
                     return $"FontSize={textModel.FontSize};" +
                    $"Foreground={textModel.ForeGround};" +
@@ -285,6 +380,10 @@ namespace EWDesign.Core.Code_Generator
                     MenuComponent menuModel = component as MenuComponent;
                     return $"FontSize={menuModel.FontSize};" +
                    $"Foreground={menuModel.ForeGround};";
+                case "Icon":
+                case "Footer-Icon":
+                    IconComponent iconModel = component as IconComponent;
+                    return $"Background={iconModel.AccentColor};";
             }
 
             return null;

@@ -15,6 +15,10 @@ namespace EWDesign.Components.Models
 {
     public class FooterComponent : ComponentModel
     {
+        public ObservableCollection<ComponentModel> DescriptionSection { get; set; }
+        public ObservableCollection<ComponentModel> LinksSection { get; set; }
+        public ObservableCollection<ComponentModel> ContactSection { get; set; }
+        public ObservableCollection<ComponentModel> IconsSection { get; set; }
         private MenuComponent _links;
         public MenuComponent Links 
         {
@@ -53,32 +57,11 @@ namespace EWDesign.Components.Models
         public FooterComponent()
         {
             Type = "Footer";
-            Links = new MenuComponent(_foreground, false);
-            Links.Type = "Footer-Menu";
 
-            Logo = new TextComponent
-            {
-                Type = "Footer-Title-Text",
-                Text = "MiProducto",
-                FontSize = 24,
-                ForeGround = Foreground,
-                FontWeight = FontWeights.Bold,
-                Margin = new Thickness(0,0,0,12)
-            };
-            
-
-            Copyright = new TextComponent
-            {
-                Type = "Copyright-Text",
-                Text = "© 2025 MiProducto. Todos los derechos reservados.",
-                FontSize = 14,
-                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#888")),
-                Margin = new Thickness(0,24,0,0)
-            };
-
-            Children.Add(Logo);
-            Children.Add(Links);
-            Children.Add(Copyright);
+            DescriptionSection = new ObservableCollection<ComponentModel>();
+            LinksSection = new ObservableCollection<ComponentModel>();
+            ContactSection = new ObservableCollection<ComponentModel>();
+            IconsSection = new ObservableCollection<ComponentModel>();
         }
     }
 

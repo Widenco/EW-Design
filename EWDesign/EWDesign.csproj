@@ -79,6 +79,7 @@
     <Compile Include="Components\Models\ButtonComponent.cs" />
     <Compile Include="Components\Models\CardComponent.cs" />
     <Compile Include="Components\Models\FooterComponent.cs" />
+    <Compile Include="Components\Models\IconComponent.cs" />
     <Compile Include="Components\Models\MenuComponent.cs" />
     <Compile Include="Components\Models\MenuItemComponent.cs" />
     <Compile Include="Components\Models\NavBarComponent.cs" />
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="Components\Views\FooterView.xaml.cs">
       <DependentUpon>FooterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Views\IconView.xaml.cs">
+      <DependentUpon>IconView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -152,6 +156,10 @@
     <Page Include="Components\Views\FooterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Views\IconView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Components\Views\MenuView.xaml">
       <SubType>Designer</SubType>

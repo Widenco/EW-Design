@@ -180,21 +180,15 @@ namespace EWDesign.Services
         }
         private FooterData ConvertFooterToData(FooterComponent footer)
         {
-            List<string> footerLinks = new List<string>();
-
-            foreach(var item in footer.Links.MenuItems)
-            {
-                footerLinks.Add(item.Text);
-            }
 
             return new FooterData
             {
-                Type = footer.Type,
-                Logo = footer.Logo?.Text ?? "Mi Producto",
-                Copyright = footer.Copyright?.Text ?? "© 2025 MiProducto. Todos los derechos reservados.",
-                FooterLinks = footerLinks ?? new List<string>(),
                 BackgroundColor = footer.Background.ToString() ?? "#FFFFFF",
                 Foreground = footer.Foreground.ToString() ?? "#2a2a40",
+                DescriptionSectionComponents = ConvertComponentsToData(footer.DescriptionSection),
+                LinksSectionComponents = ConvertComponentsToData(footer.LinksSection),
+                ContactSectionComponents = ConvertComponentsToData(footer.ContactSection),
+                IconsSectionsComponents = ConvertComponentsToData(footer.IconsSection),
                 Children = ConvertComponentsToData(footer.Children)
             };
 
@@ -416,6 +410,11 @@ namespace EWDesign.Services
 
                     case MenuComponent menuComponent:
                         componentData.ForegroundColor = menuComponent.BrushToHexRGB(menuComponent.ForeGround);
+                        componentData.Orientation = menuComponent.Orientation.ToString();
+                        break;
+                    case IconComponent iconComponent:
+                        componentData.BackgroundColor = iconComponent.BrushToHexRGB(iconComponent.AccentColor);
+                        componentData.Text = iconComponent.IconText;
                         break;
                 }
 
@@ -563,16 +562,6 @@ namespace EWDesign.Services
         {
             var footer = new FooterComponent();
 
-            if(data.Logo != null)
-            {
-                footer.Logo.Text = data.Logo;
-            }
-
-            if(data.Copyright != null)
-            {
-                footer.Copyright.Text = data.Copyright;
-            }
-
             if(data.Foreground != null)
             {
                 footer.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.Foreground));
@@ -583,12 +572,27 @@ namespace EWDesign.Services
                 footer.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.BackgroundColor));
             }
 
-            if (data.FooterLinks != null)
+            if(data.DescriptionSectionComponents != null)
             {
-                footer.Links = new MenuComponent(data.FooterLinks.ToArray(), false, footer.Foreground);
+                footer.DescriptionSection = ConvertDataToComponents(data.DescriptionSectionComponents);
             }
 
-            if(data.Children != null)
+            if (data.LinksSectionComponents != null)
+            {
+                footer.LinksSection = ConvertDataToComponents(data.LinksSectionComponents);
+            }
+
+            if (data.ContactSectionComponents != null)
+            {
+                footer.ContactSection = ConvertDataToComponents(data.ContactSectionComponents);
+            }
+
+            if (data.IconsSectionsComponents != null)
+            {
+                footer.IconsSection = ConvertDataToComponents(data.IconsSectionsComponents);
+            }
+
+            if (data.Children != null)
             {
                 footer.Children = ConvertDataToComponents(data.Children);
             }
@@ -613,7 +617,7 @@ namespace EWDesign.Services
                     case "subtitle-text":
                     case "navbar-title-text":
                     case "footer-title-text":
-                    case "copyright-text":
+                    case "footer-description-text":
                         component = new TextComponent();
                         if (component is TextComponent textComponent)
                         {
@@ -835,6 +839,30 @@ namespace EWDesign.Services
                         {
                             if (data.ForegroundColor != null)
                                 menuComponent.ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.ForegroundColor));
+                            if (data.Orientation != null)
+                            {
+                                switch (data.Orientation)
+                                {
+                                    case "Vertical":
+                                        menuComponent.Orientation = Orientation.Vertical;
+                                        break;
+                                    case "Horizontal":
+                                        menuComponent.Orientation = Orientation.Horizontal;
+                                        break;
+                                }
+                            }
+                                
+                        }
+                        break;
+                    case "icon":
+                    case "footer-icon":
+                        component = new IconComponent();
+                        if(component is IconComponent iconComponent)
+                        {
+                            if (data.BackgroundColor != null)
+                                iconComponent.AccentColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString(data.BackgroundColor));
+                            if (data.Text != null)
+                                iconComponent.IconText = data.Text;
                         }
                         break;
                 }

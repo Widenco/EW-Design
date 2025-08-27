@@ -61,3 +61,5 @@ C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.exe
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\EWDesign.pdb
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\FooterView.g.cs
 C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\FooterView.baml
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\IconView.g.cs
+C:\Users\Denzell Connolly\source\repos\EWDesign\EWDesign\obj\Debug\Components\Views\IconView.baml

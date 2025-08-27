@@ -6,6 +6,7 @@ using EWDesign.Model;
 using EWDesign.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,24 @@ namespace EWDesign.View
             
             // Suscribirse al evento de importación de componentes
             Model.OnComponentsImported += UpdateCanvasFromViewModel;
+        }
+
+        public void OpenTemplate()
+        {
+            string templatePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Template1.json");
+
+            if (File.Exists(templatePath))
+            {
+                // Ejecutamos el comando del ViewModel
+                if (Model.ImportProjectCommand.CanExecute(templatePath))
+                    Model.ImportProjectCommand.Execute(templatePath);
+
+                ShowDialog(); // Muestra la ventana ya con la plantilla cargada
+            }
+            else
+            {
+                MessageBox.Show("La plantilla no fue encontrada: " + templatePath);
+            }
         }
 
         private void ComponentItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

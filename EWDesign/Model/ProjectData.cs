@@ -62,18 +62,12 @@ namespace EWDesign.Model
     [Serializable]
     public class FooterData
     {
-        public string Type { get; set; } = "Footer";
-        public string Logo { get; set; } = "Mi Producto";
-        public string Copyright { get; set; } = "© 2025 MiProducto. Todos los derechos reservados.";
-        public List<string> FooterLinks { get; set; } = new List<string>
-                {
-                    "Inicio",
-                    "Características",
-                    "Precios",
-                    "Contacto"
-                };
         public string BackgroundColor { get; set; } = "#2a2a40";
         public string Foreground { get; set; } = "#FFFFFF";
+        public List<ComponentData> DescriptionSectionComponents { get; set; } = new List<ComponentData>();
+        public List<ComponentData> LinksSectionComponents { get; set; } = new List<ComponentData>();
+        public List<ComponentData> ContactSectionComponents { get; set; } = new List<ComponentData>();
+        public List<ComponentData> IconsSectionsComponents { get; set; } = new List<ComponentData>();
         public List<ComponentData> Children { get; set; } = new List<ComponentData>();
     }
 
@@ -90,6 +84,7 @@ namespace EWDesign.Model
         public string TextAlignment { get; set; }
         public string TextWrap { get; set; }
         public string Margin { get; set; }
+        public string Orientation { get; set; }
         public double Width { get; set; }
         public double Height { get; set; }
         public List<ComponentData> Children { get; set; } = new List<ComponentData>();

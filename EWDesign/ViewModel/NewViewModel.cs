@@ -16,11 +16,14 @@ namespace EWDesign.ViewModel
     {
         public ObservableCollection<IconModel> Icons { get; set; }
         public ICommand OpenBuilderCommand { get; }
+        public ICommand OpenTemplateCommand { get; }
         public event Action OpenBuilder;
+        public event Action OpenTemplate;
 
         public NewViewModel()
         {
             OpenBuilderCommand = new RelayCommand(o => OpenBuilder?.Invoke());
+            OpenTemplateCommand = new RelayCommand(o => OpenTemplate?.Invoke());
 
             Icons = new ObservableCollection<IconModel> {
                 new IconModel
@@ -30,12 +33,12 @@ namespace EWDesign.ViewModel
                     Tooltip = "New Page",
                     Command = OpenBuilderCommand
                 },
-                new IconModel
+               /* new IconModel
                 {
                     IconPath = "pack://application:,,,/Assets/newPageIcon.png",
                     Text = "Template 1",
                     Tooltip = "New Template 1",
-                    Command = new RelayCommand(o => NewTemplate(1))
+                    Command = OpenTemplateCommand
                 },
                 new IconModel
                 {
@@ -43,21 +46,11 @@ namespace EWDesign.ViewModel
                     Text = "Template 2",
                     Tooltip = "New Template 2",
                     Command = new RelayCommand(o => NewTemplate(2))
-                }
+                }*/
             };
 
             
         }
 
-        private void NewPage()
-        {
-            var BuilderWindow = new BuilderView();
-            BuilderWindow.ShowDialog();
-        }
-
-        private void NewTemplate(int templateID)
-        {
-
-        }
     }
 }

@@ -27,6 +27,7 @@ namespace EWDesign.View
             var viewModel = new NewViewModel();
 
             viewModel.OpenBuilder += OnOpenBuilder;
+            viewModel.OpenTemplate += OnOpenTemplate;
 
             DataContext = viewModel;
         }
@@ -40,6 +41,15 @@ namespace EWDesign.View
             BuilderWindow.ShowDialog();
 
             main.Show();
+        }
+
+        private void OnOpenTemplate()
+        {
+            var main = Application.Current.MainWindow;
+            main.Hide();
+
+            var BuilderWindow = new BuilderView();
+            BuilderWindow.OpenTemplate();
         }
     }
 }

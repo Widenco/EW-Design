@@ -114,6 +114,12 @@ namespace EWDesign.ViewModel
             });
             AllComponents.Add(new ComponentPaletteItem
             {
+                DisplayName = "Icon",
+                Category = "Design Components",
+                ComponentFactory = typeof(IconComponent)
+            });
+            AllComponents.Add(new ComponentPaletteItem
+            {
                 DisplayName = "Navbar",
                 Category = "Layout Components",
                 ComponentFactory = typeof(NavBarComponent)
@@ -177,7 +183,7 @@ namespace EWDesign.ViewModel
             }
         }
 
-        private void ImportProject(object parameter)
+        public void ImportProject(object parameter)
         {
             try
             {

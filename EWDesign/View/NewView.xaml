@@ -23,8 +23,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock
-            Margin="20,20,0,0"
-            FontSize="30"
+            Margin="20,30,0,0"
+            FontSize="28"
             Foreground="White"
             Text="NEW" />
 
@@ -46,11 +46,10 @@
                             Margin="30,0,0,0"
                             Background="Transparent"
                             BorderThickness="0"
-                            Command="{Binding Command}"
-                            ToolTip="{Binding ToolTip}">
+                            Command="{Binding Command}">
                             <Image
-                                Width="150"
-                                Height="100"
+                                Width="85"
+                                Height="85"
                                 Source="{Binding IconPath}"
                                 Stretch="Uniform" />
                         </Button>

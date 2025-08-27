@@ -12,6 +12,7 @@ using EWDesign.Core;
 using System.Windows.Data;
 using EWDesign.Interfaces;
 using Newtonsoft.Json;
+using System.Windows.Controls;
 
 namespace EWDesign.Components.Models
 {
@@ -64,6 +65,13 @@ namespace EWDesign.Components.Models
             set => SetProperty(ref _margin, value);
         }
 
+        private Orientation _orientation = Orientation.Horizontal;
+        public Orientation Orientation
+        {
+            get => _orientation;
+            set => SetProperty(ref _orientation, value);
+        }
+
         public override void SetSelected(bool s)
         {
             base.SetSelected(s);
@@ -102,18 +110,40 @@ namespace EWDesign.Components.Models
 
         public string CSSContent(string className)
         {
-            return $".{className} {{\r\n" +
-                "  list-style: none;\r\n" +
-                "  display: flex;\r\n" +
-                "  gap: 32px;\r\n" +
-                "  margin: 0;\r\n" +
-                "  padding: 0;\r\n}" +
-                $"\n.{className} li a {{\r\n" +
-                "  text-decoration: none;\r\n" +
-                $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
-                "  font-weight: 500;\r\n" +
-                $"  font-size: {FontSize}px;\r\n" +
-                "  transition: color 0.3s ease;\r\n}";
+            if(this.Type == "Footer-Menu")
+            {
+                return $".{className} {{\r\n" +
+                    "  list-style: none;\r\n" +
+                    "  margin: 0;\r\n" +
+                    "  padding: 0;\r\n" +
+                    "  display: flex;\r\n" +
+                    "  flex-direction: column;\r\n" +
+                    "  gap: 8px;\r\n}\r\n" +
+                    $".{className} li {{\r\n" +
+                    "  margin-bottom: 12px;\r\n}\r\n" +
+                    $".{className} li a {{\r\n" +
+                    "  color: #b0b0b0;\r\n" +
+                    "  text-decoration: none;\r\n" +
+                    "  font-size: 16px;\r\n" +
+                    "  transition: color 0.3s ease;\r\n" +
+                    "  opacity: 0.8;\r\n}";
+            }
+            else
+            {
+                return $".{className} {{\r\n" +
+                    "  list-style: none;\r\n" +
+                    "  display: flex;\r\n" +
+                    "  gap: 32px;\r\n" +
+                    "  margin: 0;\r\n" +
+                    "  padding: 0;\r\n}" +
+                    $"\n.{className} li a {{\r\n" +
+                    "  text-decoration: none;\r\n" +
+                    $"  color: {BrushToHexRGB(ForeGround)};\r\n" +
+                    "  font-weight: 500;\r\n" +
+                    $"  font-size: {FontSize}px;\r\n" +
+                    "  transition: color 0.3s ease;\r\n}";
+            }
+                
         }
 
         public MenuComponent()
@@ -175,11 +205,29 @@ namespace EWDesign.Components.Models
 
             this.DelegateContextMenu = delegateMenu;
         }
-        public MenuComponent(string[] menuItemTexts, bool delegateMenu, Brush foreground)
+        public MenuComponent(Brush foreground, bool delegateMenu, string menuType, Orientation orientation)
         {
-            Type = "Menu";
+            Type = menuType;
 
-            _menuItemsText = menuItemTexts;
+            if (menuType == "Footer-Menu")
+            {
+                _menuItemsText = new string[]
+                {
+                    "Caracteristicas",
+                    "Precio",
+                    "Contacto"
+                };
+            }
+            else
+            {
+                _menuItemsText = new string[]
+                {
+                    "Inicio",
+                    "Caracteristicas",
+                    "Precio",
+                    "Contacto"
+                };
+            }
 
             _menuItems = new ObservableCollection<TextComponent>();
 
@@ -198,6 +246,7 @@ namespace EWDesign.Components.Models
             }
 
             this.DelegateContextMenu = delegateMenu;
+            Orientation = orientation;
         }
     }
 }
